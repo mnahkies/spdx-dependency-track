@@ -12,9 +12,14 @@
     "start": "next start",
     "lint": "next lint",
     "format": "biome format --write ./src",
-    "docs:generate": "yarn markdown-toc -i --bullets=- ./README.md"
+    "docs:generate": "yarn markdown-toc -i --bullets=- ./README.md",
+    "migrate": "dotenvx run -- ./bin/migrate.sh",
+    "migrate-generate": "dotenvx run -- ./bin/migrate-generate.sh",
+    "migrate-rehash": "dotenvx run -- atlas migrate hash --dir 'file://migrations"
   },
   "dependencies": {
+    "@ariga/atlas": "^0.21.0",
+    "@dotenvx/dotenvx": "^0.27.1",
     "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18"

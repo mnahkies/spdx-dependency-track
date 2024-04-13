@@ -39,3 +39,5 @@ next-env.d.ts
 
 # ide files
 .idea
+
+*.db
