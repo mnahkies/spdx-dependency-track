@@ -59,13 +59,14 @@ export class LicenseRepository {
   async getLicenses(): Promise<ApiLicense[]> {
     return this.sqlite.many(
       sql(
-        projection(t.licenses, "external_id", "name").and(
+        projection(t.licenses, "external_id", "name", "id").and(
           aliased(projection(t.license_groups, "name", "risk"), {
             name: "group_name",
           }),
         ),
       )`SELECT l.external_id,
                l.name,
+               l.id,
                lg.name AS group_name,
                lg.risk
         FROM license_license_groups llg

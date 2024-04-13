@@ -90,6 +90,8 @@ export class Sqlite {
       const prepared = this.prepare(query.query)
       prepared.run(...query.parameters)
     } catch (err) {
+      console.info(query.query)
+      console.info(query.parameters)
       console.error(err)
       throw err
     }

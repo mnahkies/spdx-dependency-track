@@ -29,10 +29,10 @@ CREATE TABLE license_license_groups
 
 CREATE TABLE repository
 (
-  id          TEXT    NOT NULL,
-  url         TEXT    NOT NULL,
-  name        TEXT    NOT NULL,
-  is_archived TINYINT NOT NULL
+  id          TEXT PRIMARY KEY NOT NULL,
+  url         TEXT             NOT NULL,
+  name        TEXT             NOT NULL UNIQUE,
+  is_archived TINYINT          NOT NULL
 );
 
 CREATE TABLE dependency
@@ -52,8 +52,12 @@ CREATE TABLE dependency
 
 CREATE TABLE repository_dependency
 (
-  repository_id TEXT NOT NULL,
-  dependency_id TEXT NOT NULL,
+  repository_id      TEXT NOT NULL,
+  dependency_name    TEXT NOT NULL,
+  dependency_version TEXT NOT NULL,
 
-  PRIMARY KEY (repository_id, dependency_id)
+  PRIMARY KEY (repository_id, dependency_name, dependency_version),
+
+  FOREIGN KEY (repository_id) REFERENCES repository (id) ON UPDATE RESTRICT ON DELETE CASCADE,
+  FOREIGN KEY (dependency_name, dependency_version) REFERENCES dependency (name, version) ON UPDATE RESTRICT ON DELETE CASCADE
 );

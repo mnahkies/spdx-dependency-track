@@ -29,8 +29,11 @@ CREATE TABLE `repository` (
   `id` text NOT NULL,
   `url` text NOT NULL,
   `name` text NOT NULL,
-  `is_archived` tinyint NOT NULL
+  `is_archived` tinyint NOT NULL,
+  PRIMARY KEY (`id`)
 );
+-- Create index "repository_name" to table: "repository"
+CREATE UNIQUE INDEX `repository_name` ON `repository` (`name`);
 -- Create "dependency" table
 CREATE TABLE `dependency` (
   `id` text NOT NULL,
@@ -46,6 +49,9 @@ CREATE TABLE `dependency` (
 -- Create "repository_dependency" table
 CREATE TABLE `repository_dependency` (
   `repository_id` text NOT NULL,
-  `dependency_id` text NOT NULL,
-  PRIMARY KEY (`repository_id`, `dependency_id`)
+  `dependency_name` text NOT NULL,
+  `dependency_version` text NOT NULL,
+  PRIMARY KEY (`repository_id`, `dependency_name`, `dependency_version`),
+  CONSTRAINT `0` FOREIGN KEY (`dependency_name`, `dependency_version`) REFERENCES `dependency` (`name`, `version`) ON UPDATE RESTRICT ON DELETE CASCADE,
+  CONSTRAINT `1` FOREIGN KEY (`repository_id`) REFERENCES `repository` (`id`) ON UPDATE RESTRICT ON DELETE CASCADE
 );
