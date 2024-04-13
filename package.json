@@ -4,11 +4,14 @@
   "packageManager": "yarn@4.1.1",
   "private": true,
   "scripts": {
+    "postinstall": "husky",
     "dev": "next dev",
     "build": "next build",
     "package": "docker build -t spdx-dependency-track --progress=plain .",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "biome format --write ./src",
+    "docs:generate": "yarn markdown-toc -i --bullets=- ./README.md"
   },
   "dependencies": {
     "next": "14.2.1",
@@ -16,11 +19,24 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.6.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "markdown-toc": "^1.2.0",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx}": [
+      "eslint --cache --report-unused-disable-directives --fix",
+      "yarn biome check --apply --no-errors-on-unmatched"
+    ],
+    "*.md": [
+      "sh -c 'yarn docs:generate'"
+    ]
   }
 }
