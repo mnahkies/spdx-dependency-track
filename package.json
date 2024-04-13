@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "packageManager": "yarn@4.1.1",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "postinstall": "husky",
     "dev": "next dev",
