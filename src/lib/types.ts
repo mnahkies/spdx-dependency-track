@@ -5,3 +5,8 @@ export type ApiLicense = {
   group_name: string
   risk: number
 }
+
+export type ApiRepositorySummary = {
+  name: string
+  groups: {name: string; count: number}[]
+}
