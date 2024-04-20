@@ -1,39 +1,40 @@
 import {randomUUID} from "node:crypto"
+import {t_dependency_graph_spdx_sbom} from "@/generated/clients/github/models"
+import {GithubClient} from "@/lib/clients/github-client"
 import {Database} from "@/lib/database/database"
+import {isDefined} from "@/lib/utils/utils"
 import semver from "semver"
 import {z} from "zod"
 
-const SpdxSchema = z.object({
-  packages: z.array(
-    z.object({
-      SPDXID: z.string(),
-      name: z.string(),
-      versionInfo: z.string(),
-      supplier: z.string(),
-      licenseConcluded: z.string().nullable().optional(),
-      licenseDeclared: z.string().nullable().optional(),
-    }),
-  ),
+const validSBOMPackage = z.object({
+  SPDXID: z.string(),
+  name: z.string(),
+  versionInfo: z.string().refine((it) => semver.valid(it), {
+    message: "Version info must be valid semver range",
+  }),
+  supplier: z.string(),
+  licenseConcluded: z.string().nullable().optional(),
+  licenseDeclared: z.string().nullable().optional(),
 })
 
 export class SpdxDataLoader {
-  constructor(private readonly database: Database) {}
+  constructor(
+    private readonly database: Database,
+    private readonly github: GithubClient,
+  ) {}
 
-  async testLoad() {
-    const data = require("../../../data/example-spdx-openapi-code-generator_mnahkies.json")
-
-    await this.load(
-      {
-        name: "mnahkies/openapi-code-generator",
-        url: "https://github.com/mnahkies/openapi-code-generator",
-      },
-      data,
-    )
+  async crawlGithub() {
+    for await (const {repo, sbom} of this.github.allSboms(
+      (it) => !it.fork && !it.archived,
+    )) {
+      await this.load({name: repo.full_name, url: repo.url}, sbom)
+      console.info(`inserted sbom for ${repo.full_name}`)
+    }
   }
 
   async load(
     repository: {name: string; url: string},
-    maybeSpdx: unknown,
+    sbom: t_dependency_graph_spdx_sbom["sbom"],
   ): Promise<void> {
     const repositoryId = randomUUID()
     await this.database.repositoryRepository.insertRepositories([
@@ -45,8 +46,6 @@ export class SpdxDataLoader {
       },
     ])
 
-    const spdx = SpdxSchema.parse(maybeSpdx)
-
     const licenses = (
       await this.database.licensesRepository.getLicenses()
     ).reduce(
@@ -57,9 +56,12 @@ export class SpdxDataLoader {
       {} as Record<string, string>,
     )
 
-    const validPackages = spdx.packages.filter((it) =>
-      semver.valid(it.versionInfo),
-    )
+    const validPackages = sbom.packages
+      .map((it) => {
+        const result = validSBOMPackage.safeParse(it)
+        return result.success ? result.data : undefined
+      })
+      .filter(isDefined)
 
     await this.database.repositoryRepository.insertDependencies(
       validPackages.map((it) => ({
