@@ -36,15 +36,13 @@ export class SpdxDataLoader {
     repository: {name: string; url: string},
     sbom: t_dependency_graph_spdx_sbom["sbom"],
   ): Promise<void> {
-    const repositoryId = randomUUID()
-    await this.database.repositoryRepository.insertRepositories([
-      {
+    const {id: repositoryId} =
+      await this.database.repositoryRepository.insertRepository({
         name: repository.name,
         url: repository.url,
         is_archived: 0,
-        id: repositoryId,
-      },
-    ])
+        id: randomUUID(),
+      })
 
     const licenses = (
       await this.database.licensesRepository.getLicenses()

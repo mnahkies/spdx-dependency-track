@@ -8,14 +8,14 @@ export class RepositoryRepository {
 
   async insertRepositories(
     repositories: z.infer<typeof t.repository>[],
-  ): Promise<void> {
-    await Promise.all(repositories.map((it) => this.insertRepository(it)))
+  ): Promise<{id: string}[]> {
+    return Promise.all(repositories.map((it) => this.insertRepository(it)))
   }
 
-  private async insertRepository(
+  async insertRepository(
     repository: z.infer<typeof t.repository>,
-  ): Promise<void> {
-    await this.sqlite.any(sql(projection(t.repository, "id"))`
+  ): Promise<{id: string}> {
+    return this.sqlite.one(sql(projection(t.repository, "id"))`
       INSERT INTO repository(id,
                              name,
                              url,
@@ -24,7 +24,8 @@ export class RepositoryRepository {
               ${repository.name},
               ${repository.url},
               ${repository.is_archived})
-      ON CONFLICT(name) DO UPDATE SET id = excluded.id
+      ON CONFLICT(name) DO UPDATE SET url = excluded.url,
+                                      is_archived = excluded.is_archived
       RETURNING (id)`)
   }
 

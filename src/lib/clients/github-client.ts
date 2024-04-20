@@ -30,7 +30,7 @@ export class GithubClient {
 
   private async *allRepos() {
     let page = 1
-    const perPage = 100
+    const perPage = 10
 
     while (true) {
       console.info(`fetching repositories page: ${page}`)

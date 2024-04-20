@@ -40,5 +40,8 @@ next-env.d.ts
 # ide files
 .idea
 
-*.db
 .env
+
+*.db
+*.db-shm
+*.db-wal

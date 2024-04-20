@@ -24,6 +24,3 @@ const licenseDataLoader = new LicenseDataLoader(database)
 licenseDataLoader
   .load(config.LICENSE_DATA_PATH, config.LICENSE_GROUPS_DATA_PATH)
   .catch(console.error)
-
-const spdxDataLoader = new SpdxDataLoader(database)
-spdxDataLoader.testLoad().catch(console.error)
