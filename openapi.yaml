@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: spdx-dependency-track
+  version: 1.0.0
+  license:
+    name: MIT
+    identifier: MIT
+
+paths:
+  /api/licenses:
+    get:
+      operationId: getLicenses
+      responses:
+        '200':
+          description: A list of all known licenses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/License'
+
+  /api/repositories/summaries:
+    get:
+      operationId: getRepositorySummaries
+      responses:
+        200:
+          description: A list of all repositories and a summary of their licenses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RepositorySummary'
+
+  /api/repositories/scan:
+      post:
+        operationId: scanRepositories
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    description: A Github PAT
+                    type: string
+        responses:
+          204:
+            description: Scan all repositories visible to the provided token
+
+components:
+  schemas:
+    License:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        external_id:
+          type: string
+        name:
+          type: string
+        group_name:
+          type: string
+        risk:
+          type: number
+
+    RepositorySummary:
+      name:
+        type: string
+      groups:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            count:
+              type: number
