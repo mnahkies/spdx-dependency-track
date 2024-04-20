@@ -1,6 +1,5 @@
 import {config} from "@/lib/config"
 import {LicenseDataLoader} from "@/lib/data-loaders/license-data-loader"
-import {SpdxDataLoader} from "@/lib/data-loaders/spdx-data-loader"
 import {LicenseRepository} from "@/lib/database/repository/licenses"
 import {RepositoryRepository} from "@/lib/database/repository/repository"
 import {Sqlite} from "@/lib/database/sqlite"

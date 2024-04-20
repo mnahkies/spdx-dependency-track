@@ -44,6 +44,12 @@ export class SpdxDataLoader {
         id: randomUUID(),
       })
 
+    const scan = await this.database.repositoryRepository.insertRepositoryScan({
+      id: randomUUID(),
+      repository_id: repositoryId,
+      scanned_at: sbom.creationInfo.created,
+    })
+
     const licenses = (
       await this.database.licensesRepository.getLicenses()
     ).reduce(
@@ -76,8 +82,8 @@ export class SpdxDataLoader {
 
     await Promise.all(
       validPackages.map((it) =>
-        this.database.repositoryRepository.associateDependencyWithRepository(
-          repositoryId,
+        this.database.repositoryRepository.associateDependencyWithRepositoryScan(
+          scan.id,
           it.name,
           it.versionInfo,
         ),

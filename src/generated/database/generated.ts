@@ -109,7 +109,13 @@ export const t = {
     license_concluded_id: z.string().nullable(),
   }),
   repository_dependency: z.object({
+    repository_scan_id: z.string(),
+    dependency_name: z.string(),
+    dependency_version: z.string(),
+  }),
+  repository_scan: z.object({
+    id: z.string(),
+    scanned_at: z.string(),
     repository_id: z.string(),
-    dependency_id: z.string(),
   }),
 }

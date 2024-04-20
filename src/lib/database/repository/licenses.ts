@@ -1,4 +1,4 @@
-import {aliased, projection, t} from "@/lib/database/generated"
+import {aliased, projection, t} from "@/generated/database/generated"
 import {Sqlite, sql} from "@/lib/database/sqlite"
 import {ApiLicense} from "@/lib/types"
 import {z} from "zod"

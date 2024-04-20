@@ -35,6 +35,15 @@ CREATE TABLE repository
   is_archived TINYINT          NOT NULL
 );
 
+CREATE TABLE repository_scan
+(
+  id            TEXT PRIMARY KEY NOT NULL,
+  scanned_at    TEXT             NOT NULL,
+  repository_id TEXT             NOT NULL,
+
+  FOREIGN KEY (repository_id) REFERENCES repository (id) ON UPDATE RESTRICT ON DELETE CASCADE
+);
+
 CREATE TABLE dependency
 (
   id                   TEXT NOT NULL,
@@ -52,12 +61,12 @@ CREATE TABLE dependency
 
 CREATE TABLE repository_dependency
 (
-  repository_id      TEXT NOT NULL,
+  repository_scan_id      TEXT NOT NULL,
   dependency_name    TEXT NOT NULL,
   dependency_version TEXT NOT NULL,
 
-  PRIMARY KEY (repository_id, dependency_name, dependency_version),
+  PRIMARY KEY (repository_scan_id, dependency_name, dependency_version),
 
-  FOREIGN KEY (repository_id) REFERENCES repository (id) ON UPDATE RESTRICT ON DELETE CASCADE,
+  FOREIGN KEY (repository_scan_id) REFERENCES repository_scan (id) ON UPDATE RESTRICT ON DELETE CASCADE,
   FOREIGN KEY (dependency_name, dependency_version) REFERENCES dependency (name, version) ON UPDATE RESTRICT ON DELETE CASCADE
 );

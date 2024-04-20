@@ -1,4 +1,4 @@
-import {aliased, projection, t} from "@/lib/database/generated"
+import {projection, t} from "@/generated/database/generated"
 import {Sqlite, sql} from "@/lib/database/sqlite"
 import {ApiRepositorySummary} from "@/lib/types"
 import {z} from "zod"
@@ -24,9 +24,19 @@ export class RepositoryRepository {
               ${repository.name},
               ${repository.url},
               ${repository.is_archived})
-      ON CONFLICT(name) DO UPDATE SET url = excluded.url,
+      ON CONFLICT(name) DO UPDATE SET url         = excluded.url,
                                       is_archived = excluded.is_archived
       RETURNING (id)`)
+  }
+
+  async insertRepositoryScan(
+    scan: z.infer<typeof t.repository_scan>,
+  ): Promise<{id: string}> {
+    return this.sqlite.one(sql(projection(t.repository_scan, "id"))`
+      INSERT INTO repository_scan(id, repository_id, scanned_at)
+      VALUES (${scan.id}, ${scan.repository_id}, ${scan.scanned_at})
+      RETURNING (id)
+    `)
   }
 
   async insertDependencies(
@@ -55,20 +65,20 @@ export class RepositoryRepository {
     `)
   }
 
-  async associateDependencyWithRepository(
-    repositoryId: string,
+  async associateDependencyWithRepositoryScan(
+    repositoryScanId: string,
     dependencyName: string,
     dependencyVersion: string,
   ): Promise<void> {
     await this.sqlite.run(sql(z.unknown())`
-      INSERT INTO repository_dependency(repository_id, dependency_name, dependency_version)
-      VALUES (${repositoryId}, ${dependencyName}, ${dependencyVersion})
+      INSERT INTO repository_dependency(repository_scan_id, dependency_name, dependency_version)
+      VALUES (${repositoryScanId}, ${dependencyName}, ${dependencyVersion})
       ON CONFLICT DO NOTHING
     `)
   }
 
   async getRepositorySummaries(): Promise<ApiRepositorySummary[]> {
-    const rows = await this.sqlite.many(
+    const rows = await this.sqlite.any(
       sql(
         projection(t.repository, "name").and(
           z.object({
@@ -77,15 +87,21 @@ export class RepositoryRepository {
           }),
         ),
       )`
-      select r.name, lg.name as license_group_name, count(1) as count
-      from repository r
-             join repository_dependency rd on r.id = rd.repository_id
-             join dependency d on rd.dependency_name = d.name and rd.dependency_version = d.version
-             left join licenses l on d.license_concluded_id = l.id or d.license_declared_id = l.id
-             left join license_license_groups llg on l.id = llg.license_id
-             left join license_groups lg on llg.license_group_id = lg.id
-      GROUP BY r.name, lg.name
-    `,
+        select r.name, lg.name as license_group_name, count(1) as count
+        from repository r
+               join repository_scan rs ON (r.id = rs.repository_id AND rs.id IN (SELECT id
+                                                                                   FROM repository_scan
+                                                                                   WHERE repository_id = r.id
+                                                                                   ORDER BY scanned_at DESC
+                                                                                   LIMIT 1)
+          )
+               join repository_dependency rd on rs.id = rd.repository_scan_id
+               join dependency d on rd.dependency_name = d.name and rd.dependency_version = d.version
+               left join licenses l on d.license_concluded_id = l.id or d.license_declared_id = l.id
+               left join license_license_groups llg on l.id = llg.license_id
+               left join license_groups lg on llg.license_group_id = lg.id
+        GROUP BY r.name, lg.name
+      `,
     )
 
     return Object.values(
