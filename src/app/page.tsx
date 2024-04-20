@@ -9,6 +9,7 @@ export default function Home() {
     const res = await fetch(`http://localhost:3000/api/licenses`)
     return await res.json()
   })
+
   const summaries = useEagerPromise<ApiRepositorySummary[]>(async () => {
     const res = await fetch(`http://localhost:3000/api/repositories/summary`)
     return await res.json()
@@ -16,6 +17,22 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <form
+        action={async (formData) => {
+          const res = await fetch(
+            `http://localhost:3000/api/repositories/crawl`,
+            {
+              method: "post",
+              body: JSON.stringify({token: formData.get("api-token")}),
+            },
+          )
+        }}
+      >
+        <label htmlFor="GH API Token">GH API Token</label>
+        <input type={"text"} name={"api-token"} id={"api-token"} />
+        <button type="submit">Go!</button>
+      </form>
+
       {summaries.loading === false &&
         !summaries.err &&
         summaries.data.map((summary) => (
