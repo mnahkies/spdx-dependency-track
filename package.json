@@ -11,7 +11,7 @@
     "package": "docker build -t spdx-dependency-track --progress=plain .",
     "start": "next start",
     "lint": "next lint",
-    "format": "biome format --write ./src",
+    "format": "biome check --apply ./src && biome format --write ./src",
     "docs:generate": "yarn markdown-toc -i --bullets=- ./README.md",
     "migrate": "dotenvx run -- ./bin/migrate.sh",
     "migrate-generate": "dotenvx run -- ./bin/migrate-generate.sh",
@@ -20,6 +20,8 @@
   "dependencies": {
     "@ariga/atlas": "^0.21.0",
     "@dotenvx/dotenvx": "^0.27.1",
+    "@nahkies/typescript-fetch-runtime": "^0.8.0",
+    "@nahkies/typescript-koa-runtime": "^0.8.0",
     "better-sqlite3": "^9.5.0",
     "next": "14.2.1",
     "react": "^18",
@@ -29,6 +31,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.2",
+    "@nahkies/openapi-code-generator": "^0.8.0",
+    "@types/better-sqlite3": "^7.6.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -1,10 +1,11 @@
 import {database} from "@/lib/database/database"
 import {NextRequest} from "next/server"
+import {_GET} from "../../../generated/api/licenses/route"
 
 export const dynamic = "force-dynamic"
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
+export const GET = _GET(async ({}, respond, context) => {
+  const licenses = await database.licensesRepository.getLicenses()
 
-  return Response.json(await database.licensesRepository.getLicenses())
-}
+  return respond.with200().body(licenses)
+})

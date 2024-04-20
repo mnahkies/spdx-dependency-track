@@ -1,6 +1,6 @@
 import {aliased, projection, t} from "@/generated/database/generated"
+import {t_License} from "@/generated/models"
 import {Sqlite, sql} from "@/lib/database/sqlite"
-import {ApiLicense} from "@/lib/types"
 import {z} from "zod"
 
 export class LicenseRepository {
@@ -56,7 +56,7 @@ export class LicenseRepository {
       ON CONFLICT DO NOTHING`)
   }
 
-  async getLicenses(): Promise<ApiLicense[]> {
+  async getLicenses(): Promise<t_License[]> {
     return this.sqlite.many(
       sql(
         projection(t.licenses, "external_id", "name", "id").and(

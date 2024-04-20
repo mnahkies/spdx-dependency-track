@@ -1,6 +1,6 @@
 import {projection, t} from "@/generated/database/generated"
+import {t_RepositorySummary} from "@/generated/models"
 import {Sqlite, sql} from "@/lib/database/sqlite"
-import {ApiRepositorySummary} from "@/lib/types"
 import {z} from "zod"
 
 export class RepositoryRepository {
@@ -77,7 +77,7 @@ export class RepositoryRepository {
     `)
   }
 
-  async getRepositorySummaries(): Promise<ApiRepositorySummary[]> {
+  async getRepositorySummaries(): Promise<t_RepositorySummary[]> {
     const rows = await this.sqlite.any(
       sql(
         projection(t.repository, "name").and(

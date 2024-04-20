@@ -41,6 +41,8 @@ paths:
             application/json:
               schema:
                 type: object
+                required:
+                  - token
                 properties:
                   token:
                     description: A Github PAT
@@ -53,6 +55,12 @@ components:
   schemas:
     License:
       type: object
+      required:
+        - id
+        - external_id
+        - name
+        - group_name
+        - risk
       properties:
         id:
           type: string
@@ -67,14 +75,22 @@ components:
           type: number
 
     RepositorySummary:
-      name:
-        type: string
-      groups:
-        type: array
-        items:
-          type: object
-          properties:
-            name:
-              type: string
-            count:
-              type: number
+      type: object
+      required:
+        - name
+        - groups
+      properties:
+        name:
+          type: string
+        groups:
+          type: array
+          items:
+            type: object
+            required:
+              - name
+              - count
+            properties:
+              name:
+                type: string
+              count:
+                type: number

@@ -1,17 +1,17 @@
 "use client"
 
-import {ApiLicense, ApiRepositorySummary} from "@/lib/types"
+import {t_License, t_RepositorySummary} from "@/generated/models"
 import {useEagerPromise} from "@/lib/utils/usePromise"
 import styles from "./page.module.css"
 
 export default function Home() {
-  const licenses = useEagerPromise<ApiLicense[]>(async () => {
+  const licenses = useEagerPromise<t_License[]>(async () => {
     const res = await fetch(`http://localhost:3000/api/licenses`)
     return await res.json()
   })
 
-  const summaries = useEagerPromise<ApiRepositorySummary[]>(async () => {
-    const res = await fetch(`http://localhost:3000/api/repositories/summary`)
+  const summaries = useEagerPromise<t_RepositorySummary[]>(async () => {
+    const res = await fetch(`http://localhost:3000/api/repositories/summaries`)
     return await res.json()
   })
 
@@ -19,13 +19,10 @@ export default function Home() {
     <main className={styles.main}>
       <form
         action={async (formData) => {
-          const res = await fetch(
-            `http://localhost:3000/api/repositories/crawl`,
-            {
-              method: "post",
-              body: JSON.stringify({token: formData.get("api-token")}),
-            },
-          )
+          await fetch(`http://localhost:3000/api/repositories/scan`, {
+            method: "post",
+            body: JSON.stringify({token: formData.get("api-token")}),
+          })
         }}
       >
         <label htmlFor="GH API Token">GH API Token</label>
@@ -33,7 +30,7 @@ export default function Home() {
         <button type="submit">Go!</button>
       </form>
 
-      {summaries.loading === false &&
+      {!summaries.loading &&
         !summaries.err &&
         summaries.data.map((summary) => (
           <div key={summary.name}>
@@ -48,7 +45,7 @@ export default function Home() {
           </div>
         ))}
 
-      {licenses.loading === false && !licenses.err && (
+      {!licenses.loading && !licenses.err && (
         <ul>
           {licenses.data.map((it) => {
             return (
