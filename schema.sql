@@ -44,6 +44,9 @@ CREATE TABLE repository_scan
   FOREIGN KEY (repository_id) REFERENCES repository (id) ON UPDATE RESTRICT ON DELETE CASCADE
 );
 
+CREATE INDEX idx_repository_scan_repository_id ON repository_scan(repository_id);
+
+
 CREATE TABLE dependency
 (
   id                   TEXT NOT NULL,
@@ -59,6 +62,9 @@ CREATE TABLE dependency
   FOREIGN KEY (license_concluded_id) REFERENCES licenses (id) ON UPDATE RESTRICT ON DELETE CASCADE
 );
 
+CREATE INDEX idx_dependency_license_declared_id ON dependency(license_declared_id);
+CREATE INDEX idx_dependency_license_concluded_id ON dependency(license_concluded_id);
+
 CREATE TABLE repository_dependency
 (
   repository_scan_id      TEXT NOT NULL,
@@ -70,3 +76,6 @@ CREATE TABLE repository_dependency
   FOREIGN KEY (repository_scan_id) REFERENCES repository_scan (id) ON UPDATE RESTRICT ON DELETE CASCADE,
   FOREIGN KEY (dependency_name, dependency_version) REFERENCES dependency (name, version) ON UPDATE RESTRICT ON DELETE CASCADE
 );
+
+CREATE INDEX idx_repository_dependency_repository_scan_id ON repository_dependency(repository_scan_id);
+CREATE INDEX idx_repository_dependency_dependency_name_version ON repository_dependency(dependency_name, dependency_version);
