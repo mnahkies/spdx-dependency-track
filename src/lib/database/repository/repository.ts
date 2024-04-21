@@ -7,6 +7,7 @@ import {
 import {Sqlite, sql} from "@/lib/database/sqlite"
 import {z} from "zod"
 
+// TODO: stop returning API models here and move the DB -> API mapping else where
 export class RepositoryRepository {
   constructor(private readonly sqlite: Sqlite) {}
 
