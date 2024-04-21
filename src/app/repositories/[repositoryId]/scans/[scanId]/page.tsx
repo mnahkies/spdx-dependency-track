@@ -13,6 +13,29 @@ import {
   Typography,
 } from "@mui/material"
 import {useQuery} from "@tanstack/react-query"
+import Link from "next/link"
+import React from "react"
+
+const DependencyName: React.FC<{name: string; version: string}> = ({
+  name,
+  version,
+}) => {
+  if (name.startsWith("npm:")) {
+    return (
+      <Link
+        target={"_blank"}
+        href={`https://www.npmjs.com/package/${name
+          .split("npm:")
+          .slice(1)
+          .join("npm:")}/v/${version}`}
+      >
+        {name}
+      </Link>
+    )
+  }
+
+  return name
+}
 
 export default function RepositoryScanPage({
   params,
@@ -53,7 +76,12 @@ export default function RepositoryScanPage({
                 <TableRow
                   key={dependency.dependencyName + dependency.dependencyVersion}
                 >
-                  <TableCell>{dependency.dependencyName}</TableCell>
+                  <TableCell>
+                    <DependencyName
+                      version={dependency.dependencyVersion}
+                      name={dependency.dependencyName}
+                    />
+                  </TableCell>
                   <TableCell>{dependency.dependencyVersion}</TableCell>
                   <TableCell>
                     {dependency.licenseConcludedName || "-"}
