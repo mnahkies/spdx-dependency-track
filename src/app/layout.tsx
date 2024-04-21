@@ -1,10 +1,7 @@
+import {ClientProviders} from "@/app/providers/client-providers"
+import {ServerProviders} from "@/app/providers/server-providers"
 import type {Metadata} from "next"
 import "./globals.css"
-
-import theme from "@/theme"
-import {ThemeProvider} from "@mui/material"
-import {AppRouterCacheProvider} from "@mui/material-nextjs/v14-appRouter"
-import CssBaseline from "@mui/material/CssBaseline"
 
 export const metadata: Metadata = {
   title: "spdx-dependency-track",
@@ -22,13 +19,9 @@ export default function RootLayout({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
       <body>
-        <AppRouterCacheProvider options={{enableCssLayer: true}}>
-          <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <ServerProviders>
+          <ClientProviders>{children}</ClientProviders>
+        </ServerProviders>
       </body>
     </html>
   )

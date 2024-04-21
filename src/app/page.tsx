@@ -1,8 +1,6 @@
 "use client"
 
-import {ApiClient} from "@/generated/clients/client"
-import {t_License, t_RepositorySummary} from "@/generated/models"
-import {useEagerPromise} from "@/lib/utils/usePromise"
+import {useQueryOptions} from "@/app/providers/query-options"
 import {
   Button,
   Container,
@@ -20,43 +18,27 @@ import {
   TextField,
   Typography,
 } from "@mui/material"
-import {useCallback} from "react"
-
-const apiClient = new ApiClient({
-  basePath: "http://localhost:3000",
-  defaultHeaders: {},
-})
+import {useMutation, useQuery} from "@tanstack/react-query"
 
 export default function Home() {
-  const licenses = useEagerPromise(
-    useCallback(async () => {
-      const res = await apiClient.getLicenses()
-      if (res.status === 200) {
-        return res.json()
-      }
-      throw new Error("request failed", {cause: new Error(await res.text())})
-    }, []),
-  )
+  const queryOptions = useQueryOptions()
 
-  const summaries = useEagerPromise(
-    useCallback(async () => {
-      const res = await apiClient.getRepositorySummaries()
-      if (res.status === 200) {
-        return res.json()
-      }
-      throw new Error("request failed", {cause: new Error(await res.text())})
-    }, []),
-  )
+  const licenses = useQuery(queryOptions.getLicenses())
+  const summaries = useQuery(queryOptions.getRepositorySummaries())
+  const scan = useMutation(queryOptions.scanGithubRepositories())
 
   return (
     <Container maxWidth="xl">
       <Stack spacing={4}>
         <form
           action={async (formData) => {
-            await fetch(`http://localhost:3000/api/repositories/scan`, {
-              method: "post",
-              body: JSON.stringify({token: formData.get("api-token")}),
-            })
+            const token = formData.get("api-token")
+
+            if (!token || typeof token !== "string") {
+              return
+            }
+
+            scan.mutate({token})
           }}
         >
           <Typography variant="h2" gutterBottom>
@@ -79,7 +61,7 @@ export default function Home() {
           </Container>
         </form>
 
-        {!summaries.loading && !summaries.err && (
+        {!summaries.isPending && !summaries.isError && (
           <Stack spacing={2}>
             {" "}
             <Typography variant="h2" gutterBottom>
@@ -131,7 +113,7 @@ export default function Home() {
           </Stack>
         )}
 
-        {!licenses.loading && !licenses.err && (
+        {!licenses.isPending && !licenses.isError && (
           <Stack spacing={2}>
             <Typography variant="h2" gutterBottom>
               Known Licenses

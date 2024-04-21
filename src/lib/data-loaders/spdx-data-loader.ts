@@ -2,7 +2,7 @@ import {randomUUID} from "node:crypto"
 import {t_dependency_graph_spdx_sbom} from "@/generated/clients/github/models"
 import {GithubClient} from "@/lib/clients/github-client"
 import {Database} from "@/lib/database/database"
-import {isDefined} from "@/lib/utils/utils"
+import {isDefined} from "@/lib/utils"
 import semver from "semver"
 import {z} from "zod"
 

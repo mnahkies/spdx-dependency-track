@@ -29,6 +29,9 @@
     "@mui/material-nextjs": "^5.15.11",
     "@nahkies/typescript-fetch-runtime": "^0.8.0",
     "@nahkies/typescript-koa-runtime": "^0.8.0",
+    "@tanstack/react-query": "^5.29.2",
+    "@tanstack/react-query-devtools": "^5.29.2",
+    "@tanstack/react-query-next-experimental": "^5.29.2",
     "better-sqlite3": "^9.5.0",
     "next": "14.2.1",
     "react": "^18",
@@ -40,6 +43,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.6.2",
     "@nahkies/openapi-code-generator": "^0.8.0",
+    "@tanstack/eslint-plugin-query": "^5.28.11",
     "@types/better-sqlite3": "^7.6.9",
     "@types/node": "^20",
     "@types/react": "^18",
