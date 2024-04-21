@@ -39,6 +39,7 @@ export default function RepositoryPage({
               <TableCell>Copyleft</TableCell>
               <TableCell>Non-Commercial</TableCell>
               <TableCell>Unclassified</TableCell>
+              <TableCell>Unknown</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -75,6 +76,10 @@ export default function RepositoryPage({
                     {scan.summary.groups.find(
                       (it) => it.name === "Unclassified",
                     )?.count || 0}
+                  </TableCell>
+                  <TableCell>
+                    {scan.summary.groups.find((it) => it.name === "Unknown")
+                      ?.count || 0}
                   </TableCell>
                 </TableRow>
               ))}

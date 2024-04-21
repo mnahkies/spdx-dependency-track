@@ -65,7 +65,9 @@ export class RepositoryRepository {
               ${dependency.supplier},
               ${dependency.license_declared_id},
               ${dependency.license_concluded_id})
-      ON CONFLICT DO NOTHING
+      ON CONFLICT DO UPDATE SET supplier = excluded.supplier,
+                                license_declared_id = excluded.license_declared_id,
+                                license_concluded_id = excluded.license_concluded_id
     `)
   }
 
@@ -241,7 +243,7 @@ function createRepositorySummary(
           groups: [],
         }
         acc[it.name].groups.push({
-          name: it.license_group_name || "Unclassified",
+          name: it.license_group_name || "Unknown",
           count: it.count,
         })
         return acc

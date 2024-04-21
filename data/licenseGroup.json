@@ -1205,5 +1205,84 @@
     ],
     "riskWeight": 3,
     "uuid": "d5044266-e6c1-4eb0-ac1d-a8f288ae52f3"
+  },
+  {
+    "name": "Unclassified",
+    "riskWeight": 5,
+    "uuid": "6eab30b9-11a1-41eb-8c90-82ff03e64cb4",
+    "licenses": [
+      {
+        "uuid": "97784876-0147-43de-9233-dc22fedd20ee",
+        "name": "Creative Commons Zero v1.0 Universal",
+        "licenseId": "CC0-1.0",
+        "isOsiApproved": false,
+        "isFsfLibre": true,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      },
+      {
+        "uuid": "2e5398eb-77ec-4a10-be5c-95284f966aeb",
+        "name": "Creative Commons Attribution 3.0 Unported",
+        "licenseId": "CC-BY-3.0",
+        "isOsiApproved": false,
+        "isFsfLibre": false,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      },
+      {
+        "uuid": "c11a8f88-6856-497f-afef-d57bccd18747",
+        "name": "Python License 2.0",
+        "licenseId": "Python-2.0",
+        "isOsiApproved": true,
+        "isFsfLibre": true,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      },
+      {
+        "uuid": "6c4bf087-66f7-47ac-9634-dbdc97c71f1d",
+        "name": "Blue Oak Model License 1.0.0",
+        "licenseId": "BlueOak-1.0.0",
+        "isOsiApproved": false,
+        "isFsfLibre": false,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      },
+      {
+        "uuid": "d272751b-a08f-4780-b5c3-5b59eb9fcc5a",
+        "name": "zlib License",
+        "licenseId": "Zlib",
+        "isOsiApproved": true,
+        "isFsfLibre": true,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      },
+      {
+        "uuid": "4b7e9c17-446b-4893-982d-28871ad87b7d",
+        "name": "Do What The F*ck You Want To Public License",
+        "licenseId": "WTFPL",
+        "isOsiApproved": false,
+        "isFsfLibre": true,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      },
+      {
+        "uuid": "70f1abc6-9c89-4a4d-93a5-44fc423d24eb",
+        "name": "Creative Commons Attribution 4.0 International",
+        "licenseId": "CC-BY-4.0",
+        "isOsiApproved": false,
+        "isFsfLibre": true,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      },
+      {
+        "uuid": "45df4f21-84ca-4fda-83d3-5a122b79591b",
+        "name": "The Unlicense",
+        "licenseId": "Unlicense",
+        "isOsiApproved": true,
+        "isFsfLibre": true,
+        "isDeprecatedLicenseId": false,
+        "isCustomLicense": false
+      }
+    ]
   }
 ]

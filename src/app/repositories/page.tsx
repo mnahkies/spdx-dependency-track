@@ -34,6 +34,7 @@ export default function RepositoryListPage({}: {}) {
               <TableCell>Copyleft</TableCell>
               <TableCell>Non-Commercial</TableCell>
               <TableCell>Unclassified</TableCell>
+              <TableCell>Unknown</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -64,6 +65,10 @@ export default function RepositoryListPage({}: {}) {
                   </TableCell>
                   <TableCell>
                     {summary.groups.find((it) => it.name === "Unclassified")
+                      ?.count || 0}
+                  </TableCell>
+                  <TableCell>
+                    {summary.groups.find((it) => it.name === "Unknown")
                       ?.count || 0}
                   </TableCell>
                 </TableRow>
