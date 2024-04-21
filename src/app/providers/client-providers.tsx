@@ -32,7 +32,9 @@ export function ClientProviders(props: {children: React.ReactNode}) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <QueryOptionsContext.Provider value={createQueryOptions(fetchClient)}>
+      <QueryOptionsContext.Provider
+        value={createQueryOptions(fetchClient, queryClient)}
+      >
         <ReactQueryStreamedHydration>
           {props.children}
         </ReactQueryStreamedHydration>

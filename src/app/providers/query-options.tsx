@@ -1,7 +1,7 @@
 import {ApiClient} from "@/generated/clients/client"
 import {t_ScanRepositoriesBodySchema} from "@/generated/models"
 import {
-  MutateOptions,
+  QueryClient,
   UseMutationOptions,
   queryOptions,
 } from "@tanstack/react-query"
@@ -11,8 +11,11 @@ export const QueryOptionsContext = createContext<ReturnType<
   typeof createQueryOptions
 > | null>(null)
 
-export const createQueryOptions = (fetchClient: ApiClient) => {
-  return {
+export const createQueryOptions = (
+  fetchClient: ApiClient,
+  queryClient: QueryClient,
+) => {
+  const result = {
     getLicenses() {
       return queryOptions({
         queryKey: ["getLicenses"],
@@ -59,9 +62,17 @@ export const createQueryOptions = (fetchClient: ApiClient) => {
             })
           }
         },
+        onSuccess: () => {
+          void queryClient.invalidateQueries({
+            queryKey: ["getRepositorySummaries"],
+          })
+          void queryClient.invalidateQueries({queryKey: ["getLicenses"]})
+        },
       }
     },
   }
+
+  return result
 }
 
 export const useQueryOptions = () => {
