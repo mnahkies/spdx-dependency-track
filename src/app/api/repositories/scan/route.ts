@@ -1,7 +1,7 @@
+import {_POST} from "@/generated/api/repositories/scan/route"
 import {GithubClient} from "@/lib/clients/github-client"
 import {SpdxDataLoader} from "@/lib/data-loaders/spdx-data-loader"
 import {database} from "@/lib/database/database"
-import {_POST} from "../../../../generated/api/repositories/scan/route"
 
 export const POST = _POST(async ({body}, respond, context) => {
   const spdxDataLoader = new SpdxDataLoader(

@@ -2,16 +2,16 @@
 /* tslint:disable */
 
 import {
+  t_License,
+  t_RepositorySummary,
+  t_scanRepositoriesJsonRequestBody,
+} from "@/generated/models"
+import {
   AbstractFetchClient,
   AbstractFetchClientConfig,
   Res,
   TypedFetchResponse,
 } from "@nahkies/typescript-fetch-runtime/main"
-import {
-  t_License,
-  t_RepositorySummary,
-  t_scanRepositoriesJsonRequestBody,
-} from "../models"
 
 export interface ApiClientConfig extends AbstractFetchClientConfig {}
 

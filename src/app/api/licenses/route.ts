@@ -1,6 +1,5 @@
+import {_GET} from "@/generated/api/licenses/route"
 import {database} from "@/lib/database/database"
-import {NextRequest} from "next/server"
-import {_GET} from "../../../generated/api/licenses/route"
 
 export const dynamic = "force-dynamic"
 
