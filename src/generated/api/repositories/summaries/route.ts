@@ -49,7 +49,7 @@ export const _GET =
         throw KoaRuntimeError.HandlerError(err)
       })
 
-    return body
+    return body !== undefined
       ? Response.json(body, {status})
       : new Response(undefined, {status})
   }

@@ -20,3 +20,7 @@ export type t_RepositorySummary = {
 export type t_ScanRepositoriesBodySchema = {
   token: string
 }
+
+export type t_scanRepositoriesJsonRequestBody = {
+  token: string
+}

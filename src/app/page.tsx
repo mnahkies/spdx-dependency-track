@@ -1,5 +1,6 @@
 "use client"
 
+import {ApiClient} from "@/generated/clients/client"
 import {t_License, t_RepositorySummary} from "@/generated/models"
 import {useEagerPromise} from "@/lib/utils/usePromise"
 import {
@@ -19,17 +20,33 @@ import {
   TextField,
   Typography,
 } from "@mui/material"
+import {useCallback} from "react"
+
+const apiClient = new ApiClient({
+  basePath: "http://localhost:3000",
+  defaultHeaders: {},
+})
 
 export default function Home() {
-  const licenses = useEagerPromise<t_License[]>(async () => {
-    const res = await fetch(`http://localhost:3000/api/licenses`)
-    return await res.json()
-  })
+  const licenses = useEagerPromise(
+    useCallback(async () => {
+      const res = await apiClient.getLicenses()
+      if (res.status === 200) {
+        return res.json()
+      }
+      throw new Error("request failed", {cause: new Error(await res.text())})
+    }, []),
+  )
 
-  const summaries = useEagerPromise<t_RepositorySummary[]>(async () => {
-    const res = await fetch(`http://localhost:3000/api/repositories/summaries`)
-    return await res.json()
-  })
+  const summaries = useEagerPromise(
+    useCallback(async () => {
+      const res = await apiClient.getRepositorySummaries()
+      if (res.status === 200) {
+        return res.json()
+      }
+      throw new Error("request failed", {cause: new Error(await res.text())})
+    }, []),
+  )
 
   return (
     <Container maxWidth="xl">
