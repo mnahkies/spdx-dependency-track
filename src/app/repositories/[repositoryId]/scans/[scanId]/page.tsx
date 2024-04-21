@@ -2,6 +2,9 @@
 
 import {useQueryOptions} from "@/app/providers/query-options"
 import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
   Paper,
   Stack,
   Table,
@@ -12,9 +15,9 @@ import {
   TableRow,
   Typography,
 } from "@mui/material"
-import {useQuery} from "@tanstack/react-query"
+import {useMutation, useQuery} from "@tanstack/react-query"
 import Link from "next/link"
-import React from "react"
+import React, {useState} from "react"
 
 const DependencyName: React.FC<{name: string; version: string}> = ({
   name,
@@ -40,6 +43,8 @@ const DependencyName: React.FC<{name: string; version: string}> = ({
 export default function RepositoryScanPage({
   params,
 }: {params: {repositoryId: string; scanId: string}}) {
+  const [excludePermissive, setExcludePermissive] = useState<boolean>(false)
+
   const queryOptions = useQueryOptions()
   const summary = useQuery(
     queryOptions.getRepositorySummary(params.repositoryId),
@@ -48,6 +53,7 @@ export default function RepositoryScanPage({
     queryOptions.getRepositoryScanDependencies(
       params.repositoryId,
       params.scanId,
+      excludePermissive,
     ),
   )
 
@@ -56,6 +62,17 @@ export default function RepositoryScanPage({
       <Typography variant="h2" gutterBottom>
         Scan for {summary.isSuccess && summary.data.name}
       </Typography>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={excludePermissive}
+              onChange={() => setExcludePermissive(!excludePermissive)}
+            />
+          }
+          label="Exclude Permissive"
+        />
+      </FormGroup>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

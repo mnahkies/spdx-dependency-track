@@ -167,6 +167,7 @@ export class RepositoryRepository {
   async getRepositoryScanDependencies(
     repositoryId: string,
     scanId: string,
+    excludePermissive: boolean,
   ): Promise<t_RepositoryScanDependency[]> {
     const rows = await this.sqlite.any(
       sql(
@@ -203,6 +204,8 @@ export class RepositoryRepository {
                left join license_groups ldg on ldlg.license_group_id = ldg.id
         WHERE r.id = ${repositoryId}
           AND rs.id = ${scanId}
+          AND (coalesce(${excludePermissive}, FALSE) IS FALSE OR
+               (lcg.name IS NOT 'Permissive' AND ldg.name IS NOT 'Permissive'))
         ORDER BY coalesce(lcg.risk, ldg.risk) DESC
       `,
     )

@@ -42,6 +42,10 @@ export type t_GetRepositoryScanParamSchema = {
   scanId: string
 }
 
+export type t_GetRepositoryScanQuerySchema = {
+  excludePermissive?: boolean
+}
+
 export type t_GetRepositoryScansParamSchema = {
   repositoryId: string
 }

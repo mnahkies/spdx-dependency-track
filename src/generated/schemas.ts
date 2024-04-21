@@ -3,6 +3,15 @@
 
 import {z} from "zod"
 
+export const PermissiveBoolean = z.preprocess((value) => {
+  if (typeof value === "string" && (value === "true" || value === "false")) {
+    return value === "true"
+  } else if (typeof value === "number" && (value === 1 || value === 0)) {
+    return value === 1
+  }
+  return value
+}, z.boolean())
+
 export const s_License = z.object({
   id: z.string(),
   external_id: z.string(),

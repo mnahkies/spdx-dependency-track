@@ -68,6 +68,7 @@ export class ApiClient extends AbstractFetchClient {
     p: {
       repositoryId: string
       scanId: string
+      excludePermissive?: boolean
     },
     timeout?: number,
     opts?: RequestInit,
@@ -75,8 +76,9 @@ export class ApiClient extends AbstractFetchClient {
     const url =
       this.basePath +
       `/api/repositories/${p["repositoryId"]}/scans/${p["scanId"]}`
+    const query = this._query({excludePermissive: p["excludePermissive"]})
 
-    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+    return this._fetch(url + query, {method: "GET", ...(opts ?? {})}, timeout)
   }
 
   async scanRepositories(

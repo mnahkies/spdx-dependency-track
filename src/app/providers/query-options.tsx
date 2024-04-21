@@ -76,13 +76,23 @@ export const createQueryOptions = (
       })
     },
 
-    getRepositoryScanDependencies: (repositoryId: string, scanId: string) => {
+    getRepositoryScanDependencies: (
+      repositoryId: string,
+      scanId: string,
+      excludePermissive: boolean,
+    ) => {
       return queryOptions({
-        queryKey: ["getRepositoryScan", repositoryId, scanId],
+        queryKey: [
+          "getRepositoryScan",
+          repositoryId,
+          scanId,
+          excludePermissive,
+        ],
         queryFn: async () => {
           const res = await fetchClient.getRepositoryScan({
             repositoryId,
             scanId,
+            excludePermissive,
           })
           if (res.status !== 200) {
             throw new Error("request failed", {

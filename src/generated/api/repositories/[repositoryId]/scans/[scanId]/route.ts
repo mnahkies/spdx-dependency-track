@@ -3,8 +3,10 @@
 
 import {
   t_GetRepositoryScanParamSchema,
+  t_GetRepositoryScanQuerySchema,
   t_RepositoryScanDependency,
 } from "@/generated/models"
+import {PermissiveBoolean} from "@/generated/schemas"
 import {
   KoaRuntimeError,
   RequestInputType,
@@ -23,7 +25,11 @@ export type GetRepositoryScanResponder = {
 } & KoaRuntimeResponder
 
 export type GetRepositoryScan = (
-  params: Params<t_GetRepositoryScanParamSchema, void, void>,
+  params: Params<
+    t_GetRepositoryScanParamSchema,
+    t_GetRepositoryScanQuerySchema,
+    void
+  >,
   respond: GetRepositoryScanResponder,
   ctx: {request: NextRequest},
 ) => Promise<KoaRuntimeResponse<unknown>>
@@ -31,6 +37,10 @@ export type GetRepositoryScan = (
 const getRepositoryScanParamSchema = z.object({
   repositoryId: z.string(),
   scanId: z.string(),
+})
+
+const getRepositoryScanQuerySchema = z.object({
+  excludePermissive: PermissiveBoolean.optional(),
 })
 
 export const _GET =
@@ -46,7 +56,11 @@ export const _GET =
         RequestInputType.RouteParam,
       ),
       // TODO: this swallows repeated parameters
-      query: undefined,
+      query: parseRequestInput(
+        getRepositoryScanQuerySchema,
+        Object.fromEntries(request.nextUrl.searchParams.entries()),
+        RequestInputType.QueryString,
+      ),
       body: undefined,
     }
 

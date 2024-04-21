@@ -65,6 +65,10 @@ paths:
       parameters:
         - $ref: '#/components/parameters/repositoryId'
         - $ref: '#/components/parameters/scanId'
+        - name: excludePermissive
+          in: query
+          schema:
+            type: boolean
       responses:
         200:
           description: the details of a specific scan
