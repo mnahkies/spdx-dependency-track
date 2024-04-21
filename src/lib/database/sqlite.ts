@@ -133,9 +133,14 @@ export class Sqlite {
   private readonly preparedStatementsCache: Record<string, Statement> = {}
 
   private prepare(query: string) {
-    if (!this.preparedStatementsCache[query]) {
-      return (this.preparedStatementsCache[query] = this.db.prepare(query))
+    try {
+      if (!this.preparedStatementsCache[query]) {
+        return (this.preparedStatementsCache[query] = this.db.prepare(query))
+      }
+      return this.preparedStatementsCache[query]
+    } catch (err) {
+      console.error(`failed to prepare sql: ${query}`)
+      throw err
     }
-    return this.preparedStatementsCache[query]
   }
 }

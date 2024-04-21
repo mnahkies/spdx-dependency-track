@@ -1,5 +1,7 @@
 import {ClientProviders} from "@/app/providers/client-providers"
 import {ServerProviders} from "@/app/providers/server-providers"
+import {TopNav} from "@/components/top-nav"
+import {Container, Stack} from "@mui/material"
 import type {Metadata} from "next"
 import "./globals.css"
 
@@ -20,7 +22,14 @@ export default function RootLayout({
       </head>
       <body>
         <ServerProviders>
-          <ClientProviders>{children}</ClientProviders>
+          <ClientProviders>
+            <Container maxWidth="xl">
+              <Stack>
+                <TopNav />
+                {children}
+              </Stack>
+            </Container>
+          </ClientProviders>
         </ServerProviders>
       </body>
     </html>

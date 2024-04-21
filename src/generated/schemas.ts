@@ -11,9 +11,29 @@ export const s_License = z.object({
   risk: z.coerce.number(),
 })
 
+export const s_RepositoryScanDependency = z.object({
+  scanId: z.string(),
+  repositoryId: z.string(),
+  dependencyName: z.string(),
+  dependencyVersion: z.string(),
+  licenseDeclaredName: z.string().nullable(),
+  licenseDeclaredCategory: z.string().nullable(),
+  licenseConcludedName: z.string().nullable(),
+  licenseConcludedCategory: z.string().nullable(),
+  supplier: z.string().nullable(),
+})
+
 export const s_RepositorySummary = z.object({
+  repositoryId: z.string(),
   name: z.string(),
   groups: z.array(z.object({name: z.string(), count: z.coerce.number()})),
+})
+
+export const s_RepositoryScan = z.object({
+  scanId: z.string(),
+  repositoryId: z.string(),
+  scannedAt: z.string().datetime({offset: true}),
+  summary: s_RepositorySummary,
 })
 
 export const s_scanRepositoriesJsonRequestBody = z.object({token: z.string()})

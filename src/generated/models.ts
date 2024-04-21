@@ -9,12 +9,45 @@ export type t_License = {
   risk: number
 }
 
+export type t_RepositoryScan = {
+  repositoryId: string
+  scanId: string
+  scannedAt: string
+  summary: t_RepositorySummary
+}
+
+export type t_RepositoryScanDependency = {
+  dependencyName: string
+  dependencyVersion: string
+  licenseConcludedCategory: string | null
+  licenseConcludedName: string | null
+  licenseDeclaredCategory: string | null
+  licenseDeclaredName: string | null
+  repositoryId: string
+  scanId: string
+  supplier: string | null
+}
+
 export type t_RepositorySummary = {
   groups: {
     count: number
     name: string
   }[]
   name: string
+  repositoryId: string
+}
+
+export type t_GetRepositoryScanParamSchema = {
+  repositoryId: string
+  scanId: string
+}
+
+export type t_GetRepositoryScansParamSchema = {
+  repositoryId: string
+}
+
+export type t_GetRepositorySummaryParamSchema = {
+  repositoryId: string
 }
 
 export type t_ScanRepositoriesBodySchema = {

@@ -3,6 +3,8 @@
 
 import {
   t_License,
+  t_RepositoryScan,
+  t_RepositoryScanDependency,
   t_RepositorySummary,
   t_scanRepositoriesJsonRequestBody,
 } from "@/generated/models"
@@ -34,6 +36,45 @@ export class ApiClient extends AbstractFetchClient {
     opts?: RequestInit,
   ): Promise<TypedFetchResponse<Res<200, t_RepositorySummary[]>>> {
     const url = this.basePath + `/api/repositories/summaries`
+
+    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+  }
+
+  async getRepositorySummary(
+    p: {
+      repositoryId: string
+    },
+    timeout?: number,
+    opts?: RequestInit,
+  ): Promise<TypedFetchResponse<Res<200, t_RepositorySummary>>> {
+    const url = this.basePath + `/api/repositories/${p["repositoryId"]}/summary`
+
+    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+  }
+
+  async getRepositoryScans(
+    p: {
+      repositoryId: string
+    },
+    timeout?: number,
+    opts?: RequestInit,
+  ): Promise<TypedFetchResponse<Res<200, t_RepositoryScan[]>>> {
+    const url = this.basePath + `/api/repositories/${p["repositoryId"]}/scans`
+
+    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+  }
+
+  async getRepositoryScan(
+    p: {
+      repositoryId: string
+      scanId: string
+    },
+    timeout?: number,
+    opts?: RequestInit,
+  ): Promise<TypedFetchResponse<Res<200, t_RepositoryScanDependency[]>>> {
+    const url =
+      this.basePath +
+      `/api/repositories/${p["repositoryId"]}/scans/${p["scanId"]}`
 
     return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
   }

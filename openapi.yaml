@@ -32,26 +32,85 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/RepositorySummary'
-
-  /api/repositories/scan:
-      post:
-        operationId: scanRepositories
-        requestBody:
+  /api/repositories/{repositoryId}/summary:
+    get:
+      operationId: getRepositorySummary
+      parameters:
+        - $ref: '#/components/parameters/repositoryId'
+      responses:
+        200:
+          description: A summary of last scan for a repository
           content:
             application/json:
               schema:
-                type: object
-                required:
-                  - token
-                properties:
-                  token:
-                    description: A Github PAT
-                    type: string
-        responses:
-          204:
-            description: Scan all repositories visible to the provided token
+                $ref: '#/components/schemas/RepositorySummary'
+  /api/repositories/{repositoryId}/scans:
+    get:
+      operationId: getRepositoryScans
+      parameters:
+        - $ref: '#/components/parameters/repositoryId'
+      responses:
+        200:
+          description: A list of all scans for a given repository
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RepositoryScan'
+
+  /api/repositories/{repositoryId}/scans/{scanId}:
+    get:
+      operationId: getRepositoryScan
+      parameters:
+        - $ref: '#/components/parameters/repositoryId'
+        - $ref: '#/components/parameters/scanId'
+      responses:
+        200:
+          description: the details of a specific scan
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RepositoryScanDependency'
+
+  /api/repositories/scan:
+    post:
+      operationId: scanRepositories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  description: A Github PAT
+                  type: string
+      responses:
+        204:
+          description: Scan all repositories visible to the provided token
 
 components:
+  parameters:
+    repositoryId:
+      name: repositoryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+    scanId:
+      name: scanId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
   schemas:
     License:
       type: object
@@ -77,9 +136,13 @@ components:
     RepositorySummary:
       type: object
       required:
+        - repositoryId
         - name
         - groups
       properties:
+        repositoryId:
+          type: string
+          format: uuid
         name:
           type: string
         groups:
@@ -94,3 +157,65 @@ components:
                 type: string
               count:
                 type: number
+    RepositoryScan:
+      type: object
+      required:
+        - scanId
+        - repositoryId
+        - scannedAt
+        - summary
+      properties:
+        scanId:
+          type: string
+          format: uuid
+        repositoryId:
+          type: string
+          format: uuid
+        scannedAt:
+          type: string
+          format: date-time
+        summary:
+          $ref: '#/components/schemas/RepositorySummary'
+    RepositoryScanDependency:
+      type: object
+      required:
+        - scanId
+        - repositoryId
+        - dependencyName
+        - dependencyVersion
+        - licenseConcludedName
+        - licenseConcludedCategory
+        - licenseDeclaredName
+        - licenseDeclaredCategory
+        - supplier
+      properties:
+        scanId:
+          type: string
+          format: uuid
+        repositoryId:
+          type: string
+          format: uuid
+        dependencyName:
+          type: string
+        dependencyVersion:
+          type: string
+        licenseDeclaredName:
+          type:
+            - string
+            - 'null'
+        licenseDeclaredCategory:
+          type:
+            - string
+            - 'null'
+        licenseConcludedName:
+          type:
+            - string
+            - 'null'
+        licenseConcludedCategory:
+          type:
+            - string
+            - 'null'
+        supplier:
+          type:
+            - string
+            - 'null'

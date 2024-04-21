@@ -46,6 +46,54 @@ export const createQueryOptions = (
       })
     },
 
+    getRepositorySummary: (repositoryId: string) => {
+      return queryOptions({
+        queryKey: ["getRepositorySummary", repositoryId],
+        queryFn: async () => {
+          const res = await fetchClient.getRepositorySummary({repositoryId})
+          if (res.status !== 200) {
+            throw new Error("request failed", {
+              cause: new Error(await res.text()),
+            })
+          }
+          return await res.json()
+        },
+      })
+    },
+
+    getRepositoryScans: (repositoryId: string) => {
+      return queryOptions({
+        queryKey: ["getRepositoryScans", repositoryId],
+        queryFn: async () => {
+          const res = await fetchClient.getRepositoryScans({repositoryId})
+          if (res.status !== 200) {
+            throw new Error("request failed", {
+              cause: new Error(await res.text()),
+            })
+          }
+          return await res.json()
+        },
+      })
+    },
+
+    getRepositoryScanDependencies: (repositoryId: string, scanId: string) => {
+      return queryOptions({
+        queryKey: ["getRepositoryScan", repositoryId, scanId],
+        queryFn: async () => {
+          const res = await fetchClient.getRepositoryScan({
+            repositoryId,
+            scanId,
+          })
+          if (res.status !== 200) {
+            throw new Error("request failed", {
+              cause: new Error(await res.text()),
+            })
+          }
+          return await res.json()
+        },
+      })
+    },
+
     scanGithubRepositories: (): UseMutationOptions<
       void,
       Error,
@@ -66,6 +114,8 @@ export const createQueryOptions = (
           void queryClient.invalidateQueries({
             queryKey: ["getRepositorySummaries"],
           })
+          void queryClient.invalidateQueries({queryKey: ["getRepositoryScans"]})
+          void queryClient.invalidateQueries({queryKey: ["getLicenses"]})
           void queryClient.invalidateQueries({queryKey: ["getLicenses"]})
         },
       }
