@@ -10,7 +10,7 @@
     "package": "docker build -t spdx-dependency-track --progress=plain .",
     "start": "next start",
     "lint": "next lint --fix",
-    "format": "biome check --apply ./src && biome format --write ./src",
+    "format": "biome check --apply . && biome format --write .",
     "docs:generate": "yarn markdown-toc -i --bullets=- ./README.md",
     "migrate": "dotenvx run -- ./bin/migrate.sh",
     "migrate-generate": "dotenvx run -- ./bin/migrate-generate.sh",
