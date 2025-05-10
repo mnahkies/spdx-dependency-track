@@ -28,6 +28,7 @@ export type GetRepositoryScan = (
   params: Params<
     t_GetRepositoryScanParamSchema,
     t_GetRepositoryScanQuerySchema,
+    void,
     void
   >,
   respond: GetRepositoryScanResponder,
@@ -62,6 +63,7 @@ export const _GET =
         RequestInputType.QueryString,
       ),
       body: undefined,
+      headers: undefined,
     }
 
     const responder = {

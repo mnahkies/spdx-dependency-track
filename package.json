@@ -7,7 +7,6 @@
   "scripts": {
     "postinstall": "husky",
     "dev": "yarn migrate && next dev",
-    "build": "next build",
     "package": "docker build -t spdx-dependency-track --progress=plain .",
     "start": "next start",
     "lint": "next lint --fix",
