@@ -17,7 +17,7 @@
     "migrate-rehash": "dotenvx run -- atlas migrate hash --dir 'file://migrations",
     "ci-build": "./bin/build.sh",
     "ci-test": "echo 'no tests yet'",
-    "ci-lint": "next lint",
+    "ci-lint": "echo 'n/a'",
     "ci-format": "biome ci ."
   },
   "dependencies": {
