@@ -12,6 +12,7 @@
     "ignore": [
       "data/**/*",
       "schemas/*.json",
+      "src/generated/**/*",
       "packages/*/package.json",
       "package.json"
     ]
@@ -32,7 +33,7 @@
     }
   },
   "linter": {
-    "enabled": false,
+    "enabled": true,
     "rules": {
       "recommended": true
     }

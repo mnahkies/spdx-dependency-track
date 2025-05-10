@@ -1,5 +1,5 @@
 import fs from "node:fs/promises"
-import {Database} from "@/lib/database/database"
+import type {Database} from "@/lib/database/database"
 import {z} from "zod"
 
 const LicenseSchema = z.object({
@@ -22,7 +22,7 @@ const LicenseGroupSchema = z.object({
 export class LicenseDataLoader {
   constructor(private readonly database: Database) {}
 
-  async load(licensesPath: string, licenseGroupsPath: string): Promise<any> {
+  async load(licensesPath: string, licenseGroupsPath: string): Promise<void> {
     console.info("loading licenses")
     await this.loadLicenses(licensesPath)
     await this.loadLicenseGroups(licenseGroupsPath)

@@ -9,15 +9,15 @@
     "dev": "yarn migrate && next dev",
     "package": "docker build -t spdx-dependency-track --progress=plain .",
     "start": "next start",
-    "lint": "next lint --fix",
-    "format": "biome check --apply . && biome format --write .",
+    "lint": "biome lint --write .",
+    "format": "biome check --write .",
     "docs:generate": "yarn markdown-toc -i --bullets=- ./README.md",
     "migrate": "dotenvx run -- ./bin/migrate.sh",
     "migrate-generate": "dotenvx run -- ./bin/migrate-generate.sh",
     "migrate-rehash": "dotenvx run -- atlas migrate hash --dir 'file://migrations",
     "ci-build": "./bin/build.sh",
     "ci-test": "echo 'no tests yet'",
-    "ci-lint": "next lint",
+    "ci-lint": "echo 'n/a'",
     "ci-format": "biome ci ."
   },
   "dependencies": {
@@ -47,15 +47,12 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@nahkies/openapi-code-generator": "^0.20.0",
-    "@tanstack/eslint-plugin-query": "^5.74.7",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^22.15.17",
     "@types/react": "^18.3.21",
     "@types/react-dom": "^18.3.7",
     "@types/semver": "^7.7.0",
     "@types/spdx-expression-parse": "^3.0.5",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.28",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
     "markdown-toc": "^1.2.0",
@@ -63,8 +60,8 @@
   },
   "lint-staged": {
     "*.{ts,js,tsx,jsx}": [
-      "eslint --cache --report-unused-disable-directives --fix",
-      "yarn biome check --apply --no-errors-on-unmatched"
+      "yarn biome lint --write --no-errors-on-unmatched",
+      "yarn biome check --write --no-errors-on-unmatched"
     ],
     "*.md": [
       "sh -c 'yarn docs:generate'"

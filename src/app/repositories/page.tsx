@@ -15,7 +15,7 @@ import {
 import {useQuery} from "@tanstack/react-query"
 import Link from "next/link"
 
-export default function RepositoryListPage({}: {}) {
+export default function RepositoryListPage() {
   const queryOptions = useQueryOptions()
   const summaries = useQuery(queryOptions.getRepositorySummaries())
 

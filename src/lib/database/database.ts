@@ -9,7 +9,7 @@ export class Database {
   readonly licensesRepository: LicenseRepository
   readonly repositoryRepository: RepositoryRepository
 
-  constructor(dbPath: string, inMemory: boolean = false) {
+  constructor(dbPath: string, inMemory = false) {
     this.sqlite = new Sqlite(inMemory ? ":memory:" : dbPath)
     this.licensesRepository = new LicenseRepository(this.sqlite)
     this.repositoryRepository = new RepositoryRepository(this.sqlite)
