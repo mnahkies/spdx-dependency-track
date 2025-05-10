@@ -1,5 +1,5 @@
 import {ApiClient} from "@/generated/clients/github/client"
-import {t_repository} from "@/generated/clients/github/models"
+import type {t_repository} from "@/generated/clients/github/models"
 
 export class GithubClient {
   private readonly client: ApiClient

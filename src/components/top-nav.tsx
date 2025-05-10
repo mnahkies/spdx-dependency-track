@@ -3,7 +3,7 @@
 import {Tab, Tabs} from "@mui/material"
 import Link from "next/link"
 import {usePathname} from "next/navigation"
-import React from "react"
+import type React from "react"
 
 function useRouteMatch(pathname: string, patterns: readonly string[]) {
   const match = patterns

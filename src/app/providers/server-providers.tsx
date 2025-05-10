@@ -4,7 +4,7 @@ import theme from "@/theme"
 import {ThemeProvider} from "@mui/material"
 import {AppRouterCacheProvider} from "@mui/material-nextjs/v14-appRouter"
 import CssBaseline from "@mui/material/CssBaseline"
-import React from "react"
+import type React from "react"
 
 export async function ServerProviders({children}: React.PropsWithChildren) {
   return (

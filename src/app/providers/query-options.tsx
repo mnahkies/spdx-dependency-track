@@ -1,8 +1,8 @@
-import {ApiClient} from "@/generated/clients/client"
-import {t_ScanRepositoriesBodySchema} from "@/generated/models"
+import type {ApiClient} from "@/generated/clients/client"
+import type {t_ScanRepositoriesBodySchema} from "@/generated/models"
 import {
-  QueryClient,
-  UseMutationOptions,
+  type QueryClient,
+  type UseMutationOptions,
   queryOptions,
 } from "@tanstack/react-query"
 import {createContext, useContext} from "react"

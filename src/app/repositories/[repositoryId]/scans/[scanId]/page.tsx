@@ -17,7 +17,8 @@ import {
 } from "@mui/material"
 import {useMutation, useQuery} from "@tanstack/react-query"
 import Link from "next/link"
-import React, {useState} from "react"
+import type React from "react"
+import {useState} from "react"
 
 const DependencyName: React.FC<{name: string; version: string}> = ({
   name,

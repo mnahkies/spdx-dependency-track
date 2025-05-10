@@ -1,5 +1,5 @@
 import fs from "node:fs/promises"
-import {Database} from "@/lib/database/database"
+import type {Database} from "@/lib/database/database"
 import {z} from "zod"
 
 const LicenseSchema = z.object({

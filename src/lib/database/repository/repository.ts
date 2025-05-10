@@ -1,10 +1,10 @@
 import {projection, t} from "@/generated/database/generated"
-import {
+import type {
   t_RepositoryScan,
   t_RepositoryScanDependency,
   t_RepositorySummary,
 } from "@/generated/models"
-import {Sqlite, sql} from "@/lib/database/sqlite"
+import {type Sqlite, sql} from "@/lib/database/sqlite"
 import {z} from "zod"
 
 // TODO: stop returning API models here and move the DB -> API mapping else where

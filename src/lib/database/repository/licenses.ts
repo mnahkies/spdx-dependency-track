@@ -1,6 +1,6 @@
 import {aliased, projection, t} from "@/generated/database/generated"
-import {t_License} from "@/generated/models"
-import {Sqlite, sql} from "@/lib/database/sqlite"
+import type {t_License} from "@/generated/models"
+import {type Sqlite, sql} from "@/lib/database/sqlite"
 import {z} from "zod"
 
 export class LicenseRepository {

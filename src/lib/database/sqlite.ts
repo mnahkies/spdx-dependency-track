@@ -1,6 +1,6 @@
 // TODO: this will later be extracted to a standalone node module
-import Database, {Statement} from "better-sqlite3"
-import {ZodTypeAny, ZodUnknown, z} from "zod"
+import Database, {type Statement} from "better-sqlite3"
+import {type ZodTypeAny, type ZodUnknown, z} from "zod"
 
 export type PrimitiveValueExpression =
   | Buffer
