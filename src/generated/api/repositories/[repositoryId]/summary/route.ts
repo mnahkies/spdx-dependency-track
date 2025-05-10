@@ -23,7 +23,7 @@ export type GetRepositorySummaryResponder = {
 } & KoaRuntimeResponder
 
 export type GetRepositorySummary = (
-  params: Params<t_GetRepositorySummaryParamSchema, void, void>,
+  params: Params<t_GetRepositorySummaryParamSchema, void, void, void>,
   respond: GetRepositorySummaryResponder,
   ctx: {request: NextRequest},
 ) => Promise<KoaRuntimeResponse<unknown>>
@@ -45,6 +45,7 @@ export const _GET =
       // TODO: this swallows repeated parameters
       query: undefined,
       body: undefined,
+      headers: undefined,
     }
 
     const responder = {

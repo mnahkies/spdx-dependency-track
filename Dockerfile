@@ -1,5 +1,5 @@
 # syntax=docker.io/docker/dockerfile:1.7-labs
-FROM node:20 AS base
+FROM node:22.15.0@sha256:a1f1274dadd49738bcd4cf552af43354bb781a7e9e3bc984cfeedc55aba2ddd8 AS base
 RUN corepack enable
 
 FROM base AS deps
@@ -18,9 +18,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY --exclude=.yarn/cache . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
-
-# NextJS insists on executing modules during the build, we use this to trigger an in-memory database in this case.
-RUN IS_DOCKER_BUILD=true yarn run build
+RUN ./bin/build.sh
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -43,4 +41,3 @@ EXPOSE 3000
 ENV PORT 3000
 
 CMD HOSTNAME="0.0.0.0" node server.js
-

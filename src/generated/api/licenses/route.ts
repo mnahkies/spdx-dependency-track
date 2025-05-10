@@ -16,7 +16,7 @@ export type GetLicensesResponder = {
 } & KoaRuntimeResponder
 
 export type GetLicenses = (
-  params: Params<void, void, void>,
+  params: Params<void, void, void, void>,
   respond: GetLicensesResponder,
   ctx: {request: NextRequest},
 ) => Promise<KoaRuntimeResponse<unknown>>
@@ -32,6 +32,7 @@ export const _GET =
       // TODO: this swallows repeated parameters
       query: undefined,
       body: undefined,
+      headers: undefined,
     }
 
     const responder = {

@@ -12,10 +12,12 @@ import {
   AbstractFetchClient,
   AbstractFetchClientConfig,
   Res,
-  TypedFetchResponse,
+  Server,
 } from "@nahkies/typescript-fetch-runtime/main"
 
-export interface ApiClientConfig extends AbstractFetchClientConfig {}
+export interface ApiClientConfig extends AbstractFetchClientConfig {
+  basePath: Server<"ApiClient"> | string
+}
 
 export class ApiClient extends AbstractFetchClient {
   constructor(config: ApiClientConfig) {
@@ -24,20 +26,22 @@ export class ApiClient extends AbstractFetchClient {
 
   async getLicenses(
     timeout?: number,
-    opts?: RequestInit,
-  ): Promise<TypedFetchResponse<Res<200, t_License[]>>> {
+    opts: RequestInit = {},
+  ): Promise<Res<200, t_License[]>> {
     const url = this.basePath + `/api/licenses`
+    const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async getRepositorySummaries(
     timeout?: number,
-    opts?: RequestInit,
-  ): Promise<TypedFetchResponse<Res<200, t_RepositorySummary[]>>> {
+    opts: RequestInit = {},
+  ): Promise<Res<200, t_RepositorySummary[]>> {
     const url = this.basePath + `/api/repositories/summaries`
+    const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async getRepositorySummary(
@@ -45,11 +49,12 @@ export class ApiClient extends AbstractFetchClient {
       repositoryId: string
     },
     timeout?: number,
-    opts?: RequestInit,
-  ): Promise<TypedFetchResponse<Res<200, t_RepositorySummary>>> {
+    opts: RequestInit = {},
+  ): Promise<Res<200, t_RepositorySummary>> {
     const url = this.basePath + `/api/repositories/${p["repositoryId"]}/summary`
+    const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async getRepositoryScans(
@@ -57,11 +62,12 @@ export class ApiClient extends AbstractFetchClient {
       repositoryId: string
     },
     timeout?: number,
-    opts?: RequestInit,
-  ): Promise<TypedFetchResponse<Res<200, t_RepositoryScan[]>>> {
+    opts: RequestInit = {},
+  ): Promise<Res<200, t_RepositoryScan[]>> {
     const url = this.basePath + `/api/repositories/${p["repositoryId"]}/scans`
+    const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, {method: "GET", ...(opts ?? {})}, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async getRepositoryScan(
@@ -71,14 +77,15 @@ export class ApiClient extends AbstractFetchClient {
       excludePermissive?: boolean
     },
     timeout?: number,
-    opts?: RequestInit,
-  ): Promise<TypedFetchResponse<Res<200, t_RepositoryScanDependency[]>>> {
+    opts: RequestInit = {},
+  ): Promise<Res<200, t_RepositoryScanDependency[]>> {
     const url =
       this.basePath +
       `/api/repositories/${p["repositoryId"]}/scans/${p["scanId"]}`
+    const headers = this._headers({}, opts.headers)
     const query = this._query({excludePermissive: p["excludePermissive"]})
 
-    return this._fetch(url + query, {method: "GET", ...(opts ?? {})}, timeout)
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async scanRepositories(
@@ -86,16 +93,15 @@ export class ApiClient extends AbstractFetchClient {
       requestBody: t_scanRepositoriesJsonRequestBody
     },
     timeout?: number,
-    opts?: RequestInit,
-  ): Promise<TypedFetchResponse<Res<204, void>>> {
+    opts: RequestInit = {},
+  ): Promise<Res<204, void>> {
     const url = this.basePath + `/api/repositories/scan`
-    const headers = this._headers({"Content-Type": "application/json"})
+    const headers = this._headers(
+      {"Content-Type": "application/json"},
+      opts.headers,
+    )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      {method: "POST", headers, body, ...(opts ?? {})},
-      timeout,
-    )
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 }

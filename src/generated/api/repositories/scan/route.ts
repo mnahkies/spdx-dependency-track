@@ -20,7 +20,7 @@ export type ScanRepositoriesResponder = {
 } & KoaRuntimeResponder
 
 export type ScanRepositories = (
-  params: Params<void, void, t_ScanRepositoriesBodySchema>,
+  params: Params<void, void, t_ScanRepositoriesBodySchema, void>,
   respond: ScanRepositoriesResponder,
   ctx: {request: NextRequest},
 ) => Promise<KoaRuntimeResponse<unknown>>
@@ -42,6 +42,7 @@ export const _POST =
         await request.json(),
         RequestInputType.RequestBody,
       ),
+      headers: undefined,
     }
 
     const responder = {

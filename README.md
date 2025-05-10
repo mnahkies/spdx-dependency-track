@@ -29,11 +29,12 @@ limited in features. Expect a bunch of breaking changes as I learn more about th
 ## Future
 
 - More filtering, sorting, etc options
+- Export to CSV / spreadsheet report
 - Allow upload of a SPDX file directly rather than crawling Github
 - Allow overriding data, eg: correct a license
 - Pull in CVE alerts
 - Tidy up the API, it's a bit haphazard right now
-- Add tests, CI, etc
+- Add tests
 
 ## Running it
 

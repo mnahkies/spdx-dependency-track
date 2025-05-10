@@ -10,8 +10,7 @@
   },
   "files": {
     "ignore": [
-      "integration-tests/**/*",
-      "integration-tests-definitions/**/*",
+      "data/**/*",
       "schemas/*.json",
       "packages/*/package.json",
       "package.json"
