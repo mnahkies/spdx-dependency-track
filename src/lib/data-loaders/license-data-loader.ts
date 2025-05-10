@@ -29,9 +29,13 @@ export class LicenseDataLoader {
   }
 
   private async loadLicenses(path: string) {
-    const licenses = z
-      .array(LicenseSchema)
-      .parse(JSON.parse(await fs.readFile(path, "utf-8")))
+    const raw = await fs.readFile(path, "utf-8")
+
+    const licenses = raw ? z.array(LicenseSchema).parse(JSON.parse(raw)) : []
+
+    if (!licenses.length) {
+      console.warn("no licenses found to load")
+    }
 
     await this.database.licensesRepository.insertLicenses(
       licenses.map((it) => ({
