@@ -5,7 +5,10 @@ import type {GithubClient} from "@/lib/clients/github-client"
 import type {Database} from "@/lib/database/database"
 import {isDefined} from "@/lib/utils"
 import semver from "semver"
-import parseSpdxExpression, {type Info, type LicenseInfo} from "spdx-expression-parse"
+import parseSpdxExpression, {
+  type Info,
+  type LicenseInfo,
+} from "spdx-expression-parse"
 import {z} from "zod"
 
 const validSBOMPackage = z.object({
@@ -180,7 +183,6 @@ function findMostRestrictiveLicense(
   //       attached. Perhaps having a human triage and re-assign is best though?
   if (leftRisk > rightRisk) {
     return left
-  } else {
-    return right
   }
+  return right
 }

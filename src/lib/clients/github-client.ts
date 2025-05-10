@@ -41,7 +41,7 @@ export class GithubClient {
 
       if (res.status !== 200) {
         console.info(res)
-        throw new Error("failed to fetch repositories, page: " + page)
+        throw new Error(`failed to fetch repositories, page: ${page}`)
       }
 
       const body = await res.json()
@@ -74,7 +74,7 @@ export class GithubClient {
   }
 
   private async checkAuth() {
-    console.info(`checking authentication`)
+    console.info("checking authentication")
 
     const res = await this.client.usersGetAuthenticated()
 

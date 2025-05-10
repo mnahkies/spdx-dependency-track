@@ -22,7 +22,7 @@ const LicenseGroupSchema = z.object({
 export class LicenseDataLoader {
   constructor(private readonly database: Database) {}
 
-  async load(licensesPath: string, licenseGroupsPath: string): Promise<any> {
+  async load(licensesPath: string, licenseGroupsPath: string): Promise<void> {
     console.info("loading licenses")
     await this.loadLicenses(licensesPath)
     await this.loadLicenseGroups(licenseGroupsPath)

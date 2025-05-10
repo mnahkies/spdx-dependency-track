@@ -12,6 +12,7 @@
     "ignore": [
       "data/**/*",
       "schemas/*.json",
+      "src/generated/**/*",
       "packages/*/package.json",
       "package.json"
     ]

@@ -31,6 +31,7 @@ export function sql<T extends ZodTypeAny>(parser: T) {
     const parameters: unknown[] = []
     const query = parts.reduce((acc, it, i) => {
       const parameter = args[i]
+      // biome-ignore lint/style/noParameterAssign: <explanation>
       acc += it
 
       if (args.length <= i) {
@@ -46,9 +47,12 @@ export function sql<T extends ZodTypeAny>(parser: T) {
           break
         case "object":
           if (Array.isArray(parameter)) {
-            parameter.forEach((it) => parameters.push(it))
-            return acc + `(${parameter.map((it) => "?").join(", ")})`
-          } else if (parameter === null) {
+            for (const it1 of parameter) {
+              parameters.push(it1)
+            }
+            return `${acc}(${parameter.map((it) => "?").join(", ")})`
+          }
+          if (parameter === null) {
             parameters.push(null)
           }
           break
@@ -60,7 +64,7 @@ export function sql<T extends ZodTypeAny>(parser: T) {
       }
 
       // TODO: use named parameters?
-      return acc + `?`
+      return `${acc}?`
     }, "")
 
     return {
@@ -77,8 +81,8 @@ export class Sqlite {
 
   constructor(filename: string) {
     this.db = new Database(filename, {})
-    this.db.pragma(`journal_mode = WAL`)
-    this.db.pragma(`foreign_keys = ON`)
+    this.db.pragma("journal_mode = WAL")
+    this.db.pragma("foreign_keys = ON")
   }
 
   async transaction<T>(fn: (trx: Sqlite) => Promise<T>): Promise<T> {
@@ -136,6 +140,7 @@ export class Sqlite {
   private prepare(query: string) {
     try {
       if (!this.preparedStatementsCache[query]) {
+        // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
         return (this.preparedStatementsCache[query] = this.db.prepare(query))
       }
       return this.preparedStatementsCache[query]
