@@ -18,9 +18,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY --exclude=.yarn/cache . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
-
-# NextJS insists on executing modules during the build, we use this to trigger an in-memory database in this case.
-RUN IS_DOCKER_BUILD=true yarn run build
+RUN ./bin/build.sh
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -43,4 +41,3 @@ EXPOSE 3000
 ENV PORT 3000
 
 CMD HOSTNAME="0.0.0.0" node server.js
-

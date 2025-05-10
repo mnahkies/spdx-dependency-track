@@ -15,7 +15,7 @@
     "migrate": "dotenvx run -- ./bin/migrate.sh",
     "migrate-generate": "dotenvx run -- ./bin/migrate-generate.sh",
     "migrate-rehash": "dotenvx run -- atlas migrate hash --dir 'file://migrations",
-    "ci-build": "IS_DOCKER_BUILD=true next build",
+    "ci-build": "./bin/build.sh",
     "ci-test": "echo 'no tests yet'",
     "ci-lint": "next lint",
     "ci-format": "biome ci ."

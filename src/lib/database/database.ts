@@ -16,7 +16,7 @@ export class Database {
   }
 }
 
-export const database = new Database(config.DB_PATH, config.IS_DOCKER_BUILD)
+export const database = new Database(config.DB_PATH)
 
 const licenseDataLoader = new LicenseDataLoader(database)
 
