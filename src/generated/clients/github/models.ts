@@ -6018,6 +6018,10 @@ export type t_nullable_repository = {
   blobs_url: string
   branches_url: string
   clone_url: string
+  code_search_index_status?: {
+    lexical_commit_sha?: string
+    lexical_search_ok?: boolean
+  }
   collaborators_url: string
   comments_url: string
   commits_url: string
@@ -7557,6 +7561,10 @@ export type t_repository = {
   blobs_url: string
   branches_url: string
   clone_url: string
+  code_search_index_status?: {
+    lexical_commit_sha?: string
+    lexical_search_ok?: boolean
+  }
   collaborators_url: string
   comments_url: string
   commits_url: string

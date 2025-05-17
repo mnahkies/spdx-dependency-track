@@ -3676,7 +3676,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     },
     timeout?: number,
     opts: RequestInit = {},
-  ): Promise<Res<204, void>> {
+  ): Promise<Res<204, void> | Res<422, t_validation_error_simple>> {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}`
     const headers = this._headers({}, opts.headers)
@@ -9644,6 +9644,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     | Res<307, t_basic_error>
     | Res<403, t_reposDeleteJson403Response>
     | Res<404, t_basic_error>
+    | Res<409, t_basic_error>
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
@@ -10241,7 +10242,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     },
     timeout?: number,
     opts: RequestInit = {},
-  ): Promise<Res<204, void>> {
+  ): Promise<Res<204, void> | Res<422, t_validation_error_simple>> {
     const url =
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}`

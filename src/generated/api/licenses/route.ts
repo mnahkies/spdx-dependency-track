@@ -9,25 +9,21 @@ import {
   KoaRuntimeResponse,
   StatusCode,
 } from "@nahkies/typescript-koa-runtime/server"
-import { Params } from "@nahkies/typescript-koa-runtime/zod"
 import { NextRequest } from "next/server"
 
+// /api/licenses
 export type GetLicensesResponder = {
   with200(): KoaRuntimeResponse<t_License[]>
 } & KoaRuntimeResponder
 
 export type GetLicenses = (
-  params: Params<void, void, void, void>,
   respond: GetLicensesResponder,
-  ctx: { request: NextRequest },
+  request: NextRequest,
 ) => Promise<KoaRuntimeResponse<unknown>>
 
 export const _GET =
   (implementation: GetLicenses) =>
-  async (
-    request: NextRequest,
-    { params }: { params: unknown },
-  ): Promise<Response> => {
+  async (request: NextRequest): Promise<Response> => {
     const input = {
       params: undefined,
       // TODO: this swallows repeated parameters
@@ -45,7 +41,7 @@ export const _GET =
       },
     }
 
-    const { status, body } = await implementation(input, responder, { request })
+    const { status, body } = await implementation(responder, request)
       .then((it) => it.unpack())
       .catch((err) => {
         throw KoaRuntimeError.HandlerError(err)

@@ -15,9 +15,10 @@ import {
   TableRow,
   Typography,
 } from "@mui/material"
-import {useMutation, useQuery} from "@tanstack/react-query"
+import {useQuery} from "@tanstack/react-query"
 import Link from "next/link"
 import type React from "react"
+import {use} from "react"
 import {useState} from "react"
 
 const DependencyName: React.FC<{name: string; version: string}> = ({
@@ -43,17 +44,16 @@ const DependencyName: React.FC<{name: string; version: string}> = ({
 
 export default function RepositoryScanPage({
   params,
-}: {params: {repositoryId: string; scanId: string}}) {
+}: {params: Promise<{repositoryId: string; scanId: string}>}) {
+  const {repositoryId, scanId} = use(params)
   const [excludePermissive, setExcludePermissive] = useState<boolean>(false)
 
   const queryOptions = useQueryOptions()
-  const summary = useQuery(
-    queryOptions.getRepositorySummary(params.repositoryId),
-  )
+  const summary = useQuery(queryOptions.getRepositorySummary(repositoryId))
   const dependencies = useQuery(
     queryOptions.getRepositoryScanDependencies(
-      params.repositoryId,
-      params.scanId,
+      repositoryId,
+      scanId,
       excludePermissive,
     ),
   )
@@ -90,9 +90,10 @@ export default function RepositoryScanPage({
           <TableBody>
             {!dependencies.isPending &&
               !dependencies.isError &&
+              // TODO: we get some duplicates here.
               dependencies.data.map((dependency) => (
                 <TableRow
-                  key={dependency.dependencyName + dependency.dependencyVersion}
+                  key={`${dependency.dependencyName}-${dependency.dependencyVersion}`}
                 >
                   <TableCell>
                     <DependencyName

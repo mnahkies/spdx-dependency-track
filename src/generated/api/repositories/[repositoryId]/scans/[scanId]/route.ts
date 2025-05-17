@@ -21,6 +21,7 @@ import { Params, parseRequestInput } from "@nahkies/typescript-koa-runtime/zod"
 import { NextRequest } from "next/server"
 import { z } from "zod"
 
+// /api/repositories/{repositoryId}/scans/{scanId}
 export type GetRepositoryScanResponder = {
   with200(): KoaRuntimeResponse<t_RepositoryScanDependency[]>
 } & KoaRuntimeResponder
@@ -33,7 +34,7 @@ export type GetRepositoryScan = (
     void
   >,
   respond: GetRepositoryScanResponder,
-  ctx: { request: NextRequest },
+  request: NextRequest,
 ) => Promise<KoaRuntimeResponse<unknown>>
 
 const getRepositoryScanParamSchema = z.object({
@@ -49,12 +50,12 @@ export const _GET =
   (implementation: GetRepositoryScan) =>
   async (
     request: NextRequest,
-    { params }: { params: unknown },
+    { params }: { params: Promise<unknown> },
   ): Promise<Response> => {
     const input = {
       params: parseRequestInput(
         getRepositoryScanParamSchema,
-        params,
+        await params,
         RequestInputType.RouteParam,
       ),
       // TODO: this swallows repeated parameters
@@ -76,7 +77,7 @@ export const _GET =
       },
     }
 
-    const { status, body } = await implementation(input, responder, { request })
+    const { status, body } = await implementation(input, responder, request)
       .then((it) => it.unpack())
       .catch((err) => {
         throw KoaRuntimeError.HandlerError(err)
