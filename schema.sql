@@ -66,8 +66,8 @@ CREATE TABLE dependency
 (
   id                   TEXT                               NOT NULL,
   name                 TEXT                               NOT NULL,
-  version              TEXT                               NOT NULL,
-  supplier             TEXT                               NOT NULL,
+  version              TEXT,
+  supplier             TEXT,
   license_declared_id  TEXT,
   license_concluded_id TEXT,
 
@@ -87,7 +87,7 @@ CREATE TABLE repository_dependency
 (
   repository_scan_id TEXT                               NOT NULL,
   dependency_name    TEXT                               NOT NULL,
-  dependency_version TEXT                               NOT NULL,
+  dependency_version TEXT,
 
   created_at         DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
   updated_at         DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
