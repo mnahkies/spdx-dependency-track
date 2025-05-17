@@ -1,25 +1,34 @@
 CREATE TABLE licenses
 (
-  id              TEXT PRIMARY KEY NOT NULL,
-  name            TEXT             NOT NULL,
-  text            TEXT             NOT NULL,
+  id              TEXT PRIMARY KEY                   NOT NULL,
+  name            TEXT                               NOT NULL,
+  text            TEXT                               NOT NULL,
   comments        TEXT,
-  external_id     TEXT             NOT NULL,
-  is_osi_approved TINYINT          NOT NULL,
-  is_fsf_libre    TINYINT          NOT NULL
+  external_id     TEXT                               NOT NULL,
+  is_osi_approved TINYINT                            NOT NULL,
+  is_fsf_libre    TINYINT                            NOT NULL,
+
+  created_at      DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at      DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 CREATE TABLE license_groups
 (
-  id   TEXT PRIMARY KEY NOT NULL,
-  name TEXT             NOT NULL,
-  risk INTEGER          NOT NULL
+  id         TEXT PRIMARY KEY                   NOT NULL,
+  name       TEXT                               NOT NULL,
+  risk       INTEGER                            NOT NULL,
+
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 CREATE TABLE license_license_groups
 (
-  license_group_id TEXT NOT NULL,
-  license_id       TEXT NOT NULL,
+  license_group_id TEXT                               NOT NULL,
+  license_id       TEXT                               NOT NULL,
+
+  created_at       DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at       DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 
   PRIMARY KEY (license_group_id, license_id),
 
@@ -29,32 +38,41 @@ CREATE TABLE license_license_groups
 
 CREATE TABLE repository
 (
-  id          TEXT PRIMARY KEY NOT NULL,
-  url         TEXT             NOT NULL,
-  name        TEXT             NOT NULL UNIQUE,
-  is_archived TINYINT          NOT NULL
+  id          TEXT PRIMARY KEY                   NOT NULL,
+  url         TEXT                               NOT NULL,
+  name        TEXT                               NOT NULL UNIQUE,
+  is_archived TINYINT                            NOT NULL,
+
+  created_at  DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 CREATE TABLE repository_scan
 (
-  id            TEXT PRIMARY KEY NOT NULL,
-  scanned_at    TEXT             NOT NULL,
-  repository_id TEXT             NOT NULL,
+  id            TEXT PRIMARY KEY                   NOT NULL,
+  scanned_at    TEXT                               NOT NULL,
+  repository_id TEXT                               NOT NULL,
+
+  created_at    DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at    DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 
   FOREIGN KEY (repository_id) REFERENCES repository (id) ON UPDATE RESTRICT ON DELETE CASCADE
 );
 
-CREATE INDEX idx_repository_scan_repository_id ON repository_scan(repository_id);
+CREATE INDEX idx_repository_scan_repository_id ON repository_scan (repository_id);
 
 
 CREATE TABLE dependency
 (
-  id                   TEXT NOT NULL,
-  name                 TEXT NOT NULL,
-  version              TEXT NOT NULL,
-  supplier             TEXT NOT NULL,
+  id                   TEXT                               NOT NULL,
+  name                 TEXT                               NOT NULL,
+  version              TEXT                               NOT NULL,
+  supplier             TEXT                               NOT NULL,
   license_declared_id  TEXT,
   license_concluded_id TEXT,
+
+  created_at           DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at           DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 
   PRIMARY KEY (name, version),
 
@@ -62,14 +80,17 @@ CREATE TABLE dependency
   FOREIGN KEY (license_concluded_id) REFERENCES licenses (id) ON UPDATE RESTRICT ON DELETE CASCADE
 );
 
-CREATE INDEX idx_dependency_license_declared_id ON dependency(license_declared_id);
-CREATE INDEX idx_dependency_license_concluded_id ON dependency(license_concluded_id);
+CREATE INDEX idx_dependency_license_declared_id ON dependency (license_declared_id);
+CREATE INDEX idx_dependency_license_concluded_id ON dependency (license_concluded_id);
 
 CREATE TABLE repository_dependency
 (
-  repository_scan_id      TEXT NOT NULL,
-  dependency_name    TEXT NOT NULL,
-  dependency_version TEXT NOT NULL,
+  repository_scan_id TEXT                               NOT NULL,
+  dependency_name    TEXT                               NOT NULL,
+  dependency_version TEXT                               NOT NULL,
+
+  created_at         DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at         DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 
   PRIMARY KEY (repository_scan_id, dependency_name, dependency_version),
 
@@ -77,5 +98,5 @@ CREATE TABLE repository_dependency
   FOREIGN KEY (dependency_name, dependency_version) REFERENCES dependency (name, version) ON UPDATE RESTRICT ON DELETE CASCADE
 );
 
-CREATE INDEX idx_repository_dependency_repository_scan_id ON repository_dependency(repository_scan_id);
-CREATE INDEX idx_repository_dependency_dependency_name_version ON repository_dependency(dependency_name, dependency_version);
+CREATE INDEX idx_repository_dependency_repository_scan_id ON repository_dependency (repository_scan_id);
+CREATE INDEX idx_repository_dependency_dependency_name_version ON repository_dependency (dependency_name, dependency_version);

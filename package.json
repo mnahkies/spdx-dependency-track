@@ -19,7 +19,7 @@
     "ci-test": "echo 'no tests yet'",
     "ci-lint": "echo 'n/a'",
     "ci-format": "biome ci .",
-    "ci-pipeline": "yarn ci-build && yarn ci-test && yarn ci-format && yarn ci-lint"
+    "ci-pipeline": "yarn ci-build && yarn ci-test && yarn format && yarn lint"
   },
   "dependencies": {
     "@ariga/atlas": "^0.33.1",

@@ -30,7 +30,8 @@ export class RepositoryRepository {
               ${repository.url},
               ${repository.is_archived})
       ON CONFLICT(name) DO UPDATE SET url         = excluded.url,
-                                      is_archived = excluded.is_archived
+                                      is_archived = excluded.is_archived,
+                                      updated_at = current_timestamp
       RETURNING (id)`)
   }
 
@@ -68,7 +69,8 @@ export class RepositoryRepository {
               ${dependency.license_concluded_id})
       ON CONFLICT DO UPDATE SET supplier = excluded.supplier,
                                 license_declared_id = excluded.license_declared_id,
-                                license_concluded_id = excluded.license_concluded_id
+                                license_concluded_id = excluded.license_concluded_id,
+                                updated_at = current_timestamp
     `)
   }
 

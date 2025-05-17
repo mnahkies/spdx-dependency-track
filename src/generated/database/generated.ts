@@ -1,4 +1,4 @@
-import {type AnyZodObject, type ZodObject, z} from "zod"
+import { type AnyZodObject, type ZodObject, z } from "zod"
 
 export function projection<
   Schema extends AnyZodObject,
@@ -28,7 +28,7 @@ export function projection<
       acc[it] = true
       return acc
     },
-    {} as {[k in SchemaProjection]: true},
+    {} as { [k in SchemaProjection]: true },
   )
 
   // @ts-ignore
@@ -62,20 +62,6 @@ export function aliased<
 }
 
 export const t = {
-  atlas_schema_revisions: z.object({
-    version: z.string(),
-    description: z.string(),
-    type: z.number(),
-    applied: z.number(),
-    total: z.number(),
-    executed_at: z.date(),
-    execution_time: z.number(),
-    error: z.string().nullable(),
-    error_stmt: z.string().nullable(),
-    hash: z.string(),
-    partial_hashes: z.unknown().nullable(),
-    operator_version: z.string(),
-  }),
   licenses: z.object({
     id: z.string(),
     name: z.string(),
@@ -84,21 +70,29 @@ export const t = {
     external_id: z.string(),
     is_osi_approved: z.number(),
     is_fsf_libre: z.number(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional(),
   }),
   license_groups: z.object({
     id: z.string(),
     name: z.string(),
     risk: z.number(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional(),
   }),
   license_license_groups: z.object({
     license_group_id: z.string(),
     license_id: z.string(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional(),
   }),
   repository: z.object({
     id: z.string(),
     url: z.string(),
     name: z.string(),
     is_archived: z.number(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional(),
   }),
   dependency: z.object({
     id: z.string(),
@@ -107,15 +101,21 @@ export const t = {
     supplier: z.string(),
     license_declared_id: z.string().nullable(),
     license_concluded_id: z.string().nullable(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional(),
   }),
   repository_dependency: z.object({
     repository_scan_id: z.string(),
     dependency_name: z.string(),
     dependency_version: z.string(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional(),
   }),
   repository_scan: z.object({
     id: z.string(),
     scanned_at: z.string(),
     repository_id: z.string(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional(),
   }),
 }
