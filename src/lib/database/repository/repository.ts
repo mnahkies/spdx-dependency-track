@@ -77,7 +77,7 @@ export class RepositoryRepository {
   async associateDependencyWithRepositoryScan(
     repositoryScanId: string,
     dependencyName: string,
-    dependencyVersion: string,
+    dependencyVersion: string | null,
   ): Promise<void> {
     await this.sqlite.run(sql(z.unknown())`
       INSERT INTO repository_dependency(repository_scan_id, dependency_name, dependency_version)
@@ -217,7 +217,7 @@ export class RepositoryRepository {
 
     return rows.map((it) => ({
       dependencyName: it.name,
-      dependencyVersion: it.version,
+      dependencyVersion: it.version ?? "[unknown]",
       licenseConcludedCategory: it.license_concluded_group_name,
       licenseConcludedName: it.license_concluded_name,
       licenseDeclaredCategory: it.license_declared_group_name,
