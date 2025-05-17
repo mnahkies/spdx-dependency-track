@@ -1,4 +1,5 @@
-h1:QMuegrm8DoIB2LwiwA3mGoXXVsJjpmb0aqSi1bd0gFQ=
+h1:6HWXMAdbEiN8UQ7WInafKnO+ZMIdO84srtXPsCnqVcI=
 20240413083732_initial-schema.sql h1:+jL4LJtkPsmGuL+hLefD5/JJRpUWZrSbvL53isLuHgk=
 20240420163743_add-repository-scan.sql h1:w4jFPx6AnmkxcxpCkJe388vqFSp/+LjyJSngTSZaffc=
 20240421113048_add-indexes.sql h1:bXrNiWY+bZ4NzmKDbwVRldPaoO7oqxS0BcC25H7AOj8=
+20250517091157_add-tz-columns.sql h1:88PmYZA3IB+/Xe6vkM1QohMYMK7xnlmxu+uTn1/LAg0=
