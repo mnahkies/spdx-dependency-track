@@ -14,15 +14,15 @@ import {
 } from "@mui/material"
 import {useQuery} from "@tanstack/react-query"
 import Link from "next/link"
+import {use} from "react"
 
 export default function RepositoryPage({
   params,
-}: {params: {repositoryId: string}}) {
+}: {params: Promise<{repositoryId: string}>}) {
+  const {repositoryId} = use(params)
   const queryOptions = useQueryOptions()
-  const summary = useQuery(
-    queryOptions.getRepositorySummary(params.repositoryId),
-  )
-  const scans = useQuery(queryOptions.getRepositoryScans(params.repositoryId))
+  const summary = useQuery(queryOptions.getRepositorySummary(repositoryId))
+  const scans = useQuery(queryOptions.getRepositoryScans(repositoryId))
 
   return (
     <Stack spacing={2}>
