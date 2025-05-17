@@ -11,15 +11,22 @@ import parseSpdxExpression, {
 } from "spdx-expression-parse"
 import {z} from "zod"
 
-const validSBOMPackage = z.object({
+export const validSBOMPackage = z.object({
   SPDXID: z.string(),
   name: z.string(),
-  versionInfo: z.string().refine((it) => semver.valid(it), {
-    message: "Version info must be valid semver range",
-  }),
-  supplier: z.string(),
+  versionInfo: z.string().nullable().optional(),
+  supplier: z.string().nullable().optional(),
   licenseConcluded: z.string().nullable().optional(),
   licenseDeclared: z.string().nullable().optional(),
+  externalRefs: z
+    .array(
+      z.object({
+        referenceCategory: z.string(),
+        referenceType: z.string(),
+        referenceLocator: z.string(),
+      }),
+    )
+    .optional(),
 })
 
 export class SpdxDataLoader {
@@ -32,8 +39,13 @@ export class SpdxDataLoader {
     for await (const {repo, sbom} of this.github.allSboms(
       (it) => !it.fork && !it.archived,
     )) {
-      await this.load({name: repo.full_name, url: repo.url}, sbom)
-      console.info(`inserted sbom for ${repo.full_name}`)
+      try {
+        console.info(`loading sbom for ${repo.full_name}`)
+        await this.load({name: repo.full_name, url: repo.url}, sbom)
+        console.info(`inserted sbom for ${repo.full_name}`)
+      } catch (err) {
+        console.error(`failed to insert sbom for ${repo.full_name}`, err)
+      }
     }
   }
 
@@ -68,7 +80,13 @@ export class SpdxDataLoader {
     const validPackages = sbom.packages
       .map((it) => {
         const result = validSBOMPackage.safeParse(it)
-        return result.success ? result.data : undefined
+
+        if (result.success) {
+          return result.data
+        }
+
+        console.warn(`invalid package: ${JSON.stringify(it)}`)
+        return undefined
       })
       .filter(isDefined)
 
@@ -128,8 +146,8 @@ export class SpdxDataLoader {
           return {
             id: it.SPDXID,
             name: it.name,
-            version: it.versionInfo,
-            supplier: it.supplier,
+            version: it.versionInfo || null,
+            supplier: it.supplier || null,
             license_concluded_id: concludedId || null,
             license_declared_id: declaredId || null,
           }
@@ -142,7 +160,7 @@ export class SpdxDataLoader {
         this.database.repositoryRepository.associateDependencyWithRepositoryScan(
           scan.id,
           it.name,
-          it.versionInfo,
+          it.versionInfo || null,
         ),
       ),
     )

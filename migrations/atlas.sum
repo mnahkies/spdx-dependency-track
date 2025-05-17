@@ -1,5 +1,8 @@
-h1:6HWXMAdbEiN8UQ7WInafKnO+ZMIdO84srtXPsCnqVcI=
+h1:9dcx+EORG/z6UXgaSdP2lJuebZ0EUK9100IfVcCw+zs=
 20240413083732_initial-schema.sql h1:+jL4LJtkPsmGuL+hLefD5/JJRpUWZrSbvL53isLuHgk=
 20240420163743_add-repository-scan.sql h1:w4jFPx6AnmkxcxpCkJe388vqFSp/+LjyJSngTSZaffc=
 20240421113048_add-indexes.sql h1:bXrNiWY+bZ4NzmKDbwVRldPaoO7oqxS0BcC25H7AOj8=
 20250517091157_add-tz-columns.sql h1:88PmYZA3IB+/Xe6vkM1QohMYMK7xnlmxu+uTn1/LAg0=
+20250517102510_nullable-supplier.sql h1:P9zxDvAdfmdZ/9bo6tLiBNZCs3S3hOEOeKK5+GMVK/0=
+20250517111341_nullable-version.sql h1:2e9aufBbhMevEfzfH4Hyi+04h8UpiL9a8RJ65YzU8gg=
+20250517111707_nullable-version.sql h1:deCrzCxKXoH+o79mRLBmkZe9ZtCKiKTZ1O4NM3jtvP4=
