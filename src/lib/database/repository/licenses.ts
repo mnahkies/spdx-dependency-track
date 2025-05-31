@@ -1,4 +1,7 @@
-import {aliased, projection, t} from "@/generated/database/generated"
+import {
+  insertLicenseGroup,
+  type insertLicenseGroupParams,
+} from "@/generated/database/generated"
 import type {t_License} from "@/generated/models"
 import {type Sqlite, sql} from "@/lib/database/sqlite"
 import {z} from "zod"
@@ -32,18 +35,17 @@ export class LicenseRepository {
   }
 
   async insertLicenseGroups(
-    licenseGroups: z.infer<typeof t.license_groups>[],
+    licenseGroups: insertLicenseGroupParams[],
   ): Promise<void> {
     await Promise.all(licenseGroups.map((it) => this.insertLicenseGroup(it)))
   }
 
   private async insertLicenseGroup(
-    licenseGroup: z.infer<typeof t.license_groups>,
+    licenseGroup: insertLicenseGroupParams,
   ): Promise<void> {
-    await this.sqlite.run(sql(z.unknown())`
-      INSERT INTO license_groups(id, name, risk)
-      VALUES (${licenseGroup.id}, ${licenseGroup.name}, ${licenseGroup.risk})
-      ON CONFLICT DO NOTHING`)
+    return await this.sqlite.transaction(async (trx) =>
+      insertLicenseGroup(trx, licenseGroup),
+    )
   }
 
   async associateLicenseWithGroup(

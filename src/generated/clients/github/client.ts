@@ -749,7 +749,7 @@ import {
 export class GitHubV3RestApiServersOperations {
   static reposUploadReleaseAsset(
     url: "https://uploads.github.com" = "https://uploads.github.com",
-  ): { build: () => Server<"reposUploadReleaseAsset_GitHubV3RestApi"> } {
+  ): {build: () => Server<"reposUploadReleaseAsset_GitHubV3RestApi">} {
     switch (url) {
       case "https://uploads.github.com":
         return {
@@ -804,7 +804,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesListGlobalAdvisories(
@@ -869,11 +869,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       sort: p["sort"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesGetGlobalAdvisory(
@@ -886,7 +882,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/advisories/${p["ghsaId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsGetAuthenticated(
@@ -896,7 +892,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/app`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsCreateFromManifest(
@@ -913,7 +909,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/app-manifests/${p["code"]}/conversions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async appsGetWebhookConfigForApp(
@@ -923,7 +919,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/app/hook/config`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsUpdateWebhookConfigForApp(
@@ -935,16 +931,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_webhook_config>> {
     const url = this.basePath + `/app/hook/config`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async appsListWebhookDeliveries(
@@ -961,13 +953,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/app/hook/deliveries`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], cursor: p["cursor"] })
+    const query = this._query({per_page: p["perPage"], cursor: p["cursor"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsGetWebhookDelivery(
@@ -984,7 +972,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/app/hook/deliveries/${p["deliveryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsRedeliverWebhookDelivery(
@@ -1002,7 +990,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/app/hook/deliveries/${p["deliveryId"]}/attempts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async appsListInstallationRequestsForAuthenticatedApp(
@@ -1019,13 +1007,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/app/installation-requests`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListInstallations(
@@ -1047,11 +1031,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       outdated: p["outdated"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsGetInstallation(
@@ -1064,7 +1044,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/app/installations/${p["installationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsDeleteInstallation(
@@ -1077,7 +1057,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/app/installations/${p["installationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async appsCreateInstallationAccessToken(
@@ -1097,12 +1077,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/app/installations/${p["installationId"]}/access_tokens`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async appsSuspendInstallation(
@@ -1116,7 +1096,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/app/installations/${p["installationId"]}/suspended`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async appsUnsuspendInstallation(
@@ -1130,7 +1110,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/app/installations/${p["installationId"]}/suspended`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async appsDeleteAuthorization(
@@ -1143,16 +1123,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<204, void> | Res<422, t_validation_error>> {
     const url = this.basePath + `/applications/${p["clientId"]}/grant`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async appsCheckToken(
@@ -1169,12 +1145,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/applications/${p["clientId"]}/token`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async appsResetToken(
@@ -1187,16 +1163,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_authorization> | Res<422, t_validation_error>> {
     const url = this.basePath + `/applications/${p["clientId"]}/token`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async appsDeleteToken(
@@ -1209,16 +1181,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<204, void> | Res<422, t_validation_error>> {
     const url = this.basePath + `/applications/${p["clientId"]}/token`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async appsScopeToken(
@@ -1237,12 +1205,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/applications/${p["clientId"]}/token/scoped`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async appsGetBySlug(
@@ -1257,7 +1225,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/apps/${p["appSlug"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async classroomGetAnAssignment(
@@ -1270,7 +1238,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/assignments/${p["assignmentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async classroomListAcceptedAssignmentsForAnAssignment(
@@ -1285,13 +1253,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/assignments/${p["assignmentId"]}/accepted_assignments`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async classroomGetAssignmentGrades(
@@ -1306,7 +1270,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/assignments/${p["assignmentId"]}/grades`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async classroomListClassrooms(
@@ -1319,13 +1283,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_classroom[]>> {
     const url = this.basePath + `/classrooms`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async classroomGetAClassroom(
@@ -1338,7 +1298,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/classrooms/${p["classroomId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async classroomListAssignmentsForAClassroom(
@@ -1352,13 +1312,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_classroom_assignment[]>> {
     const url = this.basePath + `/classrooms/${p["classroomId"]}/assignments`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codesOfConductGetAllCodesOfConduct(
@@ -1368,7 +1324,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/codes_of_conduct`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codesOfConductGetConductCode(
@@ -1383,7 +1339,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/codes_of_conduct/${p["key"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async credentialsRevoke(
@@ -1399,12 +1355,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/credentials/revoke`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async emojisGet(
@@ -1414,7 +1370,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/emojis`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityGetConfigurationsForEnterprise(
@@ -1441,11 +1397,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       after: p["after"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityCreateConfigurationForEnterprise(
@@ -1465,12 +1417,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/enterprises/${p["enterprise"]}/code-security/configurations`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codeSecurityGetDefaultConfigurationsForEnterprise(
@@ -1485,7 +1437,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/enterprises/${p["enterprise"]}/code-security/configurations/defaults`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityGetSingleConfigurationForEnterprise(
@@ -1506,7 +1458,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/enterprises/${p["enterprise"]}/code-security/configurations/${p["configurationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityUpdateEnterpriseConfiguration(
@@ -1528,16 +1480,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/enterprises/${p["enterprise"]}/code-security/configurations/${p["configurationId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async codeSecurityDeleteConfigurationForEnterprise(
@@ -1559,7 +1507,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/enterprises/${p["enterprise"]}/code-security/configurations/${p["configurationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codeSecurityAttachEnterpriseConfiguration(
@@ -1580,12 +1528,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/enterprises/${p["enterprise"]}/code-security/configurations/${p["configurationId"]}/attach`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codeSecuritySetConfigurationAsDefaultForEnterprise(
@@ -1608,12 +1556,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/enterprises/${p["enterprise"]}/code-security/configurations/${p["configurationId"]}/defaults`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codeSecurityGetRepositoriesForEnterpriseConfiguration(
@@ -1643,11 +1591,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       status: p["status"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotListAlertsForEnterprise(
@@ -1697,11 +1641,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async secretScanningListAlertsForEnterprise(
@@ -1743,11 +1683,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       is_multi_repo: p["isMultiRepo"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListPublicEvents(
@@ -1765,13 +1701,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityGetFeeds(
@@ -1781,7 +1713,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/feeds`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsList(
@@ -1803,11 +1735,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsCreate(
@@ -1825,12 +1753,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/gists`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gistsListPublic(
@@ -1855,11 +1783,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsListStarred(
@@ -1884,11 +1808,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsGet(
@@ -1906,7 +1826,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gists/${p["gistId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsUpdate(
@@ -1923,16 +1843,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/gists/${p["gistId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async gistsDelete(
@@ -1950,7 +1866,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gists/${p["gistId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async gistsListComments(
@@ -1969,13 +1885,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/gists/${p["gistId"]}/comments`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsCreateComment(
@@ -1993,12 +1905,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/gists/${p["gistId"]}/comments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gistsGetComment(
@@ -2018,7 +1930,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/gists/${p["gistId"]}/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsUpdateComment(
@@ -2033,16 +1945,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/gists/${p["gistId"]}/comments/${p["commentId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async gistsDeleteComment(
@@ -2062,7 +1970,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/gists/${p["gistId"]}/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async gistsListCommits(
@@ -2081,13 +1989,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/gists/${p["gistId"]}/commits`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsListForks(
@@ -2106,13 +2010,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/gists/${p["gistId"]}/forks`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsFork(
@@ -2131,7 +2031,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gists/${p["gistId"]}/forks`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async gistsCheckIsStarred(
@@ -2149,7 +2049,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gists/${p["gistId"]}/star`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsStar(
@@ -2167,7 +2067,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gists/${p["gistId"]}/star`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async gistsUnstar(
@@ -2185,7 +2085,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gists/${p["gistId"]}/star`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async gistsGetRevision(
@@ -2204,7 +2104,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gists/${p["gistId"]}/${p["sha"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gitignoreGetAllTemplates(
@@ -2214,7 +2114,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gitignore/templates`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gitignoreGetTemplate(
@@ -2227,7 +2127,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/gitignore/templates/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListReposAccessibleToInstallation(
@@ -2245,13 +2145,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/installation/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsRevokeInstallationAccessToken(
@@ -2261,7 +2157,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/installation/token`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesList(
@@ -2311,11 +2207,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async licensesGetAllCommonlyUsed(
@@ -2335,11 +2227,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async licensesGet(
@@ -2357,7 +2245,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/licenses/${p["license"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async markdownRender(
@@ -2369,12 +2257,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, string> | Res<304, void>> {
     const url = this.basePath + `/markdown`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async markdownRenderRaw(
@@ -2385,13 +2273,10 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     opts: RequestInit = {},
   ): Promise<Res<200, string> | Res<304, void>> {
     const url = this.basePath + `/markdown/raw`
-    const headers = this._headers(
-      { "Content-Type": "text/plain" },
-      opts.headers,
-    )
+    const headers = this._headers({"Content-Type": "text/plain"}, opts.headers)
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async appsGetSubscriptionPlanForAccount(
@@ -2409,7 +2294,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/marketplace_listing/accounts/${p["accountId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListPlans(
@@ -2426,13 +2311,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/marketplace_listing/plans`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListAccountsForPlan(
@@ -2461,11 +2342,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsGetSubscriptionPlanForAccountStubbed(
@@ -2481,7 +2358,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/marketplace_listing/stubbed/accounts/${p["accountId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListPlansStubbed(
@@ -2494,13 +2371,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_marketplace_listing_plan[]> | Res<401, t_basic_error>> {
     const url = this.basePath + `/marketplace_listing/stubbed/plans`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListAccountsForPlanStubbed(
@@ -2525,11 +2398,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async metaGet(
@@ -2539,7 +2408,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/meta`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListPublicEventsForRepoNetwork(
@@ -2560,13 +2429,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/networks/${p["owner"]}/${p["repo"]}/events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListNotificationsForAuthenticatedUser(
@@ -2598,11 +2463,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityMarkNotificationsAsRead(
@@ -2620,12 +2481,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/notifications`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async activityGetThread(
@@ -2643,7 +2504,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/notifications/threads/${p["threadId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityMarkThreadAsRead(
@@ -2656,7 +2517,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/notifications/threads/${p["threadId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PATCH", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PATCH", ...opts, headers}, timeout)
   }
 
   async activityMarkThreadAsDone(
@@ -2669,7 +2530,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/notifications/threads/${p["threadId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async activityGetThreadSubscriptionForAuthenticatedUser(
@@ -2688,7 +2549,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/notifications/threads/${p["threadId"]}/subscription`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activitySetThreadSubscription(
@@ -2707,12 +2568,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/notifications/threads/${p["threadId"]}/subscription`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async activityDeleteThreadSubscription(
@@ -2731,7 +2592,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/notifications/threads/${p["threadId"]}/subscription`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async metaGetOctocat(
@@ -2743,13 +2604,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, string>> {
     const url = this.basePath + `/octocat`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ s: p["s"] })
+    const query = this._query({s: p["s"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsList(
@@ -2762,13 +2619,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_organization_simple[]> | Res<304, void>> {
     const url = this.basePath + `/organizations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ since: p["since"], per_page: p["perPage"] })
+    const query = this._query({since: p["since"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async billingGetGithubBillingUsageReportOrg(
@@ -2798,11 +2651,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       hour: p["hour"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsGet(
@@ -2815,7 +2664,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsUpdate(
@@ -2832,16 +2681,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async orgsDelete(
@@ -2858,7 +2703,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsGetActionsCacheUsageForOrg(
@@ -2871,7 +2716,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/actions/cache/usage`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetActionsCacheUsageByRepoForOrg(
@@ -2888,13 +2733,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/cache/usage-by-repository`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsListHostedRunnersForOrg(
@@ -2908,13 +2749,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_actionsListHostedRunnersForOrgJson200Response>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/hosted-runners`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateHostedRunnerForOrg(
@@ -2927,12 +2764,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_actions_hosted_runner>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/hosted-runners`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsGetHostedRunnersGithubOwnedImagesForOrg(
@@ -2949,7 +2786,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/hosted-runners/images/github-owned`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetHostedRunnersPartnerImagesForOrg(
@@ -2965,7 +2802,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/hosted-runners/images/partner`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetHostedRunnersLimitsForOrg(
@@ -2979,7 +2816,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/hosted-runners/limits`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetHostedRunnersMachineSpecsForOrg(
@@ -2995,7 +2832,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/hosted-runners/machine-sizes`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetHostedRunnersPlatformsForOrg(
@@ -3011,7 +2848,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/hosted-runners/platforms`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetHostedRunnerForOrg(
@@ -3027,7 +2864,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/hosted-runners/${p["hostedRunnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsUpdateHostedRunnerForOrg(
@@ -3043,16 +2880,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/hosted-runners/${p["hostedRunnerId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteHostedRunnerForOrg(
@@ -3068,7 +2901,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/hosted-runners/${p["hostedRunnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async oidcGetOidcCustomSubTemplateForOrg(
@@ -3082,7 +2915,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/oidc/customization/sub`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async oidcUpdateOidcCustomSubTemplateForOrg(
@@ -3098,12 +2931,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/oidc/customization/sub`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsGetGithubActionsPermissionsOrganization(
@@ -3116,7 +2949,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/actions/permissions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetGithubActionsPermissionsOrganization(
@@ -3129,12 +2962,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<204, void>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/permissions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsListSelectedRepositoriesEnabledGithubActionsOrganization(
@@ -3154,13 +2987,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/permissions/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
@@ -3174,12 +3003,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/permissions/repositories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsEnableSelectedRepositoryGithubActionsOrganization(
@@ -3195,7 +3024,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/permissions/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async actionsDisableSelectedRepositoryGithubActionsOrganization(
@@ -3211,7 +3040,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/permissions/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsGetAllowedActionsOrganization(
@@ -3225,7 +3054,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/permissions/selected-actions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetAllowedActionsOrganization(
@@ -3239,12 +3068,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/permissions/selected-actions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsGetGithubActionsDefaultWorkflowPermissionsOrganization(
@@ -3257,7 +3086,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/actions/permissions/workflow`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetGithubActionsDefaultWorkflowPermissionsOrganization(
@@ -3270,12 +3099,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<204, void>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/permissions/workflow`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsListSelfHostedRunnerGroupsForOrg(
@@ -3298,11 +3127,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       visible_to_repository: p["visibleToRepository"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateSelfHostedRunnerGroupForOrg(
@@ -3315,12 +3140,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_runner_groups_org>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/runner-groups`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsGetSelfHostedRunnerGroupForOrg(
@@ -3336,7 +3161,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsUpdateSelfHostedRunnerGroupForOrg(
@@ -3352,16 +3177,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteSelfHostedRunnerGroupFromOrg(
@@ -3377,7 +3198,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListGithubHostedRunnersInGroupForOrg(
@@ -3396,13 +3217,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/hosted-runners`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsListRepoAccessToSelfHostedRunnerGroupInOrg(
@@ -3421,13 +3238,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetRepoAccessToSelfHostedRunnerGroupInOrg(
@@ -3443,12 +3256,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/repositories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsAddRepoAccessToSelfHostedRunnerGroupInOrg(
@@ -3465,7 +3278,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async actionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(
@@ -3482,7 +3295,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListSelfHostedRunnersInGroupForOrg(
@@ -3501,13 +3314,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/runners`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetSelfHostedRunnersInGroupForOrg(
@@ -3523,12 +3332,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/runners`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsAddSelfHostedRunnerToGroupForOrg(
@@ -3545,7 +3354,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/runners/${p["runnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async actionsRemoveSelfHostedRunnerFromGroupForOrg(
@@ -3562,7 +3371,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runner-groups/${p["runnerGroupId"]}/runners/${p["runnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListSelfHostedRunnersForOrg(
@@ -3583,11 +3392,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsListRunnerApplicationsForOrg(
@@ -3600,7 +3405,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/actions/runners/downloads`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGenerateRunnerJitconfigForOrg(
@@ -3619,12 +3424,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/runners/generate-jitconfig`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsCreateRegistrationTokenForOrg(
@@ -3638,7 +3443,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/runners/registration-token`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async actionsCreateRemoveTokenForOrg(
@@ -3651,7 +3456,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/actions/runners/remove-token`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async actionsGetSelfHostedRunnerForOrg(
@@ -3666,7 +3471,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDeleteSelfHostedRunnerFromOrg(
@@ -3681,7 +3486,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListLabelsForSelfHostedRunnerForOrg(
@@ -3700,7 +3505,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsAddCustomLabelsToSelfHostedRunnerForOrg(
@@ -3720,12 +3525,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsSetCustomLabelsForSelfHostedRunnerForOrg(
@@ -3745,12 +3550,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg(
@@ -3772,7 +3577,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsRemoveCustomLabelFromSelfHostedRunnerForOrg(
@@ -3796,7 +3601,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/runners/${p["runnerId"]}/labels/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListOrgSecrets(
@@ -3810,13 +3615,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_actionsListOrgSecretsJson200Response>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetOrgPublicKey(
@@ -3829,7 +3630,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/actions/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetOrgSecret(
@@ -3844,7 +3645,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateOrUpdateOrgSecret(
@@ -3859,12 +3660,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteOrgSecret(
@@ -3879,7 +3680,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListSelectedReposForOrgSecret(
@@ -3896,13 +3697,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/secrets/${p["secretName"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetSelectedReposForOrgSecret(
@@ -3918,12 +3715,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/secrets/${p["secretName"]}/repositories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsAddSelectedRepoToOrgSecret(
@@ -3940,7 +3737,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async actionsRemoveSelectedRepoFromOrgSecret(
@@ -3957,7 +3754,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListOrgVariables(
@@ -3971,13 +3768,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_actionsListOrgVariablesJson200Response>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/variables`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateOrgVariable(
@@ -3990,12 +3783,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_empty_object>> {
     const url = this.basePath + `/orgs/${p["org"]}/actions/variables`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsGetOrgVariable(
@@ -4010,7 +3803,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/variables/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsUpdateOrgVariable(
@@ -4025,16 +3818,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/actions/variables/${p["name"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteOrgVariable(
@@ -4049,7 +3838,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/actions/variables/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListSelectedReposForOrgVariable(
@@ -4069,13 +3858,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/variables/${p["name"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetSelectedReposForOrgVariable(
@@ -4091,12 +3876,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/actions/variables/${p["name"]}/repositories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsAddSelectedRepoToOrgVariable(
@@ -4113,7 +3898,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/variables/${p["name"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async actionsRemoveSelectedRepoFromOrgVariable(
@@ -4130,7 +3915,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/actions/variables/${p["name"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsListAttestations(
@@ -4155,11 +3940,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       predicate_type: p["predicateType"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListBlockedUsers(
@@ -4173,13 +3954,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_user[]>> {
     const url = this.basePath + `/orgs/${p["org"]}/blocks`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCheckBlockedUser(
@@ -4193,7 +3970,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/blocks/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsBlockUser(
@@ -4207,7 +3984,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/blocks/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async orgsUnblockUser(
@@ -4221,7 +3998,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/blocks/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async campaignsListOrgCampaigns(
@@ -4255,11 +4032,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       sort: p["sort"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async campaignsCreateCampaign(
@@ -4279,12 +4052,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/campaigns`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async campaignsGetCampaignSummary(
@@ -4304,7 +4077,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/campaigns/${p["campaignNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async campaignsUpdateCampaign(
@@ -4325,16 +4098,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/campaigns/${p["campaignNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async campaignsDeleteCampaign(
@@ -4353,7 +4122,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/campaigns/${p["campaignNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codeScanningListAlertsForOrg(
@@ -4392,11 +4161,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       severity: p["severity"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityGetConfigurationsForOrg(
@@ -4423,11 +4188,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       after: p["after"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityCreateConfiguration(
@@ -4440,12 +4201,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_code_security_configuration>> {
     const url = this.basePath + `/orgs/${p["org"]}/code-security/configurations`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codeSecurityGetDefaultConfigurations(
@@ -4464,7 +4225,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/code-security/configurations/defaults`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityDetachConfiguration(
@@ -4484,16 +4245,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/code-security/configurations/detach`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async codeSecurityGetConfiguration(
@@ -4514,7 +4271,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/code-security/configurations/${p["configurationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityUpdateConfiguration(
@@ -4530,16 +4287,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/code-security/configurations/${p["configurationId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async codeSecurityDeleteConfiguration(
@@ -4561,7 +4314,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/code-security/configurations/${p["configurationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codeSecurityAttachConfiguration(
@@ -4577,12 +4330,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/code-security/configurations/${p["configurationId"]}/attach`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codeSecuritySetConfigurationAsDefault(
@@ -4602,12 +4355,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/code-security/configurations/${p["configurationId"]}/defaults`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codeSecurityGetRepositoriesForConfiguration(
@@ -4637,11 +4390,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       status: p["status"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesListInOrganization(
@@ -4662,13 +4411,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/codespaces`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesSetCodespacesAccess(
@@ -4688,12 +4433,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/codespaces/access`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codespacesSetCodespacesAccessUsers(
@@ -4714,12 +4459,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/codespaces/access/selected_users`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codespacesDeleteCodespacesAccessUsers(
@@ -4740,16 +4485,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/codespaces/access/selected_users`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async codespacesListOrgSecrets(
@@ -4763,13 +4504,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_codespacesListOrgSecretsJson200Response>> {
     const url = this.basePath + `/orgs/${p["org"]}/codespaces/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesGetOrgPublicKey(
@@ -4783,7 +4520,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/codespaces/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesGetOrgSecret(
@@ -4798,7 +4535,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesCreateOrUpdateOrgSecret(
@@ -4818,12 +4555,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codespacesDeleteOrgSecret(
@@ -4838,7 +4575,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codespacesListSelectedReposForOrgSecret(
@@ -4858,13 +4595,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/codespaces/secrets/${p["secretName"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesSetSelectedReposForOrgSecret(
@@ -4880,12 +4613,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/codespaces/secrets/${p["secretName"]}/repositories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codespacesAddSelectedRepoToOrgSecret(
@@ -4907,7 +4640,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/codespaces/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async codespacesRemoveSelectedRepoFromOrgSecret(
@@ -4929,7 +4662,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/codespaces/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async copilotGetCopilotOrganizationDetails(
@@ -4949,7 +4682,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/copilot/billing`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async copilotListCopilotSeats(
@@ -4969,13 +4702,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/copilot/billing/seats`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async copilotAddCopilotSeatsForTeams(
@@ -4996,12 +4725,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/copilot/billing/selected_teams`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async copilotCancelCopilotSeatAssignmentForTeams(
@@ -5022,16 +4751,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/copilot/billing/selected_teams`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async copilotAddCopilotSeatsForUsers(
@@ -5052,12 +4777,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/copilot/billing/selected_users`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async copilotCancelCopilotSeatAssignmentForUsers(
@@ -5078,16 +4803,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/copilot/billing/selected_users`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async copilotCopilotMetricsForOrganization(
@@ -5116,11 +4837,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotListAlertsForOrg(
@@ -5170,11 +4887,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotListOrgSecrets(
@@ -5188,13 +4901,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_dependabotListOrgSecretsJson200Response>> {
     const url = this.basePath + `/orgs/${p["org"]}/dependabot/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotGetOrgPublicKey(
@@ -5208,7 +4917,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/dependabot/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotGetOrgSecret(
@@ -5223,7 +4932,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/dependabot/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotCreateOrUpdateOrgSecret(
@@ -5238,12 +4947,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/dependabot/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async dependabotDeleteOrgSecret(
@@ -5258,7 +4967,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/dependabot/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async dependabotListSelectedReposForOrgSecret(
@@ -5277,13 +4986,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/dependabot/secrets/${p["secretName"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotSetSelectedReposForOrgSecret(
@@ -5299,12 +5004,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/dependabot/secrets/${p["secretName"]}/repositories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async dependabotAddSelectedRepoToOrgSecret(
@@ -5321,7 +5026,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/dependabot/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async dependabotRemoveSelectedRepoFromOrgSecret(
@@ -5338,7 +5043,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/dependabot/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesListDockerMigrationConflictingPackagesForOrganization(
@@ -5353,7 +5058,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/docker/conflicts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListPublicOrgEvents(
@@ -5367,13 +5072,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_event[]>> {
     const url = this.basePath + `/orgs/${p["org"]}/events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListFailedInvitations(
@@ -5387,13 +5088,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_organization_invitation[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/orgs/${p["org"]}/failed_invitations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListWebhooks(
@@ -5407,13 +5104,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_org_hook[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/orgs/${p["org"]}/hooks`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCreateWebhook(
@@ -5430,12 +5123,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/hooks`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsGetWebhook(
@@ -5449,7 +5142,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/hooks/${p["hookId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsUpdateWebhook(
@@ -5467,16 +5160,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/hooks/${p["hookId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async orgsDeleteWebhook(
@@ -5490,7 +5179,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/hooks/${p["hookId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsGetWebhookConfigForOrg(
@@ -5504,7 +5193,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/hooks/${p["hookId"]}/config`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsUpdateWebhookConfigForOrg(
@@ -5518,16 +5207,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_webhook_config>> {
     const url = this.basePath + `/orgs/${p["org"]}/hooks/${p["hookId"]}/config`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async orgsListWebhookDeliveries(
@@ -5547,13 +5232,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/hooks/${p["hookId"]}/deliveries`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], cursor: p["cursor"] })
+    const query = this._query({per_page: p["perPage"], cursor: p["cursor"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsGetWebhookDelivery(
@@ -5574,7 +5255,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/hooks/${p["hookId"]}/deliveries/${p["deliveryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsRedeliverWebhookDelivery(
@@ -5595,7 +5276,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/hooks/${p["hookId"]}/deliveries/${p["deliveryId"]}/attempts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async orgsPingWebhook(
@@ -5609,7 +5290,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/hooks/${p["hookId"]}/pings`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetRouteStatsByActor(
@@ -5656,11 +5337,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       api_route_substring: p["apiRouteSubstring"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetSubjectStats(
@@ -5696,11 +5373,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       subject_name_substring: p["subjectNameSubstring"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetSummaryStats(
@@ -5719,11 +5392,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       max_timestamp: p["maxTimestamp"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetSummaryStatsByUser(
@@ -5745,11 +5414,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       max_timestamp: p["maxTimestamp"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetSummaryStatsByActor(
@@ -5778,11 +5443,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       max_timestamp: p["maxTimestamp"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetTimeStats(
@@ -5803,11 +5464,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       timestamp_increment: p["timestampIncrement"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetTimeStatsByUser(
@@ -5831,11 +5488,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       timestamp_increment: p["timestampIncrement"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetTimeStatsByActor(
@@ -5866,11 +5519,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       timestamp_increment: p["timestampIncrement"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async apiInsightsGetUserStats(
@@ -5908,11 +5557,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       actor_name_substring: p["actorNameSubstring"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsGetOrgInstallation(
@@ -5925,7 +5570,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/installation`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListAppInstallations(
@@ -5939,13 +5584,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_orgsListAppInstallationsJson200Response>> {
     const url = this.basePath + `/orgs/${p["org"]}/installations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async interactionsGetRestrictionsForOrg(
@@ -5958,7 +5599,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/interaction-limits`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async interactionsSetRestrictionsForOrg(
@@ -5973,12 +5614,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/interaction-limits`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async interactionsRemoveRestrictionsForOrg(
@@ -5991,7 +5632,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/interaction-limits`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsListPendingInvitations(
@@ -6020,11 +5661,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       invitation_source: p["invitationSource"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCreateInvitation(
@@ -6041,12 +5678,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/invitations`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsCancelInvitation(
@@ -6063,7 +5700,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/invitations/${p["invitationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsListInvitationTeams(
@@ -6079,13 +5716,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/invitations/${p["invitationId"]}/teams`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListIssueTypes(
@@ -6098,7 +5731,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/issue-types`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCreateIssueType(
@@ -6115,12 +5748,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/issue-types`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsUpdateIssueType(
@@ -6139,12 +5772,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/issue-types/${p["issueTypeId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async orgsDeleteIssueType(
@@ -6163,7 +5796,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/issue-types/${p["issueTypeId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesListForOrg(
@@ -6203,11 +5836,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListMembers(
@@ -6230,11 +5859,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCheckMembershipForUser(
@@ -6248,7 +5873,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsRemoveMember(
@@ -6262,7 +5887,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codespacesGetCodespacesForUserInOrg(
@@ -6285,13 +5910,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/members/${p["username"]}/codespaces`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesDeleteFromOrganization(
@@ -6315,7 +5936,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/members/${p["username"]}/codespaces/${p["codespaceName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codespacesStopInOrganization(
@@ -6339,7 +5960,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/members/${p["username"]}/codespaces/${p["codespaceName"]}/stop`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async copilotGetCopilotSeatDetailsForUser(
@@ -6361,7 +5982,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/members/${p["username"]}/copilot`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsGetMembershipForUser(
@@ -6379,7 +6000,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/memberships/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsSetMembershipForUser(
@@ -6397,12 +6018,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/memberships/${p["username"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async orgsRemoveMembershipForUser(
@@ -6418,7 +6039,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/memberships/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async migrationsListForOrg(
@@ -6439,11 +6060,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       exclude: p["exclude"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsStartForOrg(
@@ -6460,12 +6077,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/migrations`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async migrationsGetStatusForOrg(
@@ -6480,13 +6097,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/migrations/${p["migrationId"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ exclude: p["exclude"] })
+    const query = this._query({exclude: p["exclude"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsDownloadArchiveForOrg(
@@ -6501,7 +6114,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/migrations/${p["migrationId"]}/archive`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsDeleteArchiveForOrg(
@@ -6516,7 +6129,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/migrations/${p["migrationId"]}/archive`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async migrationsUnlockRepoForOrg(
@@ -6533,7 +6146,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/migrations/${p["migrationId"]}/repos/${p["repoName"]}/lock`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async migrationsListReposForOrg(
@@ -6550,13 +6163,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/migrations/${p["migrationId"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListOrgRoles(
@@ -6573,7 +6182,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/organization-roles`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsRevokeAllOrgRolesTeam(
@@ -6589,7 +6198,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/organization-roles/teams/${p["teamSlug"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsAssignTeamToOrgRole(
@@ -6606,7 +6215,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/organization-roles/teams/${p["teamSlug"]}/${p["roleId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async orgsRevokeOrgRoleTeam(
@@ -6623,7 +6232,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/organization-roles/teams/${p["teamSlug"]}/${p["roleId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsRevokeAllOrgRolesUser(
@@ -6639,7 +6248,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/organization-roles/users/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsAssignUserToOrgRole(
@@ -6656,7 +6265,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/organization-roles/users/${p["username"]}/${p["roleId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async orgsRevokeOrgRoleUser(
@@ -6673,7 +6282,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/organization-roles/users/${p["username"]}/${p["roleId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsGetOrgRole(
@@ -6692,7 +6301,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/organization-roles/${p["roleId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListOrgRoleTeams(
@@ -6711,13 +6320,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/organization-roles/${p["roleId"]}/teams`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListOrgRoleUsers(
@@ -6736,13 +6341,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/organization-roles/${p["roleId"]}/users`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListOutsideCollaborators(
@@ -6763,11 +6364,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsConvertMemberToOutsideCollaborator(
@@ -6787,12 +6384,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/outside_collaborators/${p["username"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async orgsRemoveOutsideCollaborator(
@@ -6809,7 +6406,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/outside_collaborators/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesListPackagesForOrganization(
@@ -6844,11 +6441,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesGetPackageForOrganization(
@@ -6872,7 +6465,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/packages/${p["packageType"]}/${p["packageName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesDeletePackageForOrg(
@@ -6901,7 +6494,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/packages/${p["packageType"]}/${p["packageName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesRestorePackageForOrg(
@@ -6930,13 +6523,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/packages/${p["packageType"]}/${p["packageName"]}/restore`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ token: p["token"] })
+    const query = this._query({token: p["token"]})
 
-    return this._fetch(
-      url + query,
-      { method: "POST", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "POST", ...opts, headers}, timeout)
   }
 
   async packagesGetAllPackageVersionsForPackageOwnedByOrg(
@@ -6973,11 +6562,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       state: p["state"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesGetPackageVersionForOrganization(
@@ -7002,7 +6587,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesDeletePackageVersionForOrg(
@@ -7032,7 +6617,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesRestorePackageVersionForOrg(
@@ -7062,7 +6647,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}/restore`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async orgsListPatGrantRequests(
@@ -7104,11 +6689,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       token_id: p["tokenId"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsReviewPatGrantRequestsInBulk(
@@ -7128,12 +6709,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/personal-access-token-requests`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsReviewPatGrantRequest(
@@ -7155,12 +6736,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/personal-access-token-requests/${p["patRequestId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsListPatGrantRequestRepositories(
@@ -7182,13 +6763,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/personal-access-token-requests/${p["patRequestId"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListPatGrants(
@@ -7229,11 +6806,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       token_id: p["tokenId"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsUpdatePatAccesses(
@@ -7252,12 +6825,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/personal-access-tokens`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsUpdatePatAccess(
@@ -7278,12 +6851,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/personal-access-tokens/${p["patId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsListPatGrantRepositories(
@@ -7305,13 +6878,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/personal-access-tokens/${p["patId"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async privateRegistriesListOrgPrivateRegistries(
@@ -7329,13 +6898,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/private-registries`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async privateRegistriesCreateOrgPrivateRegistry(
@@ -7352,12 +6917,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/private-registries`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async privateRegistriesGetOrgPublicKey(
@@ -7374,7 +6939,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/private-registries/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async privateRegistriesGetOrgPrivateRegistry(
@@ -7391,7 +6956,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/private-registries/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async privateRegistriesUpdateOrgPrivateRegistry(
@@ -7408,16 +6973,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/private-registries/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async privateRegistriesDeleteOrgPrivateRegistry(
@@ -7434,7 +6995,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/private-registries/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async projectsListForOrg(
@@ -7455,11 +7016,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsCreateForOrg(
@@ -7479,12 +7036,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/projects`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async orgsGetAllCustomProperties(
@@ -7501,7 +7058,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/properties/schema`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCreateOrUpdateCustomProperties(
@@ -7518,16 +7075,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/properties/schema`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async orgsGetCustomProperty(
@@ -7547,7 +7100,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/properties/schema/${p["customPropertyName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCreateOrUpdateCustomProperty(
@@ -7567,12 +7120,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/properties/schema/${p["customPropertyName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async orgsRemoveCustomProperty(
@@ -7590,7 +7143,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/properties/schema/${p["customPropertyName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsListCustomPropertiesValuesForRepos(
@@ -7615,11 +7168,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       repository_query: p["repositoryQuery"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCreateOrUpdateCustomPropertiesValuesForRepos(
@@ -7637,16 +7186,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/properties/values`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async orgsListPublicMembers(
@@ -7660,13 +7205,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_user[]>> {
     const url = this.basePath + `/orgs/${p["org"]}/public_members`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsCheckPublicMembershipForUser(
@@ -7681,7 +7222,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/public_members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsSetPublicMembershipForAuthenticatedUser(
@@ -7696,7 +7237,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/public_members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async orgsRemovePublicMembershipForAuthenticatedUser(
@@ -7711,7 +7252,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/public_members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListForOrg(
@@ -7748,11 +7289,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateInOrg(
@@ -7769,12 +7306,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/repos`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetOrgRulesets(
@@ -7799,11 +7336,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       targets: p["targets"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateOrgRuleset(
@@ -7820,12 +7353,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/rulesets`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetOrgRuleSuites(
@@ -7861,11 +7394,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetOrgRuleSuite(
@@ -7883,7 +7412,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/rulesets/rule-suites/${p["ruleSuiteId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetOrgRuleset(
@@ -7901,7 +7430,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/rulesets/${p["rulesetId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateOrgRuleset(
@@ -7919,12 +7448,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/rulesets/${p["rulesetId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteOrgRuleset(
@@ -7940,7 +7469,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/rulesets/${p["rulesetId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async orgsGetOrgRulesetHistory(
@@ -7960,13 +7489,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/rulesets/${p["rulesetId"]}/history`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsGetOrgRulesetVersion(
@@ -7987,7 +7512,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/rulesets/${p["rulesetId"]}/history/${p["versionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async secretScanningListAlertsForOrg(
@@ -8030,11 +7555,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       is_multi_repo: p["isMultiRepo"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesListOrgRepositoryAdvisories(
@@ -8070,11 +7591,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       state: p["state"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListSecurityManagerTeams(
@@ -8087,7 +7604,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/security-managers`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsAddSecurityManagerTeam(
@@ -8103,7 +7620,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/security-managers/teams/${p["teamSlug"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async orgsRemoveSecurityManagerTeam(
@@ -8119,7 +7636,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/security-managers/teams/${p["teamSlug"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async billingGetGithubActionsBillingOrg(
@@ -8132,7 +7649,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/settings/billing/actions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async billingGetGithubPackagesBillingOrg(
@@ -8145,7 +7662,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/settings/billing/packages`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async billingGetSharedStorageBillingOrg(
@@ -8159,7 +7676,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/orgs/${p["org"]}/settings/billing/shared-storage`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async hostedComputeListNetworkConfigurationsForOrg(
@@ -8176,13 +7693,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/settings/network-configurations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async hostedComputeCreateNetworkConfigurationForOrg(
@@ -8196,12 +7709,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/settings/network-configurations`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async hostedComputeGetNetworkConfigurationForOrg(
@@ -8217,7 +7730,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/settings/network-configurations/${p["networkConfigurationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async hostedComputeUpdateNetworkConfigurationForOrg(
@@ -8233,16 +7746,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/settings/network-configurations/${p["networkConfigurationId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async hostedComputeDeleteNetworkConfigurationFromOrg(
@@ -8258,7 +7767,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/settings/network-configurations/${p["networkConfigurationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async hostedComputeGetNetworkSettingsForOrg(
@@ -8274,7 +7783,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/settings/network-settings/${p["networkSettingsId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async copilotCopilotMetricsForTeam(
@@ -8305,11 +7814,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsList(
@@ -8323,13 +7828,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_team[]> | Res<403, t_basic_error>> {
     const url = this.basePath + `/orgs/${p["org"]}/teams`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCreate(
@@ -8346,12 +7847,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/teams`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async teamsGetByName(
@@ -8365,7 +7866,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsUpdateInOrg(
@@ -8385,16 +7886,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async teamsDeleteInOrg(
@@ -8408,7 +7905,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListDiscussionsInOrg(
@@ -8433,11 +7930,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       pinned: p["pinned"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCreateDiscussionInOrg(
@@ -8452,12 +7945,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async teamsGetDiscussionInOrg(
@@ -8474,7 +7967,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsUpdateDiscussionInOrg(
@@ -8491,16 +7984,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async teamsDeleteDiscussionInOrg(
@@ -8517,7 +8006,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListDiscussionCommentsInOrg(
@@ -8542,11 +8031,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCreateDiscussionCommentInOrg(
@@ -8563,12 +8048,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/comments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async teamsGetDiscussionCommentInOrg(
@@ -8586,7 +8071,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsUpdateDiscussionCommentInOrg(
@@ -8604,16 +8089,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async teamsDeleteDiscussionCommentInOrg(
@@ -8631,7 +8112,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reactionsListForTeamDiscussionCommentInOrg(
@@ -8666,11 +8147,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForTeamDiscussionCommentInOrg(
@@ -8688,12 +8165,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsDeleteForTeamDiscussionComment(
@@ -8712,7 +8189,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}/reactions/${p["reactionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reactionsListForTeamDiscussionInOrg(
@@ -8746,11 +8223,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForTeamDiscussionInOrg(
@@ -8767,12 +8240,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsDeleteForTeamDiscussion(
@@ -8790,7 +8263,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/discussions/${p["discussionNumber"]}/reactions/${p["reactionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListPendingInvitationsInOrg(
@@ -8806,13 +8279,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}/invitations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsListMembersInOrg(
@@ -8835,11 +8304,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsGetMembershipForUserInOrg(
@@ -8856,7 +8321,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/memberships/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsAddOrUpdateMembershipForUserInOrg(
@@ -8873,12 +8338,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/memberships/${p["username"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async teamsRemoveMembershipForUserInOrg(
@@ -8895,7 +8360,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/memberships/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListProjectsInOrg(
@@ -8911,13 +8376,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}/projects`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCheckPermissionsForProjectInOrg(
@@ -8934,7 +8395,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/projects/${p["projectId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsAddOrUpdateProjectPermissionsInOrg(
@@ -8954,12 +8415,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/projects/${p["projectId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async teamsRemoveProjectInOrg(
@@ -8976,7 +8437,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/projects/${p["projectId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListReposInOrg(
@@ -8991,13 +8452,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_minimal_repository[]>> {
     const url = this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}/repos`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCheckPermissionsForRepoInOrg(
@@ -9015,7 +8472,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsAddOrUpdateRepoPermissionsInOrg(
@@ -9033,12 +8490,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async teamsRemoveRepoInOrg(
@@ -9056,7 +8513,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/orgs/${p["org"]}/teams/${p["teamSlug"]}/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListChildInOrg(
@@ -9071,13 +8528,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_team[]>> {
     const url = this.basePath + `/orgs/${p["org"]}/teams/${p["teamSlug"]}/teams`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsEnableOrDisableSecurityProductOnAllOrgRepos(
@@ -9102,12 +8555,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/orgs/${p["org"]}/${p["securityProduct"]}/${p["enablement"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async projectsGetCard(
@@ -9126,7 +8579,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/projects/columns/cards/${p["cardId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsUpdateCard(
@@ -9146,16 +8599,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/columns/cards/${p["cardId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async projectsDeleteCard(
@@ -9174,7 +8623,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/projects/columns/cards/${p["cardId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async projectsMoveCard(
@@ -9194,12 +8643,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/columns/cards/${p["cardId"]}/moves`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async projectsGetColumn(
@@ -9218,7 +8667,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/projects/columns/${p["columnId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsUpdateColumn(
@@ -9236,16 +8685,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/columns/${p["columnId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async projectsDeleteColumn(
@@ -9263,7 +8708,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/projects/columns/${p["columnId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async projectsListCards(
@@ -9293,11 +8738,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsCreateCard(
@@ -9317,12 +8758,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/columns/${p["columnId"]}/cards`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async projectsMoveColumn(
@@ -9341,12 +8782,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/columns/${p["columnId"]}/moves`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async projectsGet(
@@ -9364,7 +8805,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/projects/${p["projectId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsUpdate(
@@ -9385,16 +8826,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/${p["projectId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async projectsDelete(
@@ -9414,7 +8851,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/projects/${p["projectId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async projectsListCollaborators(
@@ -9442,11 +8879,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsAddCollaborator(
@@ -9469,12 +8902,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/projects/${p["projectId"]}/collaborators/${p["username"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async projectsRemoveCollaborator(
@@ -9497,7 +8930,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/projects/${p["projectId"]}/collaborators/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async projectsGetPermissionForUser(
@@ -9520,7 +8953,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/projects/${p["projectId"]}/collaborators/${p["username"]}/permission`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsListColumns(
@@ -9539,13 +8972,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/${p["projectId"]}/columns`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsCreateColumn(
@@ -9564,12 +8993,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/projects/${p["projectId"]}/columns`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async rateLimitGet(
@@ -9581,7 +9010,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/rate_limit`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGet(
@@ -9600,7 +9029,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdate(
@@ -9620,16 +9049,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposDelete(
@@ -9649,7 +9074,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListArtifactsForRepo(
@@ -9672,11 +9097,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       name: p["name"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetArtifact(
@@ -9693,7 +9114,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/artifacts/${p["artifactId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDeleteArtifact(
@@ -9710,7 +9131,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/artifacts/${p["artifactId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsDownloadArtifact(
@@ -9728,7 +9149,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/artifacts/${p["artifactId"]}/${p["archiveFormat"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetActionsCacheUsage(
@@ -9743,7 +9164,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/cache/usage`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetActionsCacheList(
@@ -9776,11 +9197,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       direction: p["direction"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDeleteActionsCacheByKey(
@@ -9796,11 +9213,11 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/caches`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ key: p["key"], ref: p["ref"] })
+    const query = this._query({key: p["key"], ref: p["ref"]})
 
     return this._fetch(
       url + query,
-      { method: "DELETE", ...opts, headers },
+      {method: "DELETE", ...opts, headers},
       timeout,
     )
   }
@@ -9819,7 +9236,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/caches/${p["cacheId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsGetJobForWorkflowRun(
@@ -9836,7 +9253,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/jobs/${p["jobId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDownloadJobLogsForWorkflowRun(
@@ -9853,7 +9270,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/jobs/${p["jobId"]}/logs`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsReRunJobForWorkflowRun(
@@ -9870,12 +9287,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/jobs/${p["jobId"]}/rerun`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsGetCustomOidcSubClaimForRepo(
@@ -9895,7 +9312,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/oidc/customization/sub`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetCustomOidcSubClaimForRepo(
@@ -9916,12 +9333,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/oidc/customization/sub`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsListRepoOrganizationSecrets(
@@ -9938,13 +9355,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/organization-secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsListRepoOrganizationVariables(
@@ -9961,13 +9374,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/organization-variables`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetGithubActionsPermissionsRepository(
@@ -9982,7 +9391,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/permissions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetGithubActionsPermissionsRepository(
@@ -9997,12 +9406,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/permissions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsGetWorkflowAccessToRepository(
@@ -10018,7 +9427,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/permissions/access`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetWorkflowAccessToRepository(
@@ -10034,12 +9443,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/permissions/access`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsGetAllowedActionsRepository(
@@ -10055,7 +9464,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/permissions/selected-actions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetAllowedActionsRepository(
@@ -10071,12 +9480,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/permissions/selected-actions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsGetGithubActionsDefaultWorkflowPermissionsRepository(
@@ -10092,7 +9501,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/permissions/workflow`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsSetGithubActionsDefaultWorkflowPermissionsRepository(
@@ -10108,12 +9517,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/permissions/workflow`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsListSelfHostedRunnersForRepo(
@@ -10136,11 +9545,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsListRunnerApplicationsForRepo(
@@ -10156,7 +9561,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/downloads`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGenerateRunnerJitconfigForRepo(
@@ -10177,12 +9582,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/generate-jitconfig`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsCreateRegistrationTokenForRepo(
@@ -10198,7 +9603,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/registration-token`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async actionsCreateRemoveTokenForRepo(
@@ -10214,7 +9619,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/remove-token`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async actionsGetSelfHostedRunnerForRepo(
@@ -10231,7 +9636,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDeleteSelfHostedRunnerFromRepo(
@@ -10248,7 +9653,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListLabelsForSelfHostedRunnerForRepo(
@@ -10268,7 +9673,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsAddCustomLabelsToSelfHostedRunnerForRepo(
@@ -10289,12 +9694,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsSetCustomLabelsForSelfHostedRunnerForRepo(
@@ -10318,12 +9723,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo(
@@ -10346,7 +9751,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}/labels`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsRemoveCustomLabelFromSelfHostedRunnerForRepo(
@@ -10371,7 +9776,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runners/${p["runnerId"]}/labels/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListWorkflowRunsForRepo(
@@ -10422,11 +9827,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       head_sha: p["headSha"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetWorkflowRun(
@@ -10443,15 +9844,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({
-      exclude_pull_requests: p["excludePullRequests"],
-    })
+    const query = this._query({exclude_pull_requests: p["excludePullRequests"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDeleteWorkflowRun(
@@ -10468,7 +9863,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsGetReviewsForRun(
@@ -10485,7 +9880,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/approvals`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsApproveWorkflowRun(
@@ -10504,7 +9899,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/approve`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async actionsListWorkflowRunArtifacts(
@@ -10529,11 +9924,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       name: p["name"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetWorkflowRunAttempt(
@@ -10551,15 +9942,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/attempts/${p["attemptNumber"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({
-      exclude_pull_requests: p["excludePullRequests"],
-    })
+    const query = this._query({exclude_pull_requests: p["excludePullRequests"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsListJobsForWorkflowRunAttempt(
@@ -10581,13 +9966,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/attempts/${p["attemptNumber"]}/jobs`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDownloadWorkflowRunAttemptLogs(
@@ -10605,7 +9986,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/attempts/${p["attemptNumber"]}/logs`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCancelWorkflowRun(
@@ -10622,7 +10003,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/cancel`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async actionsReviewCustomGatesForRun(
@@ -10639,12 +10020,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/deployment_protection_rule`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsForceCancelWorkflowRun(
@@ -10661,7 +10042,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/force-cancel`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async actionsListJobsForWorkflowRun(
@@ -10686,11 +10067,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDownloadWorkflowRunLogs(
@@ -10707,7 +10084,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/logs`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDeleteWorkflowRunLogs(
@@ -10726,7 +10103,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/logs`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsGetPendingDeploymentsForRun(
@@ -10743,7 +10120,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/pending_deployments`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsReviewPendingDeploymentsForRun(
@@ -10760,12 +10137,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/pending_deployments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsReRunWorkflow(
@@ -10782,12 +10159,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/rerun`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsReRunWorkflowFailedJobs(
@@ -10804,12 +10181,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/rerun-failed-jobs`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsGetWorkflowRunUsage(
@@ -10826,7 +10203,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/runs/${p["runId"]}/timing`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsListRepoSecrets(
@@ -10842,13 +10219,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetRepoPublicKey(
@@ -10864,7 +10237,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetRepoSecret(
@@ -10881,7 +10254,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateOrUpdateRepoSecret(
@@ -10898,12 +10271,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteRepoSecret(
@@ -10920,7 +10293,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListRepoVariables(
@@ -10936,13 +10309,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/variables`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateRepoVariable(
@@ -10957,12 +10326,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/variables`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsGetRepoVariable(
@@ -10979,7 +10348,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/variables/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsUpdateRepoVariable(
@@ -10996,16 +10365,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/variables/${p["name"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteRepoVariable(
@@ -11022,7 +10387,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/variables/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListRepoWorkflows(
@@ -11038,13 +10403,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/actions/workflows`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetWorkflow(
@@ -11061,7 +10422,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/workflows/${p["workflowId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsDisableWorkflow(
@@ -11078,7 +10439,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/workflows/${p["workflowId"]}/disable`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async actionsCreateWorkflowDispatch(
@@ -11095,12 +10456,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/actions/workflows/${p["workflowId"]}/dispatches`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsEnableWorkflow(
@@ -11117,7 +10478,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/workflows/${p["workflowId"]}/enable`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async actionsListWorkflowRuns(
@@ -11171,11 +10532,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       head_sha: p["headSha"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetWorkflowUsage(
@@ -11192,7 +10549,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/actions/workflows/${p["workflowId"]}/timing`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListActivities(
@@ -11237,11 +10594,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       activity_type: p["activityType"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesListAssignees(
@@ -11256,13 +10609,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_user[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/assignees`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesCheckUserCanBeAssigned(
@@ -11279,7 +10628,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/assignees/${p["assignee"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateAttestation(
@@ -11297,12 +10646,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/attestations`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposListAttestations(
@@ -11329,11 +10678,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       predicate_type: p["predicateType"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListAutolinks(
@@ -11347,7 +10692,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/autolinks`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateAutolink(
@@ -11361,12 +10706,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_autolink> | Res<422, t_validation_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/autolinks`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetAutolink(
@@ -11383,7 +10728,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/autolinks/${p["autolinkId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposDeleteAutolink(
@@ -11400,7 +10745,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/autolinks/${p["autolinkId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposCheckAutomatedSecurityFixes(
@@ -11416,7 +10761,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/automated-security-fixes`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposEnableAutomatedSecurityFixes(
@@ -11432,7 +10777,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/automated-security-fixes`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async reposDisableAutomatedSecurityFixes(
@@ -11448,7 +10793,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/automated-security-fixes`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListBranches(
@@ -11470,11 +10815,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetBranch(
@@ -11495,7 +10836,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetBranchProtection(
@@ -11512,7 +10853,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateBranchProtection(
@@ -11534,12 +10875,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteBranchProtection(
@@ -11556,7 +10897,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetAdminBranchProtection(
@@ -11573,7 +10914,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/enforce_admins`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposSetAdminBranchProtection(
@@ -11590,7 +10931,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/enforce_admins`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async reposDeleteAdminBranchProtection(
@@ -11607,7 +10948,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/enforce_admins`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetPullRequestReviewProtection(
@@ -11624,7 +10965,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_pull_request_reviews`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdatePullRequestReviewProtection(
@@ -11644,16 +10985,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_pull_request_reviews`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposDeletePullRequestReviewProtection(
@@ -11670,7 +11007,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_pull_request_reviews`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetCommitSignatureProtection(
@@ -11689,7 +11026,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_signatures`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateCommitSignatureProtection(
@@ -11708,7 +11045,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_signatures`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async reposDeleteCommitSignatureProtection(
@@ -11725,7 +11062,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_signatures`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetStatusChecksProtection(
@@ -11742,7 +11079,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_status_checks`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateStatusCheckProtection(
@@ -11763,16 +11100,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_status_checks`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposRemoveStatusCheckProtection(
@@ -11789,7 +11122,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_status_checks`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetAllStatusCheckContexts(
@@ -11806,7 +11139,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_status_checks/contexts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposAddStatusCheckContexts(
@@ -11828,12 +11161,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_status_checks/contexts`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposSetStatusCheckContexts(
@@ -11852,12 +11185,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_status_checks/contexts`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposRemoveStatusCheckContexts(
@@ -11876,16 +11209,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/required_status_checks/contexts`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async reposGetAccessRestrictions(
@@ -11902,7 +11231,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposDeleteAccessRestrictions(
@@ -11919,7 +11248,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetAppsWithAccessToProtectedBranch(
@@ -11936,7 +11265,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/apps`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposAddAppAccessRestrictions(
@@ -11953,12 +11282,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/apps`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposSetAppAccessRestrictions(
@@ -11975,12 +11304,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/apps`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposRemoveAppAccessRestrictions(
@@ -11997,16 +11326,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/apps`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async reposGetTeamsWithAccessToProtectedBranch(
@@ -12023,7 +11348,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/teams`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposAddTeamAccessRestrictions(
@@ -12040,12 +11365,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/teams`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposSetTeamAccessRestrictions(
@@ -12062,12 +11387,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/teams`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposRemoveTeamAccessRestrictions(
@@ -12084,16 +11409,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/teams`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async reposGetUsersWithAccessToProtectedBranch(
@@ -12110,7 +11431,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/users`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposAddUserAccessRestrictions(
@@ -12127,12 +11448,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/users`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposSetUserAccessRestrictions(
@@ -12149,12 +11470,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/users`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposRemoveUserAccessRestrictions(
@@ -12171,16 +11492,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/protection/restrictions/users`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async reposRenameBranch(
@@ -12202,12 +11519,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/branches/${p["branch"]}/rename`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async checksCreate(
@@ -12221,12 +11538,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_check_run>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/check-runs`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async checksGet(
@@ -12243,7 +11560,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/check-runs/${p["checkRunId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async checksUpdate(
@@ -12260,16 +11577,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/check-runs/${p["checkRunId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async checksListAnnotations(
@@ -12287,13 +11600,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/check-runs/${p["checkRunId"]}/annotations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async checksRerequestRun(
@@ -12315,7 +11624,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/check-runs/${p["checkRunId"]}/rerequest`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async checksCreateSuite(
@@ -12329,12 +11638,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_check_suite> | Res<201, t_check_suite>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/check-suites`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async checksSetSuitesPreferences(
@@ -12350,16 +11659,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/check-suites/preferences`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async checksGetSuite(
@@ -12376,7 +11681,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/check-suites/${p["checkSuiteId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async checksListForSuite(
@@ -12405,11 +11710,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async checksRerequestSuite(
@@ -12426,7 +11727,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/check-suites/${p["checkSuiteId"]}/rerequest`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async codeScanningListAlertsForRepo(
@@ -12473,11 +11774,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       severity: p["severity"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningGetAlert(
@@ -12500,7 +11797,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/alerts/${p["alertNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningUpdateAlert(
@@ -12523,16 +11820,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/alerts/${p["alertNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async codeScanningGetAutofix(
@@ -12555,7 +11848,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/alerts/${p["alertNumber"]}/autofix`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningCreateAutofix(
@@ -12580,7 +11873,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/alerts/${p["alertNumber"]}/autofix`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async codeScanningCommitAutofix(
@@ -12604,12 +11897,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/alerts/${p["alertNumber"]}/autofix/commits`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codeScanningListAlertInstances(
@@ -12641,11 +11934,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       pr: p["pr"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningListRecentAnalyses(
@@ -12685,11 +11974,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       sort: p["sort"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningGetAnalysis(
@@ -12712,7 +11997,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/analyses/${p["analysisId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningDeleteAnalysis(
@@ -12735,11 +12020,11 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/analyses/${p["analysisId"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ confirm_delete: p["confirmDelete"] })
+    const query = this._query({confirm_delete: p["confirmDelete"]})
 
     return this._fetch(
       url + query,
-      { method: "DELETE", ...opts, headers },
+      {method: "DELETE", ...opts, headers},
       timeout,
     )
   }
@@ -12762,7 +12047,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/codeql/databases`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningGetCodeqlDatabase(
@@ -12785,7 +12070,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/codeql/databases/${p["language"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningDeleteCodeqlDatabase(
@@ -12807,7 +12092,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/codeql/databases/${p["language"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codeScanningCreateVariantAnalysis(
@@ -12828,12 +12113,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/codeql/variant-analyses`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codeScanningGetVariantAnalysis(
@@ -12854,7 +12139,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/codeql/variant-analyses/${p["codeqlVariantAnalysisId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningGetVariantAnalysisRepoTask(
@@ -12877,7 +12162,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/codeql/variant-analyses/${p["codeqlVariantAnalysisId"]}/repos/${p["repoOwner"]}/${p["repoName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningGetDefaultSetup(
@@ -12898,7 +12183,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/default-setup`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeScanningUpdateDefaultSetup(
@@ -12921,16 +12206,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/default-setup`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async codeScanningUploadSarif(
@@ -12952,12 +12233,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/code-scanning/sarifs`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codeScanningGetSarif(
@@ -12979,7 +12260,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-scanning/sarifs/${p["sarifId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codeSecurityGetConfigurationForRepository(
@@ -13001,7 +12282,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/code-security-configuration`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCodeownersErrors(
@@ -13016,13 +12297,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/codeowners/errors`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ ref: p["ref"] })
+    const query = this._query({ref: p["ref"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesListInRepositoryForAuthenticatedUser(
@@ -13043,13 +12320,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/codespaces`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesCreateWithRepoForAuthenticatedUser(
@@ -13071,12 +12344,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/codespaces`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codespacesListDevcontainersInRepositoryForAuthenticatedUser(
@@ -13103,13 +12376,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/codespaces/devcontainers`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesRepoMachinesForAuthenticatedUser(
@@ -13139,11 +12408,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       ref: p["ref"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesPreFlightWithRepoForAuthenticatedUser(
@@ -13164,13 +12429,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/codespaces/new`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ ref: p["ref"], client_ip: p["clientIp"] })
+    const query = this._query({ref: p["ref"], client_ip: p["clientIp"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesCheckPermissionsForDevcontainer(
@@ -13199,11 +12460,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       devcontainer_path: p["devcontainerPath"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesListRepoSecrets(
@@ -13219,13 +12476,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/codespaces/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesGetRepoPublicKey(
@@ -13241,7 +12494,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/codespaces/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesGetRepoSecret(
@@ -13258,7 +12511,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesCreateOrUpdateRepoSecret(
@@ -13275,12 +12528,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codespacesDeleteRepoSecret(
@@ -13297,7 +12550,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListCollaborators(
@@ -13328,11 +12581,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCheckCollaborator(
@@ -13349,7 +12598,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/collaborators/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposAddCollaborator(
@@ -13371,12 +12620,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/collaborators/${p["username"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposRemoveCollaborator(
@@ -13395,7 +12644,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/collaborators/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetCollaboratorPermissionLevel(
@@ -13414,7 +12663,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/collaborators/${p["username"]}/permission`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListCommitCommentsForRepo(
@@ -13429,13 +12678,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_commit_comment[]>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/comments`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetCommitComment(
@@ -13452,7 +12697,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateCommitComment(
@@ -13469,16 +12714,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/comments/${p["commentId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteCommitComment(
@@ -13495,7 +12736,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reactionsListForCommitComment(
@@ -13529,11 +12770,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForCommitComment(
@@ -13552,12 +12789,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/comments/${p["commentId"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsDeleteForCommitComment(
@@ -13575,7 +12812,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/comments/${p["commentId"]}/reactions/${p["reactionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListCommits(
@@ -13613,11 +12850,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListBranchesForHeadCommit(
@@ -13638,7 +12871,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/commits/${p["commitSha"]}/branches-where-head`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListCommentsForCommit(
@@ -13656,13 +12889,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/commits/${p["commitSha"]}/comments`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateCommitComment(
@@ -13683,12 +12912,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/commits/${p["commitSha"]}/comments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposListPullRequestsAssociatedWithCommit(
@@ -13706,13 +12935,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/commits/${p["commitSha"]}/pulls`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetCommit(
@@ -13736,13 +12961,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/commits/${p["ref"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async checksListForRef(
@@ -13773,11 +12994,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       app_id: p["appId"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async checksListSuitesForRef(
@@ -13804,11 +13021,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetCombinedStatusForRef(
@@ -13826,13 +13039,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/commits/${p["ref"]}/status`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListCommitStatusesForRef(
@@ -13850,13 +13059,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/commits/${p["ref"]}/statuses`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetCommunityProfileMetrics(
@@ -13871,7 +13076,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/community/profile`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCompareCommits(
@@ -13894,13 +13099,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/compare/${p["basehead"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetContent(
@@ -13922,13 +13123,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/contents/${p["path"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ ref: p["ref"] })
+    const query = this._query({ref: p["ref"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateOrUpdateFileContents(
@@ -13950,12 +13147,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/contents/${p["path"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteFile(
@@ -13977,16 +13174,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/contents/${p["path"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async reposListContributors(
@@ -14013,11 +13206,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotListAlertsForRepo(
@@ -14073,11 +13262,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       last: p["last"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotGetAlert(
@@ -14099,7 +13284,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/dependabot/alerts/${p["alertNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotUpdateAlert(
@@ -14123,16 +13308,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/dependabot/alerts/${p["alertNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async dependabotListRepoSecrets(
@@ -14148,13 +13329,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/dependabot/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotGetRepoPublicKey(
@@ -14170,7 +13347,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/dependabot/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotGetRepoSecret(
@@ -14187,7 +13364,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/dependabot/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependabotCreateOrUpdateRepoSecret(
@@ -14204,12 +13381,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/dependabot/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async dependabotDeleteRepoSecret(
@@ -14226,7 +13403,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/dependabot/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async dependencyGraphDiffRange(
@@ -14247,13 +13424,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/dependency-graph/compare/${p["basehead"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ name: p["name"] })
+    const query = this._query({name: p["name"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependencyGraphExportSbom(
@@ -14272,7 +13445,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/dependency-graph/sbom`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async dependencyGraphCreateRepositorySnapshot(
@@ -14290,12 +13463,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/dependency-graph/snapshots`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposListDeployments(
@@ -14323,11 +13496,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateDeployment(
@@ -14346,12 +13515,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/deployments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetDeployment(
@@ -14368,7 +13537,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/deployments/${p["deploymentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposDeleteDeployment(
@@ -14389,7 +13558,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/deployments/${p["deploymentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListDeploymentStatuses(
@@ -14407,13 +13576,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/deployments/${p["deploymentId"]}/statuses`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateDeploymentStatus(
@@ -14430,12 +13595,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/deployments/${p["deploymentId"]}/statuses`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetDeploymentStatus(
@@ -14453,7 +13618,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/deployments/${p["deploymentId"]}/statuses/${p["statusId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateDispatchEvent(
@@ -14469,12 +13634,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/dispatches`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetAllEnvironments(
@@ -14489,13 +13654,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_reposGetAllEnvironmentsJson200Response>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/environments`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetEnvironment(
@@ -14512,7 +13673,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateOrUpdateEnvironment(
@@ -14529,12 +13690,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteAnEnvironment(
@@ -14551,7 +13712,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListDeploymentBranchPolicies(
@@ -14569,13 +13730,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment-branch-policies`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateDeploymentBranchPolicy(
@@ -14594,12 +13751,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment-branch-policies`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetDeploymentBranchPolicy(
@@ -14617,7 +13774,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment-branch-policies/${p["branchPolicyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateDeploymentBranchPolicy(
@@ -14635,12 +13792,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment-branch-policies/${p["branchPolicyId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteDeploymentBranchPolicy(
@@ -14658,7 +13815,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment-branch-policies/${p["branchPolicyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetAllDeploymentProtectionRules(
@@ -14675,7 +13832,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment_protection_rules`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateDeploymentProtectionRule(
@@ -14692,12 +13849,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment_protection_rules`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposListCustomDeploymentRuleIntegrations(
@@ -14717,13 +13874,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment_protection_rules/apps`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetCustomDeploymentProtectionRule(
@@ -14741,7 +13894,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment_protection_rules/${p["protectionRuleId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposDisableDeploymentProtectionRule(
@@ -14759,7 +13912,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/deployment_protection_rules/${p["protectionRuleId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListEnvironmentSecrets(
@@ -14777,13 +13930,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetEnvironmentPublicKey(
@@ -14800,7 +13949,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsGetEnvironmentSecret(
@@ -14818,7 +13967,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateOrUpdateEnvironmentSecret(
@@ -14836,12 +13985,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteEnvironmentSecret(
@@ -14859,7 +14008,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async actionsListEnvironmentVariables(
@@ -14877,13 +14026,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/variables`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsCreateEnvironmentVariable(
@@ -14900,12 +14045,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/variables`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async actionsGetEnvironmentVariable(
@@ -14923,7 +14068,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/variables/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async actionsUpdateEnvironmentVariable(
@@ -14941,16 +14086,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/variables/${p["name"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async actionsDeleteEnvironmentVariable(
@@ -14968,7 +14109,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/environments/${p["environmentName"]}/variables/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async activityListRepoEvents(
@@ -14983,13 +14124,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_event[]>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListForks(
@@ -15016,11 +14153,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateFork(
@@ -15040,12 +14173,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/forks`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gitCreateBlob(
@@ -15065,12 +14198,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/blobs`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gitGetBlob(
@@ -15093,7 +14226,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/git/blobs/${p["fileSha"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gitCreateCommit(
@@ -15112,12 +14245,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/commits`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gitGetCommit(
@@ -15136,7 +14269,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/git/commits/${p["commitSha"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gitListMatchingRefs(
@@ -15153,7 +14286,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/git/matching-refs/${p["ref"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gitGetRef(
@@ -15171,7 +14304,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/ref/${p["ref"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gitCreateRef(
@@ -15187,12 +14320,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/refs`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gitUpdateRef(
@@ -15210,16 +14343,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/refs/${p["ref"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async gitDeleteRef(
@@ -15235,7 +14364,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/refs/${p["ref"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async gitCreateTag(
@@ -15251,12 +14380,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/tags`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gitGetTag(
@@ -15275,7 +14404,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/git/tags/${p["tagSha"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gitCreateTree(
@@ -15295,12 +14424,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/git/trees`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async gitGetTree(
@@ -15322,13 +14451,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/git/trees/${p["treeSha"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ recursive: p["recursive"] })
+    const query = this._query({recursive: p["recursive"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListWebhooks(
@@ -15343,13 +14468,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_hook[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/hooks`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateWebhook(
@@ -15368,12 +14489,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/hooks`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetWebhook(
@@ -15389,7 +14510,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateWebhook(
@@ -15407,16 +14528,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteWebhook(
@@ -15432,7 +14549,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetWebhookConfigForRepo(
@@ -15449,7 +14566,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}/config`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateWebhookConfigForRepo(
@@ -15466,16 +14583,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}/config`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposListWebhookDeliveries(
@@ -15497,13 +14610,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}/deliveries`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], cursor: p["cursor"] })
+    const query = this._query({per_page: p["perPage"], cursor: p["cursor"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetWebhookDelivery(
@@ -15525,7 +14634,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}/deliveries/${p["deliveryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposRedeliverWebhookDelivery(
@@ -15547,7 +14656,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}/deliveries/${p["deliveryId"]}/attempts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async reposPingWebhook(
@@ -15564,7 +14673,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}/pings`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async reposTestPushWebhook(
@@ -15581,7 +14690,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/hooks/${p["hookId"]}/tests`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async migrationsGetImportStatus(
@@ -15597,7 +14706,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/import`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsStartImport(
@@ -15616,12 +14725,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/import`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async migrationsUpdateImport(
@@ -15635,16 +14744,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_import> | Res<503, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/import`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async migrationsCancelImport(
@@ -15658,7 +14763,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/import`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async migrationsGetCommitAuthors(
@@ -15677,13 +14782,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/import/authors`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ since: p["since"] })
+    const query = this._query({since: p["since"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsMapCommitAuthor(
@@ -15705,16 +14806,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/import/authors/${p["authorId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async migrationsGetLargeFiles(
@@ -15729,7 +14826,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/import/large_files`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsSetLfsPreference(
@@ -15745,16 +14842,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/import/lfs`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async appsGetRepoInstallation(
@@ -15770,7 +14863,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/installation`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async interactionsGetRestrictionsForRepo(
@@ -15785,7 +14878,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/interaction-limits`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async interactionsSetRestrictionsForRepo(
@@ -15800,12 +14893,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/interaction-limits`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async interactionsRemoveRestrictionsForRepo(
@@ -15820,7 +14913,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/interaction-limits`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListInvitations(
@@ -15835,13 +14928,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_repository_invitation[]>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/invitations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateInvitation(
@@ -15858,16 +14947,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/invitations/${p["invitationId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteInvitation(
@@ -15884,7 +14969,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/invitations/${p["invitationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesListForRepo(
@@ -15929,11 +15014,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesCreate(
@@ -15955,12 +15036,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/issues`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesListCommentsForRepo(
@@ -15991,11 +15072,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesGetComment(
@@ -16012,7 +15089,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesUpdateComment(
@@ -16029,16 +15106,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/comments/${p["commentId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async issuesDeleteComment(
@@ -16055,7 +15128,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reactionsListForIssueComment(
@@ -16089,11 +15162,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForIssueComment(
@@ -16112,12 +15181,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/comments/${p["commentId"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsDeleteForIssueComment(
@@ -16135,7 +15204,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/comments/${p["commentId"]}/reactions/${p["reactionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesListEventsForRepo(
@@ -16151,13 +15220,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/issues/events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesGetEvent(
@@ -16179,7 +15244,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/events/${p["eventId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesGet(
@@ -16202,7 +15267,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesUpdate(
@@ -16227,16 +15292,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async issuesAddAssignees(
@@ -16253,12 +15314,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/assignees`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesRemoveAssignees(
@@ -16275,16 +15336,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/assignees`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async issuesCheckUserCanBeAssignedToIssue(
@@ -16302,7 +15359,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/assignees/${p["assignee"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesListComments(
@@ -16331,11 +15388,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesCreateComment(
@@ -16358,12 +15411,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/comments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesListEvents(
@@ -16381,13 +15434,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesListLabelsOnIssue(
@@ -16410,13 +15459,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/labels`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesAddLabels(
@@ -16439,12 +15484,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/labels`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesSetLabels(
@@ -16467,12 +15512,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/labels`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async issuesRemoveAllLabels(
@@ -16494,7 +15539,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/labels`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesRemoveLabel(
@@ -16517,7 +15562,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/labels/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesLock(
@@ -16540,12 +15585,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/lock`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async issuesUnlock(
@@ -16564,7 +15609,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/lock`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reactionsListForIssue(
@@ -16600,11 +15645,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForIssue(
@@ -16623,12 +15664,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsDeleteForIssue(
@@ -16646,7 +15687,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/reactions/${p["reactionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesRemoveSubIssue(
@@ -16665,16 +15706,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/sub_issue`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async issuesListSubIssues(
@@ -16694,13 +15731,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/sub_issues`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesAddSubIssue(
@@ -16723,12 +15756,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/sub_issues`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesReprioritizeSubIssue(
@@ -16751,16 +15784,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/sub_issues/priority`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async issuesListEventsForTimeline(
@@ -16782,13 +15811,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/issues/${p["issueNumber"]}/timeline`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListDeployKeys(
@@ -16803,13 +15828,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_deploy_key[]>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/keys`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateDeployKey(
@@ -16823,12 +15844,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_deploy_key> | Res<422, t_validation_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/keys`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetDeployKey(
@@ -16844,7 +15865,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/keys/${p["keyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposDeleteDeployKey(
@@ -16860,7 +15881,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/keys/${p["keyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesListLabelsForRepo(
@@ -16875,13 +15896,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_label[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/labels`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesCreateLabel(
@@ -16897,12 +15914,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/labels`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesGetLabel(
@@ -16918,7 +15935,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/labels/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesUpdateLabel(
@@ -16934,16 +15951,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/labels/${p["name"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async issuesDeleteLabel(
@@ -16959,7 +15972,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/labels/${p["name"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListLanguages(
@@ -16973,7 +15986,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/languages`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async licensesGetForRepo(
@@ -16987,13 +16000,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_license_content> | Res<404, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/license`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ ref: p["ref"] })
+    const query = this._query({ref: p["ref"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposMergeUpstream(
@@ -17008,12 +16017,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/merge-upstream`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposMerge(
@@ -17034,12 +16043,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/merges`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesListMilestones(
@@ -17065,11 +16074,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesCreateMilestone(
@@ -17087,12 +16092,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/milestones`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async issuesGetMilestone(
@@ -17109,7 +16114,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/milestones/${p["milestoneNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async issuesUpdateMilestone(
@@ -17126,16 +16131,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/milestones/${p["milestoneNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async issuesDeleteMilestone(
@@ -17152,7 +16153,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/milestones/${p["milestoneNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesListLabelsForMilestone(
@@ -17170,13 +16171,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/milestones/${p["milestoneNumber"]}/labels`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListRepoNotificationsForAuthenticatedUser(
@@ -17205,11 +16202,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityMarkRepoNotificationsAsRead(
@@ -17227,12 +16220,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/notifications`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposGetPages(
@@ -17246,7 +16239,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreatePagesSite(
@@ -17262,12 +16255,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposUpdateInformationAboutPagesSite(
@@ -17286,12 +16279,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposDeletePagesSite(
@@ -17310,7 +16303,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListPagesBuilds(
@@ -17325,13 +16318,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_page_build[]>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages/builds`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposRequestPagesBuild(
@@ -17345,7 +16334,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages/builds`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async reposGetLatestPagesBuild(
@@ -17360,7 +16349,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages/builds/latest`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetPagesBuild(
@@ -17377,7 +16366,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pages/builds/${p["buildId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreatePagesDeployment(
@@ -17397,12 +16386,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages/deployments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetPagesDeployment(
@@ -17419,7 +16408,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pages/deployments/${p["pagesDeploymentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCancelPagesDeployment(
@@ -17436,7 +16425,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pages/deployments/${p["pagesDeploymentId"]}/cancel`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async reposGetPagesHealthCheck(
@@ -17456,7 +16445,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pages/health`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCheckPrivateVulnerabilityReporting(
@@ -17475,7 +16464,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/private-vulnerability-reporting`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposEnablePrivateVulnerabilityReporting(
@@ -17491,7 +16480,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/private-vulnerability-reporting`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async reposDisablePrivateVulnerabilityReporting(
@@ -17507,7 +16496,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/private-vulnerability-reporting`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async projectsListForRepo(
@@ -17536,11 +16525,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async projectsCreateForRepo(
@@ -17561,12 +16546,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/projects`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetCustomPropertiesValues(
@@ -17585,7 +16570,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/properties/values`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateOrUpdateCustomPropertiesValues(
@@ -17605,16 +16590,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/properties/values`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async pullsList(
@@ -17653,11 +16634,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsCreate(
@@ -17675,12 +16652,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/pulls`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async pullsListReviewCommentsForRepo(
@@ -17707,11 +16684,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsGetReviewComment(
@@ -17730,7 +16703,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsUpdateReviewComment(
@@ -17747,16 +16720,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/comments/${p["commentId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async pullsDeleteReviewComment(
@@ -17773,7 +16742,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/comments/${p["commentId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reactionsListForPullRequestReviewComment(
@@ -17807,11 +16776,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForPullRequestReviewComment(
@@ -17830,12 +16795,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/comments/${p["commentId"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsDeleteForPullRequestComment(
@@ -17853,7 +16818,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/comments/${p["commentId"]}/reactions/${p["reactionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async pullsGet(
@@ -17877,7 +16842,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsUpdate(
@@ -17898,16 +16863,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async codespacesCreateWithPrForAuthenticatedUser(
@@ -17931,12 +16892,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/codespaces`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async pullsListReviewComments(
@@ -17965,11 +16926,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsCreateReviewComment(
@@ -17990,12 +16947,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/comments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async pullsCreateReplyForReviewComment(
@@ -18015,12 +16972,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/comments/${p["commentId"]}/replies`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async pullsListCommits(
@@ -18038,13 +16995,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/commits`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsListFiles(
@@ -18067,13 +17020,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/files`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsCheckIfMerged(
@@ -18090,7 +17039,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/merge`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsMerge(
@@ -18114,12 +17063,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/merge`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async pullsListRequestedReviewers(
@@ -18136,7 +17085,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/requested_reviewers`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsRequestReviewers(
@@ -18155,12 +17104,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/requested_reviewers`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async pullsRemoveRequestedReviewers(
@@ -18177,16 +17126,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/requested_reviewers`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async pullsListReviews(
@@ -18204,13 +17149,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsCreateReview(
@@ -18231,12 +17172,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async pullsGetReview(
@@ -18254,7 +17195,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews/${p["reviewId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsUpdateReview(
@@ -18274,12 +17215,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews/${p["reviewId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async pullsDeletePendingReview(
@@ -18301,7 +17242,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews/${p["reviewId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async pullsListCommentsForReview(
@@ -18320,13 +17261,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews/${p["reviewId"]}/comments`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async pullsDismissReview(
@@ -18348,12 +17285,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews/${p["reviewId"]}/dismissals`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async pullsSubmitReview(
@@ -18376,12 +17313,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/reviews/${p["reviewId"]}/events`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async pullsUpdateBranch(
@@ -18402,12 +17339,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/pulls/${p["pullNumber"]}/update-branch`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposGetReadme(
@@ -18426,13 +17363,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/readme`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ ref: p["ref"] })
+    const query = this._query({ref: p["ref"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetReadmeInDirectory(
@@ -18452,13 +17385,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/readme/${p["dir"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ ref: p["ref"] })
+    const query = this._query({ref: p["ref"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListReleases(
@@ -18473,13 +17402,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_release[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/releases`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateRelease(
@@ -18495,12 +17420,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/releases`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetReleaseAsset(
@@ -18519,7 +17444,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/releases/assets/${p["assetId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateReleaseAsset(
@@ -18536,16 +17461,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/releases/assets/${p["assetId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteReleaseAsset(
@@ -18562,7 +17483,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/releases/assets/${p["assetId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGenerateReleaseNotes(
@@ -18578,12 +17499,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/releases/generate-notes`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetLatestRelease(
@@ -18598,7 +17519,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/releases/latest`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetReleaseByTag(
@@ -18615,7 +17536,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/releases/tags/${p["tag"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetRelease(
@@ -18632,7 +17553,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/releases/${p["releaseId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateRelease(
@@ -18649,16 +17570,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/releases/${p["releaseId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteRelease(
@@ -18675,7 +17592,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/releases/${p["releaseId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListReleaseAssets(
@@ -18693,13 +17610,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/releases/${p["releaseId"]}/assets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUploadReleaseAsset(
@@ -18723,15 +17636,15 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       basePath +
       `/repos/${p["owner"]}/${p["repo"]}/releases/${p["releaseId"]}/assets`
     const headers = this._headers(
-      { "Content-Type": "application/octet-stream" },
+      {"Content-Type": "application/octet-stream"},
       opts.headers,
     )
-    const query = this._query({ name: p["name"], label: p["label"] })
+    const query = this._query({name: p["name"], label: p["label"]})
     const body = JSON.stringify(p.requestBody)
 
     return this._fetch(
       url + query,
-      { method: "POST", body, ...opts, headers },
+      {method: "POST", body, ...opts, headers},
       timeout,
     )
   }
@@ -18765,11 +17678,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForRelease(
@@ -18788,12 +17697,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/releases/${p["releaseId"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsDeleteForRelease(
@@ -18811,7 +17720,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/releases/${p["releaseId"]}/reactions/${p["reactionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetBranchRules(
@@ -18829,13 +17738,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/rules/branches/${p["branch"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetRepoRulesets(
@@ -18863,11 +17768,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       targets: p["targets"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateRepoRuleset(
@@ -18885,12 +17786,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/rulesets`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposGetRepoRuleSuites(
@@ -18926,11 +17827,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetRepoRuleSuite(
@@ -18949,7 +17846,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/rulesets/rule-suites/${p["ruleSuiteId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetRepoRuleset(
@@ -18970,13 +17867,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/rulesets/${p["rulesetId"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ includes_parents: p["includesParents"] })
+    const query = this._query({includes_parents: p["includesParents"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposUpdateRepoRuleset(
@@ -18997,12 +17890,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/rulesets/${p["rulesetId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteRepoRuleset(
@@ -19021,7 +17914,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/rulesets/${p["rulesetId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposGetRepoRulesetHistory(
@@ -19043,13 +17936,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/rulesets/${p["rulesetId"]}/history`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetRepoRulesetVersion(
@@ -19071,7 +17960,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/rulesets/${p["rulesetId"]}/history/${p["versionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async secretScanningListAlertsForRepo(
@@ -19116,11 +18005,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       is_multi_repo: p["isMultiRepo"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async secretScanningGetAlert(
@@ -19142,7 +18027,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/secret-scanning/alerts/${p["alertNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async secretScanningUpdateAlert(
@@ -19165,16 +18050,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/secret-scanning/alerts/${p["alertNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async secretScanningListLocationsForAlert(
@@ -19196,13 +18077,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/secret-scanning/alerts/${p["alertNumber"]}/locations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async secretScanningCreatePushProtectionBypass(
@@ -19224,12 +18101,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/secret-scanning/push-protection-bypasses`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async secretScanningGetScanHistory(
@@ -19249,7 +18126,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/secret-scanning/scan-history`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesListRepositoryAdvisories(
@@ -19287,11 +18164,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       state: p["state"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesCreateRepositoryAdvisory(
@@ -19311,12 +18184,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/security-advisories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesCreatePrivateVulnerabilityReport(
@@ -19337,12 +18210,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/security-advisories/reports`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesGetRepositoryAdvisory(
@@ -19363,7 +18236,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/security-advisories/${p["ghsaId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesUpdateRepositoryAdvisory(
@@ -19385,16 +18258,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["owner"]}/${p["repo"]}/security-advisories/${p["ghsaId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesCreateRepositoryAdvisoryCveRequest(
@@ -19420,7 +18289,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/security-advisories/${p["ghsaId"]}/cve`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async securityAdvisoriesCreateFork(
@@ -19443,7 +18312,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/security-advisories/${p["ghsaId"]}/forks`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async activityListStargazersForRepo(
@@ -19461,13 +18330,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/stargazers`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetCodeFrequencyStats(
@@ -19487,7 +18352,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/stats/code_frequency`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetCommitActivityStats(
@@ -19506,7 +18371,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/stats/commit_activity`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetContributorsStats(
@@ -19525,7 +18390,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/stats/contributors`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetParticipationStats(
@@ -19540,7 +18405,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/stats/participation`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetPunchCardStats(
@@ -19555,7 +18420,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/stats/punch_card`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateCommitStatus(
@@ -19571,12 +18436,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/statuses/${p["sha"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async activityListWatchersForRepo(
@@ -19591,13 +18456,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_user[]>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/subscribers`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityGetRepoSubscription(
@@ -19615,7 +18476,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/subscription`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activitySetRepoSubscription(
@@ -19629,12 +18490,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_repository_subscription>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/subscription`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async activityDeleteRepoSubscription(
@@ -19648,7 +18509,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/subscription`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposListTags(
@@ -19663,13 +18524,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_tag[]>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/tags`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListTagProtection(
@@ -19688,7 +18545,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/tags/protection`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateTagProtection(
@@ -19707,12 +18564,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/tags/protection`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposDeleteTagProtection(
@@ -19731,7 +18588,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/tags/protection/${p["tagProtectionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposDownloadTarballArchive(
@@ -19747,7 +18604,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/tarball/${p["ref"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListTeams(
@@ -19762,13 +18619,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_team[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/teams`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetAllTopics(
@@ -19783,13 +18636,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_topic> | Res<404, t_basic_error>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/topics`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ page: p["page"], per_page: p["perPage"] })
+    const query = this._query({page: p["page"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposReplaceAllTopics(
@@ -19807,12 +18656,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/topics`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async reposGetClones(
@@ -19827,13 +18676,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/traffic/clones`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per: p["per"] })
+    const query = this._query({per: p["per"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetTopPaths(
@@ -19848,7 +18693,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/traffic/popular/paths`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetTopReferrers(
@@ -19864,7 +18709,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/repos/${p["owner"]}/${p["repo"]}/traffic/popular/referrers`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposGetViews(
@@ -19879,13 +18724,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/traffic/views`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per: p["per"] })
+    const query = this._query({per: p["per"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposTransfer(
@@ -19899,12 +18740,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<202, t_minimal_repository>> {
     const url = this.basePath + `/repos/${p["owner"]}/${p["repo"]}/transfer`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposCheckVulnerabilityAlerts(
@@ -19919,7 +18760,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/vulnerability-alerts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposEnableVulnerabilityAlerts(
@@ -19934,7 +18775,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/vulnerability-alerts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async reposDisableVulnerabilityAlerts(
@@ -19949,7 +18790,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/vulnerability-alerts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reposDownloadZipballArchive(
@@ -19965,7 +18806,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/repos/${p["owner"]}/${p["repo"]}/zipball/${p["ref"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateUsingTemplate(
@@ -19981,12 +18822,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/repos/${p["templateOwner"]}/${p["templateRepo"]}/generate`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposListPublic(
@@ -20002,13 +18843,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ since: p["since"] })
+    const query = this._query({since: p["since"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async searchCode(
@@ -20038,11 +18875,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async searchCommits(
@@ -20066,11 +18899,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async searchIssuesAndPullRequests(
@@ -20114,11 +18943,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       advanced_search: p["advancedSearch"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async searchLabels(
@@ -20150,11 +18975,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async searchRepos(
@@ -20188,11 +19009,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async searchTopics(
@@ -20212,11 +19029,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async searchUsers(
@@ -20245,11 +19058,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsGetLegacy(
@@ -20262,7 +19071,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/teams/${p["teamId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsUpdateLegacy(
@@ -20281,16 +19090,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/teams/${p["teamId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async teamsDeleteLegacy(
@@ -20305,7 +19110,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/teams/${p["teamId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListDiscussionsLegacy(
@@ -20326,11 +19131,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCreateDiscussionLegacy(
@@ -20343,12 +19144,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<201, t_team_discussion>> {
     const url = this.basePath + `/teams/${p["teamId"]}/discussions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async teamsGetDiscussionLegacy(
@@ -20364,7 +19165,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsUpdateDiscussionLegacy(
@@ -20380,16 +19181,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async teamsDeleteDiscussionLegacy(
@@ -20405,7 +19202,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListDiscussionCommentsLegacy(
@@ -20429,11 +19226,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCreateDiscussionCommentLegacy(
@@ -20449,12 +19242,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}/comments`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async teamsGetDiscussionCommentLegacy(
@@ -20471,7 +19264,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsUpdateDiscussionCommentLegacy(
@@ -20488,16 +19281,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async teamsDeleteDiscussionCommentLegacy(
@@ -20514,7 +19303,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async reactionsListForTeamDiscussionCommentLegacy(
@@ -20548,11 +19337,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForTeamDiscussionCommentLegacy(
@@ -20569,12 +19354,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}/comments/${p["commentNumber"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reactionsListForTeamDiscussionLegacy(
@@ -20607,11 +19392,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reactionsCreateForTeamDiscussionLegacy(
@@ -20627,12 +19408,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/teams/${p["teamId"]}/discussions/${p["discussionNumber"]}/reactions`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async teamsListPendingInvitationsLegacy(
@@ -20646,13 +19427,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_organization_invitation[]>> {
     const url = this.basePath + `/teams/${p["teamId"]}/invitations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsListMembersLegacy(
@@ -20673,11 +19450,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsGetMemberLegacy(
@@ -20691,7 +19464,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/teams/${p["teamId"]}/members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsAddMemberLegacy(
@@ -20707,7 +19480,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/teams/${p["teamId"]}/members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async teamsRemoveMemberLegacy(
@@ -20721,7 +19494,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/teams/${p["teamId"]}/members/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsGetMembershipForUserLegacy(
@@ -20736,7 +19509,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/teams/${p["teamId"]}/memberships/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsAddOrUpdateMembershipForUserLegacy(
@@ -20756,12 +19529,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/teams/${p["teamId"]}/memberships/${p["username"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async teamsRemoveMembershipForUserLegacy(
@@ -20776,7 +19549,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/teams/${p["teamId"]}/memberships/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListProjectsLegacy(
@@ -20790,13 +19563,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_team_project[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/teams/${p["teamId"]}/projects`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCheckPermissionsForProjectLegacy(
@@ -20811,7 +19580,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/teams/${p["teamId"]}/projects/${p["projectId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsAddOrUpdateProjectPermissionsLegacy(
@@ -20831,12 +19600,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/teams/${p["teamId"]}/projects/${p["projectId"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async teamsRemoveProjectLegacy(
@@ -20853,7 +19622,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/teams/${p["teamId"]}/projects/${p["projectId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListReposLegacy(
@@ -20867,13 +19636,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_minimal_repository[]> | Res<404, t_basic_error>> {
     const url = this.basePath + `/teams/${p["teamId"]}/repos`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsCheckPermissionsForRepoLegacy(
@@ -20889,7 +19654,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/teams/${p["teamId"]}/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsAddOrUpdateRepoPermissionsLegacy(
@@ -20907,12 +19672,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/teams/${p["teamId"]}/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async teamsRemoveRepoLegacy(
@@ -20928,7 +19693,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/teams/${p["teamId"]}/repos/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async teamsListChildLegacy(
@@ -20947,13 +19712,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/teams/${p["teamId"]}/teams`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersGetAuthenticated(
@@ -20968,7 +19729,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersUpdateAuthenticated(
@@ -20987,16 +19748,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async usersListBlockedByAuthenticatedUser(
@@ -21015,13 +19772,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/blocks`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersCheckBlocked(
@@ -21040,7 +19793,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/blocks/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersBlock(
@@ -21060,7 +19813,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/blocks/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async usersUnblock(
@@ -21079,7 +19832,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/blocks/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codespacesListForAuthenticatedUser(
@@ -21106,11 +19859,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       repository_id: p["repositoryId"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesCreateForAuthenticatedUser(
@@ -21129,12 +19878,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/codespaces`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codespacesListSecretsForAuthenticatedUser(
@@ -21149,13 +19898,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/codespaces/secrets`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesGetPublicKeyForAuthenticatedUser(
@@ -21165,7 +19910,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/secrets/public-key`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesGetSecretForAuthenticatedUser(
@@ -21178,7 +19923,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesCreateOrUpdateSecretForAuthenticatedUser(
@@ -21196,12 +19941,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codespacesDeleteSecretForAuthenticatedUser(
@@ -21214,7 +19959,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/secrets/${p["secretName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codespacesListRepositoriesForSecretForAuthenticatedUser(
@@ -21237,7 +19982,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/user/codespaces/secrets/${p["secretName"]}/repositories`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesSetRepositoriesForSecretForAuthenticatedUser(
@@ -21257,12 +20002,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/user/codespaces/secrets/${p["secretName"]}/repositories`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async codespacesAddRepositoryForSecretForAuthenticatedUser(
@@ -21284,7 +20029,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/codespaces/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async codespacesRemoveRepositoryForSecretForAuthenticatedUser(
@@ -21306,7 +20051,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/codespaces/secrets/${p["secretName"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codespacesGetForAuthenticatedUser(
@@ -21326,7 +20071,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/${p["codespaceName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesUpdateForAuthenticatedUser(
@@ -21344,16 +20089,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/codespaces/${p["codespaceName"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async codespacesDeleteForAuthenticatedUser(
@@ -21373,7 +20114,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/${p["codespaceName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async codespacesExportForAuthenticatedUser(
@@ -21393,7 +20134,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/${p["codespaceName"]}/exports`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async codespacesGetExportDetailsForAuthenticatedUser(
@@ -21409,7 +20150,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/codespaces/${p["codespaceName"]}/exports/${p["exportId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesCodespaceMachinesForAuthenticatedUser(
@@ -21430,7 +20171,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/user/codespaces/${p["codespaceName"]}/machines`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async codespacesPublishForAuthenticatedUser(
@@ -21449,12 +20190,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/codespaces/${p["codespaceName"]}/publish`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async codespacesStartForAuthenticatedUser(
@@ -21477,7 +20218,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/${p["codespaceName"]}/start`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async codespacesStopForAuthenticatedUser(
@@ -21496,7 +20237,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/codespaces/${p["codespaceName"]}/stop`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async packagesListDockerMigrationConflictingPackagesForAuthenticatedUser(
@@ -21506,7 +20247,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/docker/conflicts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersSetPrimaryEmailVisibilityForAuthenticatedUser(
@@ -21525,16 +20266,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/email/visibility`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async usersListEmailsForAuthenticatedUser(
@@ -21553,13 +20290,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/emails`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersAddEmailForAuthenticatedUser(
@@ -21578,12 +20311,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/emails`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async usersDeleteEmailForAuthenticatedUser(
@@ -21602,16 +20335,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/emails`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async usersListFollowersForAuthenticatedUser(
@@ -21629,13 +20358,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/followers`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListFollowedByAuthenticatedUser(
@@ -21653,13 +20378,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/following`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersCheckPersonIsFollowedByAuthenticated(
@@ -21678,7 +20399,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/following/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersFollow(
@@ -21698,7 +20419,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/following/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async usersUnfollow(
@@ -21717,7 +20438,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/following/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async usersListGpgKeysForAuthenticatedUser(
@@ -21736,13 +20457,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/gpg_keys`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersCreateGpgKeyForAuthenticatedUser(
@@ -21761,12 +20478,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/gpg_keys`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async usersGetGpgKeyForAuthenticatedUser(
@@ -21785,7 +20502,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/gpg_keys/${p["gpgKeyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersDeleteGpgKeyForAuthenticatedUser(
@@ -21805,7 +20522,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/gpg_keys/${p["gpgKeyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async appsListInstallationsForAuthenticatedUser(
@@ -21823,13 +20540,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/installations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListInstallationReposForAuthenticatedUser(
@@ -21849,13 +20562,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/user/installations/${p["installationId"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsAddRepoToInstallationForAuthenticatedUser(
@@ -21876,7 +20585,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/installations/${p["installationId"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async appsRemoveRepoFromInstallationForAuthenticatedUser(
@@ -21898,7 +20607,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/installations/${p["installationId"]}/repositories/${p["repositoryId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async interactionsGetRestrictionsForAuthenticatedUser(
@@ -21911,7 +20620,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/interaction-limits`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async interactionsSetRestrictionsForAuthenticatedUser(
@@ -21925,12 +20634,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/interaction-limits`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "PUT", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", body, ...opts, headers}, timeout)
   }
 
   async interactionsRemoveRestrictionsForAuthenticatedUser(
@@ -21940,7 +20649,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/interaction-limits`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async issuesListForAuthenticatedUser(
@@ -21977,11 +20686,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListPublicSshKeysForAuthenticatedUser(
@@ -22000,13 +20705,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/keys`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersCreatePublicSshKeyForAuthenticatedUser(
@@ -22025,12 +20726,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/keys`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async usersGetPublicSshKeyForAuthenticatedUser(
@@ -22049,7 +20750,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/keys/${p["keyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersDeletePublicSshKeyForAuthenticatedUser(
@@ -22068,7 +20769,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/keys/${p["keyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async appsListSubscriptionsForAuthenticatedUser(
@@ -22086,13 +20787,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/marketplace_purchases`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsListSubscriptionsForAuthenticatedUserStubbed(
@@ -22109,13 +20806,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/marketplace_purchases/stubbed`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListMembershipsForAuthenticatedUser(
@@ -22141,11 +20834,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsGetMembershipForAuthenticatedUser(
@@ -22162,7 +20851,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/memberships/orgs/${p["org"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsUpdateMembershipForAuthenticatedUser(
@@ -22180,16 +20869,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/memberships/orgs/${p["org"]}`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "PATCH", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "PATCH", body, ...opts, headers}, timeout)
   }
 
   async migrationsListForAuthenticatedUser(
@@ -22207,13 +20892,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/migrations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsStartForAuthenticatedUser(
@@ -22231,12 +20912,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/migrations`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async migrationsGetStatusForAuthenticatedUser(
@@ -22255,13 +20936,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/migrations/${p["migrationId"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ exclude: p["exclude"] })
+    const query = this._query({exclude: p["exclude"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsGetArchiveForAuthenticatedUser(
@@ -22279,7 +20956,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/migrations/${p["migrationId"]}/archive`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async migrationsDeleteArchiveForAuthenticatedUser(
@@ -22298,7 +20975,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/migrations/${p["migrationId"]}/archive`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async migrationsUnlockRepoForAuthenticatedUser(
@@ -22320,7 +20997,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/migrations/${p["migrationId"]}/repos/${p["repoName"]}/lock`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async migrationsListReposForAuthenticatedUser(
@@ -22335,13 +21012,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/user/migrations/${p["migrationId"]}/repositories`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListForAuthenticatedUser(
@@ -22359,13 +21032,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/orgs`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesListPackagesForAuthenticatedUser(
@@ -22394,11 +21063,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesGetPackageForAuthenticatedUser(
@@ -22420,7 +21085,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/user/packages/${p["packageType"]}/${p["packageName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesDeletePackageForAuthenticatedUser(
@@ -22447,7 +21112,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/user/packages/${p["packageType"]}/${p["packageName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesRestorePackageForAuthenticatedUser(
@@ -22475,13 +21140,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/user/packages/${p["packageType"]}/${p["packageName"]}/restore`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ token: p["token"] })
+    const query = this._query({token: p["token"]})
 
-    return this._fetch(
-      url + query,
-      { method: "POST", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "POST", ...opts, headers}, timeout)
   }
 
   async packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(
@@ -22517,11 +21178,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       state: p["state"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesGetPackageVersionForAuthenticatedUser(
@@ -22545,7 +21202,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesDeletePackageVersionForAuthenticatedUser(
@@ -22574,7 +21231,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesRestorePackageVersionForAuthenticatedUser(
@@ -22603,7 +21260,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/user/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}/restore`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async projectsCreateForAuthenticatedUser(
@@ -22621,12 +21278,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/projects`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async usersListPublicEmailsForAuthenticatedUser(
@@ -22645,13 +21302,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/public_emails`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListForAuthenticatedUser(
@@ -22700,11 +21353,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       before: p["before"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposCreateForAuthenticatedUser(
@@ -22724,12 +21373,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/repos`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async reposListInvitationsForAuthenticatedUser(
@@ -22748,13 +21397,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/repository_invitations`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposAcceptInvitationForAuthenticatedUser(
@@ -22774,7 +21419,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/user/repository_invitations/${p["invitationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PATCH", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PATCH", ...opts, headers}, timeout)
   }
 
   async reposDeclineInvitationForAuthenticatedUser(
@@ -22794,7 +21439,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/user/repository_invitations/${p["invitationId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async usersListSocialAccountsForAuthenticatedUser(
@@ -22813,13 +21458,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/social_accounts`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersAddSocialAccountForAuthenticatedUser(
@@ -22838,12 +21479,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/social_accounts`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async usersDeleteSocialAccountForAuthenticatedUser(
@@ -22862,16 +21503,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/social_accounts`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(
-      url,
-      { method: "DELETE", body, ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url, {method: "DELETE", body, ...opts, headers}, timeout)
   }
 
   async usersListSshSigningKeysForAuthenticatedUser(
@@ -22890,13 +21527,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/ssh_signing_keys`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersCreateSshSigningKeyForAuthenticatedUser(
@@ -22915,12 +21548,12 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/ssh_signing_keys`
     const headers = this._headers(
-      { "Content-Type": "application/json" },
+      {"Content-Type": "application/json"},
       opts.headers,
     )
     const body = JSON.stringify(p.requestBody)
 
-    return this._fetch(url, { method: "POST", body, ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", body, ...opts, headers}, timeout)
   }
 
   async usersGetSshSigningKeyForAuthenticatedUser(
@@ -22939,7 +21572,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/ssh_signing_keys/${p["sshSigningKeyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersDeleteSshSigningKeyForAuthenticatedUser(
@@ -22958,7 +21591,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/ssh_signing_keys/${p["sshSigningKeyId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async activityListReposStarredByAuthenticatedUser(
@@ -22985,11 +21618,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityCheckRepoIsStarredByAuthenticatedUser(
@@ -23009,7 +21638,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/starred/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityStarRepoForAuthenticatedUser(
@@ -23029,7 +21658,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/starred/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "PUT", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "PUT", ...opts, headers}, timeout)
   }
 
   async activityUnstarRepoForAuthenticatedUser(
@@ -23049,7 +21678,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/starred/${p["owner"]}/${p["repo"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async activityListWatchedReposForAuthenticatedUser(
@@ -23067,13 +21696,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/subscriptions`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async teamsListForAuthenticatedUser(
@@ -23091,13 +21716,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   > {
     const url = this.basePath + `/user/teams`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersGetById(
@@ -23112,7 +21733,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/user/${p["accountId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersList(
@@ -23125,13 +21746,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_user[]> | Res<304, void>> {
     const url = this.basePath + `/users`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ since: p["since"], per_page: p["perPage"] })
+    const query = this._query({since: p["since"], per_page: p["perPage"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersGetByUsername(
@@ -23146,7 +21763,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/users/${p["username"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListAttestations(
@@ -23177,11 +21794,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       predicate_type: p["predicateType"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesListDockerMigrationConflictingPackagesForUser(
@@ -23196,7 +21809,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/users/${p["username"]}/docker/conflicts`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListEventsForAuthenticatedUser(
@@ -23210,13 +21823,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_event[]>> {
     const url = this.basePath + `/users/${p["username"]}/events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListOrgEventsForAuthenticatedUser(
@@ -23232,13 +21841,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url =
       this.basePath + `/users/${p["username"]}/events/orgs/${p["org"]}`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListPublicEventsForUser(
@@ -23252,13 +21857,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_event[]>> {
     const url = this.basePath + `/users/${p["username"]}/events/public`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListFollowersForUser(
@@ -23272,13 +21873,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_user[]>> {
     const url = this.basePath + `/users/${p["username"]}/followers`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListFollowingForUser(
@@ -23292,13 +21889,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_simple_user[]>> {
     const url = this.basePath + `/users/${p["username"]}/following`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersCheckFollowingForUser(
@@ -23313,7 +21906,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/users/${p["username"]}/following/${p["targetUser"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async gistsListForUser(
@@ -23334,11 +21927,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListGpgKeysForUser(
@@ -23352,13 +21941,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_gpg_key[]>> {
     const url = this.basePath + `/users/${p["username"]}/gpg_keys`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersGetContextForUser(
@@ -23386,11 +21971,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       subject_id: p["subjectId"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async appsGetUserInstallation(
@@ -23403,7 +21984,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/users/${p["username"]}/installation`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListPublicKeysForUser(
@@ -23417,13 +21998,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_key_simple[]>> {
     const url = this.basePath + `/users/${p["username"]}/keys`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async orgsListForUser(
@@ -23437,13 +22014,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_organization_simple[]>> {
     const url = this.basePath + `/users/${p["username"]}/orgs`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesListPackagesForUser(
@@ -23478,11 +22051,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       per_page: p["perPage"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesGetPackageForUser(
@@ -23506,7 +22075,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/users/${p["username"]}/packages/${p["packageType"]}/${p["packageName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesDeletePackageForUser(
@@ -23535,7 +22104,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/users/${p["username"]}/packages/${p["packageType"]}/${p["packageName"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesRestorePackageForUser(
@@ -23564,13 +22133,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath +
       `/users/${p["username"]}/packages/${p["packageType"]}/${p["packageName"]}/restore`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ token: p["token"] })
+    const query = this._query({token: p["token"]})
 
-    return this._fetch(
-      url + query,
-      { method: "POST", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "POST", ...opts, headers}, timeout)
   }
 
   async packagesGetAllPackageVersionsForPackageOwnedByUser(
@@ -23599,7 +22164,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/users/${p["username"]}/packages/${p["packageType"]}/${p["packageName"]}/versions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesGetPackageVersionForUser(
@@ -23624,7 +22189,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/users/${p["username"]}/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async packagesDeletePackageVersionForUser(
@@ -23654,7 +22219,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/users/${p["username"]}/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "DELETE", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "DELETE", ...opts, headers}, timeout)
   }
 
   async packagesRestorePackageVersionForUser(
@@ -23684,7 +22249,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       `/users/${p["username"]}/packages/${p["packageType"]}/${p["packageName"]}/versions/${p["packageVersionId"]}/restore`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "POST", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "POST", ...opts, headers}, timeout)
   }
 
   async projectsListForUser(
@@ -23705,11 +22270,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListReceivedEventsForUser(
@@ -23723,13 +22284,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_event[]>> {
     const url = this.basePath + `/users/${p["username"]}/received_events`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListReceivedPublicEventsForUser(
@@ -23743,13 +22300,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_event[]>> {
     const url = this.basePath + `/users/${p["username"]}/received_events/public`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async reposListForUser(
@@ -23779,11 +22332,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async billingGetGithubActionsBillingUser(
@@ -23797,7 +22346,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/users/${p["username"]}/settings/billing/actions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async billingGetGithubPackagesBillingUser(
@@ -23811,7 +22360,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/users/${p["username"]}/settings/billing/packages`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async billingGetSharedStorageBillingUser(
@@ -23825,7 +22374,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       this.basePath + `/users/${p["username"]}/settings/billing/shared-storage`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async billingGetGithubBillingUsageReportUser(
@@ -23854,11 +22403,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       hour: p["hour"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListSocialAccountsForUser(
@@ -23872,13 +22417,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_social_account[]>> {
     const url = this.basePath + `/users/${p["username"]}/social_accounts`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async usersListSshSigningKeysForUser(
@@ -23892,13 +22433,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_ssh_signing_key[]>> {
     const url = this.basePath + `/users/${p["username"]}/ssh_signing_keys`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListReposStarredByUser(
@@ -23921,11 +22458,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
       page: p["page"],
     })
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async activityListReposWatchedByUser(
@@ -23939,13 +22472,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
   ): Promise<Res<200, t_minimal_repository[]>> {
     const url = this.basePath + `/users/${p["username"]}/subscriptions`
     const headers = this._headers({}, opts.headers)
-    const query = this._query({ per_page: p["perPage"], page: p["page"] })
+    const query = this._query({per_page: p["perPage"], page: p["page"]})
 
-    return this._fetch(
-      url + query,
-      { method: "GET", ...opts, headers },
-      timeout,
-    )
+    return this._fetch(url + query, {method: "GET", ...opts, headers}, timeout)
   }
 
   async metaGetAllVersions(
@@ -23955,7 +22484,7 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/versions`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 
   async metaGetZen(
@@ -23965,9 +22494,9 @@ export class GitHubV3RestApi extends AbstractFetchClient {
     const url = this.basePath + `/zen`
     const headers = this._headers({}, opts.headers)
 
-    return this._fetch(url, { method: "GET", ...opts, headers }, timeout)
+    return this._fetch(url, {method: "GET", ...opts, headers}, timeout)
   }
 }
 
-export { GitHubV3RestApi as ApiClient }
-export type { GitHubV3RestApiConfig as ApiClientConfig }
+export {GitHubV3RestApi as ApiClient}
+export type {GitHubV3RestApiConfig as ApiClientConfig}

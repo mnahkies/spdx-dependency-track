@@ -1,121 +1,188 @@
-import { type AnyZodObject, type ZodObject, z } from "zod"
+import { z, type ZodTypeAny } from "zod"
 
-export function projection<
-  Schema extends AnyZodObject,
-  SchemaProjection extends keyof z.infer<Schema>,
->(
-  schema: Schema,
-  ...projection: readonly SchemaProjection[]
-): ZodObject<Pick<Schema["shape"], SchemaProjection>>
-export function projection<
-  Schema extends AnyZodObject,
-  SchemaProjection extends keyof z.infer<Schema>,
->(
-  schema: Schema,
-  projection: readonly SchemaProjection[],
-): ZodObject<Pick<Schema["shape"], SchemaProjection>>
-export function projection<
-  Schema extends AnyZodObject,
-  SchemaProjection extends keyof z.infer<Schema>,
->(
-  schema: Schema,
-  ...projection: readonly SchemaProjection[]
-): ZodObject<Pick<Schema["shape"], SchemaProjection>> {
-  projection = Array.isArray(projection[0]) ? projection[0] : projection
+export type PrimitiveValueExpression =
+  | Buffer
+  | bigint
+  | boolean
+  | number
+  | string
+  | readonly PrimitiveValueExpression[]
+  | null
+  | undefined
 
-  const projectionObj = projection.reduce(
-    (acc, it) => {
-      acc[it] = true
-      return acc
-    },
-    {} as { [k in SchemaProjection]: true },
-  )
+export type ValueExpression = PrimitiveValueExpression
 
-  // @ts-ignore
-  return schema.pick(projectionObj)
+export type Query<T extends ZodTypeAny> = {
+  query: string
+  parameters: unknown[]
+  parser: T
+  type: typeof sqlQuerySymbol
 }
 
-export function aliased<
-  Schema extends AnyZodObject,
-  R extends {
-    [K in keyof R]: K extends keyof Schema["shape"]
-      ? PropertyKey
-      : 'Error: key not in Schema["shape"]'
-  },
->(
-  schema: Schema,
-  x: R,
-): ZodObject<{
-  [P in keyof Schema["shape"] as P extends keyof R
-    ? R[P]
-    : P]: Schema["shape"][P]
-}> {
-  // @ts-ignore
-  return z.object(
-    // @ts-ignore
-    Object.fromEntries(
-      Object.entries(schema.shape).map(([name, value]) => {
-        return [Reflect.get(x, name) || name, value]
-      }),
-    ),
-  )
+const sqlQuerySymbol = Symbol("sql")
+
+export function sql<T extends ZodTypeAny>(parser: T) {
+  return (
+    parts: readonly string[],
+    ...args: readonly ValueExpression[]
+  ): Query<T> => {
+    const parameters: unknown[] = []
+    const query = parts.reduce((acc, it, i) => {
+      const parameter = args[i]
+      // biome-ignore lint/style/noParameterAssign: <explanation>
+      acc += it
+
+      if (args.length <= i) {
+        return acc
+      }
+
+      switch (typeof parameter) {
+        case "bigint":
+          parameters.push(parameter.toString(10))
+          break
+        case "boolean":
+          parameters.push(parameter ? 1 : 0)
+          break
+        case "object":
+          if (Array.isArray(parameter)) {
+            for (const it1 of parameter) {
+              parameters.push(it1)
+            }
+            return `${acc}(${parameter.map((it) => "?").join(", ")})`
+          }
+          if (parameter === null) {
+            parameters.push(null)
+          }
+          break
+        case "undefined":
+          parameters.push(null)
+          break
+        default:
+          parameters.push(parameter)
+      }
+
+      // TODO: use named parameters?
+      return `${acc}?`
+    }, "")
+
+    return {
+      query,
+      parameters,
+      parser,
+      type: sqlQuerySymbol,
+    }
+  }
 }
 
-export const t = {
-  licenses: z.object({
-    id: z.string(),
-    name: z.string(),
-    text: z.string(),
-    comments: z.string().nullable(),
+export interface Transaction {
+  one<T extends ZodTypeAny>(query: Query<T>): Promise<T>
+  any<T extends ZodTypeAny>(query: Query<T>): Promise<T[]>
+}
+
+export type InsertLicenseParams = {
+  id: string
+  name: string
+  text: string
+  comments: string | null
+  external_id: string
+  is_osi_approved: number
+  is_fsf_libre: number
+}
+
+export async function insertLicense(
+  trx: Transaction,
+  {
+    id,
+    name,
+    text,
+    comments,
+    external_id,
+    is_osi_approved,
+    is_fsf_libre,
+  }: InsertLicenseParams,
+) {
+  const projection = z.object({})
+
+  const results = await trx.any(sql(projection)`
+INSERT INTO licenses(id,
+name,
+text,
+comments,
+external_id,
+is_osi_approved,
+is_fsf_libre)
+VALUES (${id},
+${name},
+${text},
+${comments},
+${external_id},
+${is_osi_approved},
+${is_fsf_libre})
+ON CONFLICT DO NOTHING;`)
+
+  return results
+}
+
+export type InsertLicenseGroupParams = {
+  id: string
+  name: string
+  risk: number
+}
+
+export async function insertLicenseGroup(
+  trx: Transaction,
+  { id, name, risk }: InsertLicenseGroupParams,
+) {
+  const projection = z.object({})
+
+  const results = await trx.any(sql(projection)`
+INSERT INTO license_groups(id, name, risk)
+VALUES (${id},
+${name},
+${risk})
+ON CONFLICT DO NOTHING;`)
+
+  return results
+}
+
+export type AssociateLicenseWithGroupParams = {
+  licenseGroupId: string
+  licenseId: string
+}
+
+export async function associateLicenseWithGroup(
+  trx: Transaction,
+  { licenseGroupId, licenseId }: AssociateLicenseWithGroupParams,
+) {
+  const projection = z.object({})
+
+  const results = await trx.any(sql(projection)`
+INSERT INTO license_license_groups(license_group_id, license_id)
+VALUES (${licenseGroupId}, ${licenseId})
+ON CONFLICT DO NOTHING;`)
+
+  return results
+}
+
+export async function getLicenses(trx: Transaction) {
+  const projection = z.object({
     external_id: z.string(),
-    is_osi_approved: z.number(),
-    is_fsf_libre: z.number(),
-    created_at: z.coerce.date().optional(),
-    updated_at: z.coerce.date().optional(),
-  }),
-  license_groups: z.object({
-    id: z.string(),
     name: z.string(),
+    id: z.string(),
+    group_name: z.string(),
     risk: z.number(),
-    created_at: z.coerce.date().optional(),
-    updated_at: z.coerce.date().optional(),
-  }),
-  license_license_groups: z.object({
-    license_group_id: z.string(),
-    license_id: z.string(),
-    created_at: z.coerce.date().optional(),
-    updated_at: z.coerce.date().optional(),
-  }),
-  repository: z.object({
-    id: z.string(),
-    url: z.string(),
-    name: z.string(),
-    is_archived: z.number(),
-    created_at: z.coerce.date().optional(),
-    updated_at: z.coerce.date().optional(),
-  }),
-  repository_scan: z.object({
-    id: z.string(),
-    scanned_at: z.string(),
-    repository_id: z.string(),
-    created_at: z.coerce.date().optional(),
-    updated_at: z.coerce.date().optional(),
-  }),
-  dependency: z.object({
-    id: z.string(),
-    name: z.string(),
-    version: z.string().nullable(),
-    supplier: z.string().nullable(),
-    license_declared_id: z.string().nullable(),
-    license_concluded_id: z.string().nullable(),
-    created_at: z.coerce.date().optional(),
-    updated_at: z.coerce.date().optional(),
-  }),
-  repository_dependency: z.object({
-    repository_scan_id: z.string(),
-    dependency_name: z.string(),
-    dependency_version: z.string().nullable(),
-    created_at: z.coerce.date().optional(),
-    updated_at: z.coerce.date().optional(),
-  }),
+  })
+
+  const results = await trx.any(sql(projection)`
+SELECT l.external_id,
+l.name,
+l.id,
+lg.name AS group_name,
+lg.risk
+FROM license_license_groups llg
+JOIN licenses l ON llg.license_id = l.id
+JOIN license_groups lg ON llg.license_group_id = lg.id
+ORDER BY lg.risk DESC, lg.name`)
+
+  return results
 }
