@@ -1,80 +1,47 @@
 import {
+  type InsertLicenseGroupParams,
+  type InsertLicenseParams,
+  associateLicenseWithGroup,
+  getLicenses,
+  insertLicense,
   insertLicenseGroup,
-  type insertLicenseGroupParams,
 } from "@/generated/database/generated"
 import type {t_License} from "@/generated/models"
-import {type Sqlite, sql} from "@/lib/database/sqlite"
-import {z} from "zod"
+import type {Sqlite} from "@/lib/database/sqlite"
 
 export class LicenseRepository {
   constructor(private readonly sqlite: Sqlite) {}
 
-  async insertLicenses(licenses: z.infer<typeof t.licenses>[]): Promise<void> {
-    await Promise.all(licenses.map((it) => this.insertLicense(it)))
-  }
-
-  private async insertLicense(
-    license: z.infer<typeof t.licenses>,
-  ): Promise<void> {
-    await this.sqlite.run(sql(z.unknown())`
-      INSERT INTO licenses(id,
-                           name,
-                           text,
-                           comments,
-                           external_id,
-                           is_osi_approved,
-                           is_fsf_libre)
-      VALUES (${license.id},
-              ${license.name},
-              ${license.text},
-              ${license.comments},
-              ${license.external_id},
-              ${license.is_osi_approved},
-              ${license.is_fsf_libre})
-      ON CONFLICT DO NOTHING`)
+  async insertLicenses(licenses: InsertLicenseParams[]): Promise<void> {
+    await this.sqlite.transaction(async (trx) => {
+      for (const it of licenses) {
+        await insertLicense(trx, it)
+      }
+    })
   }
 
   async insertLicenseGroups(
-    licenseGroups: insertLicenseGroupParams[],
+    licenseGroups: InsertLicenseGroupParams[],
   ): Promise<void> {
-    await Promise.all(licenseGroups.map((it) => this.insertLicenseGroup(it)))
-  }
-
-  private async insertLicenseGroup(
-    licenseGroup: insertLicenseGroupParams,
-  ): Promise<void> {
-    return await this.sqlite.transaction(async (trx) =>
-      insertLicenseGroup(trx, licenseGroup),
-    )
+    await this.sqlite.transaction(async (trx) => {
+      for (const it of licenseGroups) {
+        await insertLicenseGroup(trx, it)
+      }
+    })
   }
 
   async associateLicenseWithGroup(
     licenseId: string,
     licenseGroupId: string,
   ): Promise<void> {
-    await this.sqlite.run(sql(z.unknown())`
-      INSERT INTO license_license_groups(license_group_id, license_id)
-      VALUES (${licenseGroupId}, ${licenseId})
-      ON CONFLICT DO NOTHING`)
+    await this.sqlite.transaction(async (trx) => {
+      await associateLicenseWithGroup(trx, {licenseGroupId, licenseId})
+    })
   }
 
   async getLicenses(): Promise<t_License[]> {
-    return this.sqlite.many(
-      sql(
-        projection(t.licenses, "external_id", "name", "id").and(
-          aliased(projection(t.license_groups, "name", "risk"), {
-            name: "group_name",
-          }),
-        ),
-      )`SELECT l.external_id,
-               l.name,
-               l.id,
-               lg.name AS group_name,
-               lg.risk
-        FROM license_license_groups llg
-               JOIN licenses l ON llg.license_id = l.id
-               JOIN license_groups lg ON llg.license_group_id = lg.id
-        ORDER BY lg.risk DESC, lg.name`,
-    )
+    return this.sqlite.transaction(async (trx) => {
+      return getLicenses(trx)
+    })
   }
 }

@@ -75,8 +75,9 @@ export function sql<T extends ZodTypeAny>(parser: T) {
 }
 
 export interface Transaction {
-  one<T extends ZodTypeAny>(query: Query<T>): Promise<T>
-  any<T extends ZodTypeAny>(query: Query<T>): Promise<T[]>
+  one<T extends ZodTypeAny>(query: Query<T>): Promise<z.output<T>>
+
+  any<T extends ZodTypeAny>(query: Query<T>): Promise<z.output<T>[]>
 }
 
 export type InsertLicenseParams = {
@@ -103,24 +104,22 @@ export async function insertLicense(
 ) {
   const projection = z.object({})
 
-  const results = await trx.any(sql(projection)`
+  return trx.any(sql(projection)`
 INSERT INTO licenses(id,
-name,
-text,
-comments,
-external_id,
-is_osi_approved,
-is_fsf_libre)
+                     name,
+                     text,
+                     comments,
+                     external_id,
+                     is_osi_approved,
+                     is_fsf_libre)
 VALUES (${id},
-${name},
-${text},
-${comments},
-${external_id},
-${is_osi_approved},
-${is_fsf_libre})
+        ${name},
+        ${text},
+        ${comments},
+        ${external_id},
+        ${is_osi_approved},
+        ${is_fsf_libre})
 ON CONFLICT DO NOTHING;`)
-
-  return results
 }
 
 export type InsertLicenseGroupParams = {
@@ -135,14 +134,12 @@ export async function insertLicenseGroup(
 ) {
   const projection = z.object({})
 
-  const results = await trx.any(sql(projection)`
+  return trx.any(sql(projection)`
 INSERT INTO license_groups(id, name, risk)
 VALUES (${id},
-${name},
-${risk})
+        ${name},
+        ${risk})
 ON CONFLICT DO NOTHING;`)
-
-  return results
 }
 
 export type AssociateLicenseWithGroupParams = {
@@ -156,12 +153,10 @@ export async function associateLicenseWithGroup(
 ) {
   const projection = z.object({})
 
-  const results = await trx.any(sql(projection)`
+  return trx.any(sql(projection)`
 INSERT INTO license_license_groups(license_group_id, license_id)
 VALUES (${licenseGroupId}, ${licenseId})
 ON CONFLICT DO NOTHING;`)
-
-  return results
 }
 
 export async function getLicenses(trx: Transaction) {
@@ -173,16 +168,14 @@ export async function getLicenses(trx: Transaction) {
     risk: z.number(),
   })
 
-  const results = await trx.any(sql(projection)`
+  return trx.any(sql(projection)`
 SELECT l.external_id,
-l.name,
-l.id,
-lg.name AS group_name,
-lg.risk
+       l.name,
+       l.id,
+       lg.name AS group_name,
+       lg.risk
 FROM license_license_groups llg
-JOIN licenses l ON llg.license_id = l.id
-JOIN license_groups lg ON llg.license_group_id = lg.id
+       JOIN licenses l ON llg.license_id = l.id
+       JOIN license_groups lg ON llg.license_group_id = lg.id
 ORDER BY lg.risk DESC, lg.name`)
-
-  return results
 }
