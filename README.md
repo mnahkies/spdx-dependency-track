@@ -42,9 +42,9 @@ First, run the development server:
 
 ```bash
 corepack enable
-yarn
+pnpm i
 cp .env.example .env # modify settings as needed
-yarn dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to use the application.

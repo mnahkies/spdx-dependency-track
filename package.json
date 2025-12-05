@@ -1,18 +1,17 @@
 {
   "name": "spdx-dependency-track",
   "version": "0.1.0",
-  "packageManager": "yarn@4.9.1",
   "private": true,
   "license": "MIT",
   "scripts": {
     "postinstall": "husky",
-    "dev": "yarn migrate && next dev",
+    "dev": "pnpm run migrate && next dev",
     "package": "docker build -t spdx-dependency-track --progress=plain .",
     "start": "next start",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "lint": "biome lint --write .",
     "format": "biome check --write .",
-    "docs:generate": "yarn markdown-toc -i --bullets=- ./README.md",
+    "docs:generate": "pnpm exec markdown-toc -i --bullets=- ./README.md",
     "migrate": "dotenvx run -- ./bin/migrate.sh",
     "migrate-generate": "dotenvx run -- ./bin/migrate-generate.sh",
     "migrate-rehash": "dotenvx run -- atlas migrate hash --dir 'file://migrations",
@@ -20,7 +19,7 @@
     "ci-test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "ci-lint": "echo 'n/a'",
     "ci-format": "biome ci .",
-    "ci-pipeline": "yarn ci-build && yarn ci-test && yarn format && yarn lint"
+    "ci-pipeline": "pnpm run ci-build && pnpm run ci-test && pnpm run format && pnpm run lint"
   },
   "dependencies": {
     "@ariga/atlas": "^0.33.1",
@@ -38,7 +37,7 @@
     "@tanstack/react-query-devtools": "^5.76.1",
     "@tanstack/react-query-next-experimental": "^5.76.1",
     "better-sqlite3": "^11.10.0",
-    "next": "15.3.2",
+    "next": "15.5.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.56.4",
@@ -66,11 +65,12 @@
   },
   "lint-staged": {
     "*.{ts,js,tsx,jsx}": [
-      "yarn biome lint --write --no-errors-on-unmatched",
-      "yarn biome check --write --no-errors-on-unmatched"
+      "pnpm exec biome lint --write --no-errors-on-unmatched",
+      "pnpm exec biome check --write --no-errors-on-unmatched"
     ],
     "*.md": [
-      "sh -c 'yarn docs:generate'"
+      "sh -c 'pnpm run docs:generate'"
     ]
-  }
+  },
+  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a"
 }
