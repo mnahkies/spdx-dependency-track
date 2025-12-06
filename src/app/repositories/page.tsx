@@ -1,6 +1,5 @@
 "use client"
 
-import {useQueryOptions} from "@/app/providers/query-options"
 import {
   Paper,
   Stack,
@@ -14,6 +13,7 @@ import {
 } from "@mui/material"
 import {useQuery} from "@tanstack/react-query"
 import Link from "next/link"
+import {useQueryOptions} from "@/app/providers/query-options"
 
 export default function RepositoryListPage() {
   const queryOptions = useQueryOptions()

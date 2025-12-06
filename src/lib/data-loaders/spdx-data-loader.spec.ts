@@ -1,5 +1,5 @@
-import {validSBOMPackage} from "@/lib/data-loaders/spdx-data-loader"
 import {describe, expect, it} from "@jest/globals"
+import {validSBOMPackage} from "@/lib/data-loaders/spdx-data-loader"
 
 describe("lib/data-loaders/spdx-data-loader", () => {
   describe("validSBOMPackage", () => {

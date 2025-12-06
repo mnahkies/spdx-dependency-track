@@ -1,6 +1,5 @@
 "use client"
 
-import {useQueryOptions} from "@/app/providers/query-options"
 import {
   Container,
   List,
@@ -10,6 +9,7 @@ import {
   Typography,
 } from "@mui/material"
 import {useQuery} from "@tanstack/react-query"
+import {useQueryOptions} from "@/app/providers/query-options"
 
 export default function Home() {
   const queryOptions = useQueryOptions()

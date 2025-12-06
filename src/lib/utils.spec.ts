@@ -1,5 +1,5 @@
-import {isDefined} from "@/lib/utils"
 import {describe, expect, it} from "@jest/globals"
+import {isDefined} from "@/lib/utils"
 
 describe("lib/utils", () => {
   describe("isDefined", () => {

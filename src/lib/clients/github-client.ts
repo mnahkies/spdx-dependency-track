@@ -1,12 +1,12 @@
 import {scheduler} from "node:timers/promises"
-import {ApiClient} from "@/generated/clients/github/client"
-import type {t_repository} from "@/generated/clients/github/models"
 import type {
   Res,
   StatusCode3xx,
   StatusCode4xx,
 } from "@nahkies/typescript-fetch-runtime/main"
 import {z} from "zod"
+import {ApiClient} from "@/generated/clients/github/client"
+import type {t_repository} from "@/generated/clients/github/models"
 
 export class GithubClient {
   private readonly client: ApiClient

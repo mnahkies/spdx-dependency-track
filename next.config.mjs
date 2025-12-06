@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-  webpack: (
-    config,
-    {buildId, dev, isServer, defaultLoaders, nextRuntime, webpack},
-  ) => {
+  webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
       // TODO: HACK: the alpha typescript-nextjs template is using the

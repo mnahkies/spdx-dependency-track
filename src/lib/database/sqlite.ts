@@ -31,7 +31,6 @@ export function sql<T extends ZodTypeAny>(parser: T) {
     const parameters: unknown[] = []
     const query = parts.reduce((acc, it, i) => {
       const parameter = args[i]
-      // biome-ignore lint/style/noParameterAssign: <explanation>
       acc += it
 
       if (args.length <= i) {
@@ -50,7 +49,7 @@ export function sql<T extends ZodTypeAny>(parser: T) {
             for (const it1 of parameter) {
               parameters.push(it1)
             }
-            return `${acc}(${parameter.map((it) => "?").join(", ")})`
+            return `${acc}(${parameter.map(() => "?").join(", ")})`
           }
           if (parameter === null) {
             parameters.push(null)
@@ -140,7 +139,7 @@ export class Sqlite {
   private prepare(query: string) {
     try {
       if (!this.preparedStatementsCache[query]) {
-        // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+        // biome-ignore lint/suspicious/noAssignInExpressions: ignore
         return (this.preparedStatementsCache[query] = this.db.prepare(query))
       }
       return this.preparedStatementsCache[query]

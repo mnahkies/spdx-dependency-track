@@ -1,8 +1,8 @@
+import {Container, Stack} from "@mui/material"
+import type {Metadata} from "next"
 import {ClientProviders} from "@/app/providers/client-providers"
 import {ServerProviders} from "@/app/providers/server-providers"
 import {TopNav} from "@/components/top-nav"
-import {Container, Stack} from "@mui/material"
-import type {Metadata} from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {

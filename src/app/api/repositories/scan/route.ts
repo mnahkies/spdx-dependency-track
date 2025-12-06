@@ -3,7 +3,7 @@ import {GithubClient} from "@/lib/clients/github-client"
 import {SpdxDataLoader} from "@/lib/data-loaders/spdx-data-loader"
 import {database} from "@/lib/database/database"
 
-export const POST = _POST(async ({body}, respond, context) => {
+export const POST = _POST(async ({body}, respond, _context) => {
   const spdxDataLoader = new SpdxDataLoader(
     database,
     new GithubClient(body.token),

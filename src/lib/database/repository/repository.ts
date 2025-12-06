@@ -1,3 +1,4 @@
+import {z} from "zod"
 import {projection, t} from "@/generated/database/generated"
 import type {
   t_RepositoryScan,
@@ -5,7 +6,6 @@ import type {
   t_RepositorySummary,
 } from "@/generated/models"
 import {type Sqlite, sql} from "@/lib/database/sqlite"
-import {z} from "zod"
 
 // TODO: stop returning API models here and move the DB -> API mapping else where
 export class RepositoryRepository {
