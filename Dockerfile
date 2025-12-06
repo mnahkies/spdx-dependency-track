@@ -5,17 +5,16 @@ RUN corepack enable
 FROM base AS deps
 WORKDIR /app
 
-COPY package.json yarn.lock .yarnrc.yml ./
-COPY .yarn ./.yarn
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 
-RUN yarn --immutable --immutable-cache
+RUN pnpm install --frozen-lockfile
 
 
 FROM base AS builder
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
-COPY --exclude=.yarn/cache . .
+COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN ./bin/build.sh
