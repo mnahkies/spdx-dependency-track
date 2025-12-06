@@ -11,7 +11,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "lint": "biome lint --write .",
     "format": "biome check --write .",
-    "docs:generate": "pnpm exec markdown-toc -i --bullets=- ./README.md",
+    "docs:generate": "node ./bin/generate-toc.mjs",
     "migrate": "dotenvx run -- ./bin/migrate.sh",
     "migrate-generate": "dotenvx run -- ./bin/migrate-generate.sh",
     "migrate-rehash": "dotenvx run -- atlas migrate hash --dir 'file://migrations",
