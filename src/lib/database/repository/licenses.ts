@@ -1,7 +1,7 @@
+import {z} from "zod"
 import {aliased, projection, t} from "@/generated/database/generated"
 import type {t_License} from "@/generated/models"
 import {type Sqlite, sql} from "@/lib/database/sqlite"
-import {z} from "zod"
 
 export class LicenseRepository {
   constructor(private readonly sqlite: Sqlite) {}

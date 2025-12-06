@@ -1,10 +1,10 @@
 "use server"
 
-import theme from "@/theme"
 import {ThemeProvider} from "@mui/material"
-import {AppRouterCacheProvider} from "@mui/material-nextjs/v14-appRouter"
 import CssBaseline from "@mui/material/CssBaseline"
+import {AppRouterCacheProvider} from "@mui/material-nextjs/v14-appRouter"
 import type React from "react"
+import theme from "@/theme"
 
 export async function ServerProviders({children}: React.PropsWithChildren) {
   return (

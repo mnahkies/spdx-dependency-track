@@ -1,7 +1,7 @@
 import {_GET} from "@/generated/api/repositories/[repositoryId]/scans/route"
 import {database} from "@/lib/database/database"
 
-export const GET = _GET(async ({params}, respond, context) => {
+export const GET = _GET(async ({params}, respond, _context) => {
   return respond
     .with200()
     .body(

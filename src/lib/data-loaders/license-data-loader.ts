@@ -1,6 +1,6 @@
 import fs from "node:fs/promises"
-import type {Database} from "@/lib/database/database"
 import {z} from "zod"
+import type {Database} from "@/lib/database/database"
 
 const LicenseSchema = z.object({
   uuid: z.string().uuid(),
@@ -72,6 +72,7 @@ export class LicenseDataLoader {
               .catch((err) => {
                 console.log(
                   `failed to associate license ${it.uuid} with ${licenseGroup.uuid}`,
+                  err,
                 )
               }),
           ),

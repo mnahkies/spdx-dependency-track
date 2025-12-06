@@ -1,8 +1,8 @@
 "use client"
 
-import {useQueryOptions} from "@/app/providers/query-options"
 import {Button, Container, Stack, TextField, Typography} from "@mui/material"
-import {useMutation, useQuery} from "@tanstack/react-query"
+import {useMutation} from "@tanstack/react-query"
+import {useQueryOptions} from "@/app/providers/query-options"
 
 export default function Home() {
   const queryOptions = useQueryOptions()

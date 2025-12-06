@@ -1,15 +1,14 @@
 import {randomUUID} from "node:crypto"
-import type {t_dependency_graph_spdx_sbom} from "@/generated/clients/github/models"
-import type {t_License} from "@/generated/models"
-import type {GithubClient} from "@/lib/clients/github-client"
-import type {Database} from "@/lib/database/database"
-import {isDefined} from "@/lib/utils"
-import semver from "semver"
 import parseSpdxExpression, {
   type Info,
   type LicenseInfo,
 } from "spdx-expression-parse"
 import {z} from "zod"
+import type {t_dependency_graph_spdx_sbom} from "@/generated/clients/github/models"
+import type {t_License} from "@/generated/models"
+import type {GithubClient} from "@/lib/clients/github-client"
+import type {Database} from "@/lib/database/database"
+import {isDefined} from "@/lib/utils"
 
 export const validSBOMPackage = z.object({
   SPDXID: z.string(),

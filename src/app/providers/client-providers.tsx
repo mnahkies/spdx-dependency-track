@@ -1,15 +1,15 @@
 "use client"
 
-import {
-  QueryOptionsContext,
-  createQueryOptions,
-} from "@/app/providers/query-options"
-import {ApiClient} from "@/generated/clients/client"
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
 import {ReactQueryStreamedHydration} from "@tanstack/react-query-next-experimental"
 import type * as React from "react"
 import {useState} from "react"
+import {
+  createQueryOptions,
+  QueryOptionsContext,
+} from "@/app/providers/query-options"
+import {ApiClient} from "@/generated/clients/client"
 
 export function ClientProviders(props: {children: React.ReactNode}) {
   const [queryClient] = useState(

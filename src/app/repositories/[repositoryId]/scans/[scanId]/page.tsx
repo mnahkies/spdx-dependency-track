@@ -1,6 +1,5 @@
 "use client"
 
-import {useQueryOptions} from "@/app/providers/query-options"
 import {
   Checkbox,
   FormControlLabel,
@@ -18,8 +17,8 @@ import {
 import {useQuery} from "@tanstack/react-query"
 import Link from "next/link"
 import type React from "react"
-import {use} from "react"
-import {useState} from "react"
+import {use, useState} from "react"
+import {useQueryOptions} from "@/app/providers/query-options"
 
 const DependencyName: React.FC<{name: string; version: string}> = ({
   name,
@@ -44,7 +43,9 @@ const DependencyName: React.FC<{name: string; version: string}> = ({
 
 export default function RepositoryScanPage({
   params,
-}: {params: Promise<{repositoryId: string; scanId: string}>}) {
+}: {
+  params: Promise<{repositoryId: string; scanId: string}>
+}) {
   const {repositoryId, scanId} = use(params)
   const [excludePermissive, setExcludePermissive] = useState<boolean>(false)
 

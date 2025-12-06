@@ -21,24 +21,22 @@ const topNavRoutes = [
 
 export const TopNav: React.FC = () => {
   const pathname = usePathname()
-  const {match: routeMatch, isExact} = useRouteMatch(
+  const {match: routeMatch} = useRouteMatch(
     pathname,
     topNavRoutes.map((it) => it.href),
   )
 
   return (
-    <>
-      <Tabs value={routeMatch} aria-label="main navigation">
-        {topNavRoutes.map((it) => (
-          <Tab
-            label={it.label}
-            key={it.href}
-            value={it.href}
-            href={it.href}
-            component={Link}
-          />
-        ))}
-      </Tabs>
-    </>
+    <Tabs value={routeMatch} aria-label="main navigation">
+      {topNavRoutes.map((it) => (
+        <Tab
+          label={it.label}
+          key={it.href}
+          value={it.href}
+          href={it.href}
+          component={Link}
+        />
+      ))}
+    </Tabs>
   )
 }

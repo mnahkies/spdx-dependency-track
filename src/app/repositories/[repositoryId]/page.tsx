@@ -1,6 +1,5 @@
 "use client"
 
-import {useQueryOptions} from "@/app/providers/query-options"
 import {
   Paper,
   Stack,
@@ -15,10 +14,13 @@ import {
 import {useQuery} from "@tanstack/react-query"
 import Link from "next/link"
 import {use} from "react"
+import {useQueryOptions} from "@/app/providers/query-options"
 
 export default function RepositoryPage({
   params,
-}: {params: Promise<{repositoryId: string}>}) {
+}: {
+  params: Promise<{repositoryId: string}>
+}) {
   const {repositoryId} = use(params)
   const queryOptions = useQueryOptions()
   const summary = useQuery(queryOptions.getRepositorySummary(repositoryId))
